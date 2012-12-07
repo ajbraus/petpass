@@ -1,0 +1,96 @@
+<%= form_for(@owner) do |f| %>
+  <% if @owner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+
+      <ul>
+      <% @owner.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br />
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :address_one %><br />
+    <%= f.text_field :address_one %>
+  </div>
+  <div class="field">
+    <%= f.label :address_two %><br />
+    <%= f.text_field :address_two %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <%= f.fields_for :pets do |p| %>  
+    <div class="field">
+      <%= p.label :name %><br />
+      <%= p.text_field :name %>
+    </div>
+    <div class="field">
+      <%= p.label :breed %><br />
+      <%= p.text_field :breed %>
+    </div>
+    <div class="field">
+      <%= p.label :rabies_expiration %><br />
+      <%= p.text_field :rabies_expiration %>
+    </div>
+    <div class="field">
+      <%= p.label :color %><br />
+      <%= p.text_field :color %>
+    </div>
+    <div class="field">
+      <%= p.label :age %><br />
+      <%= p.number_field :age %>
+    </div>
+    <div class="field">
+      <%= p.label :sex %><br />
+      <%= p.text_field :sex %>
+    </div>
+    <div class="field">
+      <%= p.label :markings %><br />
+      <%= p.text_field :markings %>
+    </div>
+    <div class="field">
+      <%= label_tag :rabies_vaccination %><br />
+      <%= check_box_tag :rabies_vaccination %>
+    </div>
+    <div class="field">
+      <%= p.label :rabies_tag_number %><br />
+      <%= p.text_field :rabies_tag_number %>
+    </div>
+    <div class="field">
+      <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
+      <%= p.file_field :rabies_attachment %>
+    </dvi>
+    <div class="field">
+      <%= label_tag :spayed_neutered %><br />
+      <%= check_box_tag :spayed_neutered %>
+    </div>
+    <div class="field">
+      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
+      <%= p.file_field :spayed_neutered_attachment %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

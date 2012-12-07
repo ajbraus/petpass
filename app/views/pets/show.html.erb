@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pet.name %>
+</p>
+
+<p>
+  <b>Breed:</b>
+  <%= @pet.breed %>
+</p>
+
+<p>
+  <b>Rabies expiration:</b>
+  <%= @pet.rabies_expiration %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @pet.color %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @pet.age %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @pet.sex %>
+</p>
+
+<p>
+  <b>Markings:</b>
+  <%= @pet.markings %>
+</p>
+
+<p>
+  <b>Rabies tag number:</b>
+  <%= @pet.rabies_tag_number %>
+</p>
+
+<p>
+  <b>Spayed nutered:</b>
+  <%= @pet.spayed_nutered %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @pet.owner %>
+</p>
+
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', pets_path %>
