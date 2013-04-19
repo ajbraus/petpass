@@ -11,34 +11,37 @@
     </div>
   <% end %>
 
+  <h3>Your Personal Information</h3>
+  <span class="red small">We will only share your personal information with your permission</span>
   <div class="field">
-    <%= f.label :full_name %><br />
+    <%= f.label :full_name, "Full Name*" %><br />
     <%= f.text_field :full_name %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "Email*" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :address_one %><br />
+    <%= f.label :address_one, "Address*" %><br />
     <%= f.text_field :address_one %>
   </div>
   <div class="field">
-    <%= f.label :address_two %><br />
+    <%= f.label :address_two, "Address line two (optional)" %><br />
     <%= f.text_field :address_two %>
   </div>
-  <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
+  <div class="field pull-left">
+    <%= f.label :city, "City*" %><br />
+    <%= f.text_field :city, class:"city" %>
   </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
+  <div class="field pull-left">
+    <%= f.label :state, "State*" %><br />
+    <%= f.select :state, us_states, class:"state" %>
+  </div>  
+  <div class="field pull-left">
+    <%= f.label :zip, "Zip*" %><br />
+    <%= f.text_field :zip, class:"zip" %>
   </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
+  <h3>Your first Petpass Pet</h3>
   <%= f.fields_for :pets do |p| %>  
     <div class="field">
       <%= p.label :name %><br />
@@ -62,29 +65,29 @@
     </div>
     <div class="field">
       <%= p.label :sex %><br />
-      <%= p.text_field :sex %>
+      <%= p.select "sex", ["Male", "Female"] %>
     </div>
     <div class="field">
       <%= p.label :markings %><br />
       <%= p.text_field :markings %>
     </div>
     <div class="field">
-      <%= label_tag :rabies_vaccination %><br />
+      <%= label_tag :rabies_vaccination, "Rabies Vaccinated" %><br />
       <%= check_box_tag :rabies_vaccination %>
     </div>
-    <div class="field">
-      <%= p.label :rabies_tag_number %><br />
+    <div class="field rabies_tag" style="display:none;">
+      <%= p.label :rabies_tag_number, "Rabies Tag Number*" %><br />
       <%= p.text_field :rabies_tag_number %>
     </div>
-    <div class="field">
+    <div class="field rabies_tag" style="display:none;">
       <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
       <%= p.file_field :rabies_attachment %>
-    </dvi>
+    </div>
     <div class="field">
       <%= label_tag :spayed_neutered %><br />
       <%= check_box_tag :spayed_neutered %>
     </div>
-    <div class="field">
+    <div class="field upload_spayed" style="display:none;">
       <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
     </div>

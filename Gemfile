@@ -8,6 +8,7 @@ gem 'rails', '3.2.6'
 gem 'thin'
 gem 'pry', :group => :development
 gem 'coffeebeans'
+gem 'devise'
 
 gem 'pg'
 gem 'paperclip'

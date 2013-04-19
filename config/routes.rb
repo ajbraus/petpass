@@ -1,4 +1,6 @@
 Petpass::Application.routes.draw do
+  devise_for :owners
+
   root :to => 'owners#new'
 
   resources :pets

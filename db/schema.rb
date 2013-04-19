@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(:version => 20121207174057) do
     t.string   "sex"
     t.string   "markings"
     t.string   "rabies_tag_number"
-    t.boolean  "spayed_neutered"
     t.integer  "owner_id"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false

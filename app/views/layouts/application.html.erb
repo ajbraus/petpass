@@ -11,14 +11,21 @@
 <body>
 	<div class="page" id="wrapper">
 		<header>
-				<div id="blue_ribbon"/>
-				<div id="ribbon">
-					<a href="/"><div id="logo"><%= image_tag "round_tag.png", height:"60%" %>PetPass</div></a>
-				</div>
-			</header>
+			<div id="blue_ribbon"/>
+			<div id="ribbon">
+				<a href="/"><div id="logo"><%= image_tag "round_tag.png", height:"60%" %>PetPass</div></a>
+      <div class="signin">
+       <%= form_tag new_owner_session_path do %>
+        <%= text_field_tag 'owner[email]', placeholder:"email" %>
+        <%= password_field_tag 'owner[password]', placeholder:"password" %>
+        <%=  submit_tag 'sign in', class:"btn" %>
+       <% end %>			
+      </div>
+      </div>
+		</header>
 		<section id="main">
 				<div id="frame">
-<%= yield %>
+          <%= yield %>
 				</div>
 		</section>
 	</div>
