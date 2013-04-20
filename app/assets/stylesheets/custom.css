@@ -1010,3 +1010,11 @@ margin-top: 5px;
 .clear-both {
 	clear: both;
 }
+
+.actions {
+	clear: both;
+}
+
+input[type=file] {
+	width: 320px;
+}

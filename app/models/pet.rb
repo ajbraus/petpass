@@ -11,7 +11,8 @@ class Pet < ActiveRecord::Base
   								:spayed_neutered, 
   								:rabies_attachment,
   								:spayed_neutered_attachment,
-                  :avatar
+                  :avatar,
+                  :microchip_code
 
   validates :age,
   					:breed,
@@ -43,9 +44,7 @@ class Pet < ActiveRecord::Base
                              :default_url => "https://s3.amazonaws.com/petpass/pet/spayed_neutered_attachment/original/default_spayed_neutered_attachment.png"
 
 
-  validates :spayed_neutered_attachment,
-  					:rabies_attachment, 
-  					:attachment_presence => true,
+  validates	:rabies_attachment, :spayed_neutered_attachment,
             :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg', 'application/pdf' ] }                           
 
   validates :avatar,

@@ -10,6 +10,9 @@ gem 'pry', :group => :development
 gem 'coffeebeans'
 gem 'devise'
 
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'dotenv-rails', :groups => [:development, :test]
+
 gem 'pg'
 gem 'paperclip'
 gem "sendgrid", "~> 1.0.1"

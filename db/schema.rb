@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419014534) do
+ActiveRecord::Schema.define(:version => 20130419022412) do
 
   create_table "owners", :force => true do |t|
     t.string   "full_name"
@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(:version => 20130419014534) do
     t.integer  "spayed_neutered_attachment_file_size"
     t.datetime "spayed_neutered_attachment_updated_at"
     t.string   "microchip_code"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "pets", ["microchip_code"], :name => "index_pets_on_microchip_code"

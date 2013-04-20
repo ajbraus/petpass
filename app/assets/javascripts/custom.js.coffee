@@ -11,6 +11,9 @@ $ ->
   
   $('#has_microchip').click ->
     $('.show_micro').toggle();
+
+  $('#add_pet').click ->
+    $('#addPet').toggle();
     
   # $('#app_logo img').wiggle();
   # $('#app_logo').hover
