@@ -999,3 +999,14 @@ box-shadow: inset 1px 1px 2px #ddd8dc;
 background-color: #fff;
 margin-top: 5px;      
 }
+
+.age {
+	float: left;
+}
+.age-input {
+	width: 65px;
+}
+
+.clear-both {
+	clear: both;
+}

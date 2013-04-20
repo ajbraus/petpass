@@ -10,7 +10,8 @@ class Pet < ActiveRecord::Base
   								:sex, 
   								:spayed_neutered, 
   								:rabies_attachment,
-  								:spayed_neutered_attachment
+  								:spayed_neutered_attachment,
+                  :avatar
 
   validates :age,
   					:breed,
@@ -18,6 +19,13 @@ class Pet < ActiveRecord::Base
   					:name,
   					:sex,
   					presence: true
+
+  has_attached_file :avatar,
+                             :convert_options => { :original => '-quality 60' },
+                             :storage => :s3,
+                             :s3_credentials => S3_CREDENTIALS,
+                             :path => "pet_file_uploads/:id/avatar.:extension",
+                             :default_url => "https://s3.amazonaws.com/petpass/pet/avatar/original/default_avatar.png"
 
 
   has_attached_file :rabies_attachment,
@@ -39,6 +47,9 @@ class Pet < ActiveRecord::Base
   					:rabies_attachment, 
   					:attachment_presence => true,
             :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg', 'application/pdf' ] }                           
+
+  validates :avatar,
+            :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }                           
 
 end
 

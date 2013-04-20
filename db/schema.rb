@@ -11,22 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121207174057) do
+ActiveRecord::Schema.define(:version => 20130419014534) do
 
   create_table "owners", :force => true do |t|
     t.string   "full_name"
-    t.string   "email"
+    t.string   "email",                  :default => "", :null => false
     t.string   "address_one"
     t.string   "address_two"
     t.string   "zip"
     t.string   "city"
     t.string   "phone_number"
     t.string   "state"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
-  add_index "owners", ["email"], :name => "index_owners_on_email"
+  add_index "owners", ["email"], :name => "index_owners_on_email", :unique => true
+  add_index "owners", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
 
   create_table "pets", :force => true do |t|
     t.string   "name"
@@ -48,8 +58,10 @@ ActiveRecord::Schema.define(:version => 20121207174057) do
     t.string   "spayed_neutered_attachment_content_type"
     t.integer  "spayed_neutered_attachment_file_size"
     t.datetime "spayed_neutered_attachment_updated_at"
+    t.string   "microchip_code"
   end
 
+  add_index "pets", ["microchip_code"], :name => "index_pets_on_microchip_code"
   add_index "pets", ["owner_id"], :name => "index_pets_on_owner_id"
 
 end

@@ -48,29 +48,30 @@
       <%= p.text_field :name %>
     </div>
     <div class="field">
-      <%= p.label :breed %><br />
-      <%= p.text_field :breed %>
+      <%= p.label :avatar, "Pet Picture*" %><br />
+      <%= p.file_field :avatar %>
     </div>
     <div class="field">
-      <%= p.label :rabies_expiration %><br />
-      <%= p.text_field :rabies_expiration %>
+      <%= p.label :breed %><br />
+      <%= p.text_field :breed %>
     </div>
     <div class="field">
       <%= p.label :color %><br />
       <%= p.text_field :color %>
     </div>
-    <div class="field">
+    <div class="field age">
       <%= p.label :age %><br />
-      <%= p.number_field :age %>
+      <%= p.number_field :age, class:"age-input" %>
     </div>
     <div class="field">
       <%= p.label :sex %><br />
       <%= p.select "sex", ["Male", "Female"] %>
     </div>
-    <div class="field">
+    <div class="field clear-both">
       <%= p.label :markings %><br />
       <%= p.text_field :markings %>
     </div>
+    <h3>Vaccinations & Microchip Code</h3>
     <div class="field">
       <%= label_tag :rabies_vaccination, "Rabies Vaccinated" %><br />
       <%= check_box_tag :rabies_vaccination %>
@@ -83,6 +84,10 @@
       <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
       <%= p.file_field :rabies_attachment %>
     </div>
+    <div class="field rabies_tag" style="display:none;">
+      <%= p.label :rabies_expiration %><br />
+      <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy" %>
+    </div>
     <div class="field">
       <%= label_tag :spayed_neutered %><br />
       <%= check_box_tag :spayed_neutered %>
@@ -91,6 +96,14 @@
       <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
     </div>
+    <div class="field">
+      <%= label_tag :has_microchip %><br />
+      <%= check_box_tag :has_microchip %>
+    </div>
+    <div class="field show_micro" style="display:none;">
+      <%= p.label :microchip_code, "Microchip Code*" %><br />
+      <%= p.text_field :microchip_code %>
+    </div>    
   <% end %>
 
   <div class="actions">

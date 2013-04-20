@@ -2,7 +2,7 @@ class CreateOwners < ActiveRecord::Migration
   def change
     create_table :owners do |t|
       t.string :full_name
-      t.string :email
+      t.string :email, :null => false, :default => ""
       t.string :address_one
       t.string :address_two
       t.string :zip
@@ -12,6 +12,6 @@ class CreateOwners < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :owners, :email
+    add_index :owners, :email, unique: true
   end
 end
