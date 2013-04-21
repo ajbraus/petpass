@@ -9,7 +9,7 @@ class Owner < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :pets, dependent: :destroy
 
-  accepts_nested_attributes_for :pets, :allow_destroy => true
+  accepts_nested_attributes_for :pets, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 
   attr_accessible :address_one, 
   								:address_two, 
@@ -28,8 +28,6 @@ class Owner < ActiveRecord::Base
   					 :state,
   					 :zip,
   					 presence: true
-
-  validates :zip, :numericality => true
 
   def first_name
     full_name.split(' ')[0]

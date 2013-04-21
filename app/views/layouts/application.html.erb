@@ -15,14 +15,14 @@
 			<div id="ribbon">
 				<a href="/"><div id="logo"><%= image_tag "round_tag.png", height:"60%" %>PetPass</div></a>
       <div class="signin">
-<%= form_for("user", :url => owner_session_path) do |f| %>
-  <%= f.text_field :email, placeholder: "email" %>
-  <%= f.password_field :password, placeholder: "password" %><%= f.submit 'Sign in', class:'btn' %>
-  <br />
-  <%= f.check_box :remember_me, checked: true %>
-  <%= f.label :remember_me %> | 
-  <%= link_to "Forgot your password?", new_password_path('owner') %>
-<% end %>		
+        <%= form_for("user", :url => owner_session_path) do |f| %>
+          <%= f.text_field :email, placeholder: "email" %>
+          <%= f.password_field :password, placeholder: "password" %><%= f.submit 'Sign in', class:'btn' %>
+          <br />
+          <%= f.check_box :remember_me, checked: true %>
+          <%= f.label :remember_me %> | 
+          <%= link_to "Forgot your password?", new_password_path('owner') %>
+        <% end %>		
       </div>
       </div>
 		</header>

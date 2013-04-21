@@ -23,8 +23,13 @@
   </div>
   <div class="field">
     <%= f.label :password, "Password*" %><br />
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
   </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
   <h3>Your Personal Information</h3>
   <div class="field">
     <%= f.label :address_one, "Address*" %><br />
@@ -37,6 +42,10 @@
   <div class="field pull-left">
     <%= f.label :city, "City*" %><br />
     <%= f.text_field :city, class:"city" %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number, "Phone number (optional)" %><br />
+    <%= f.text_field :phone_number, placeholder: "(555)555-5555" %>
   </div>
   <div class="field pull-left">
     <%= f.label :state, "State*" %><br />
@@ -54,31 +63,31 @@
   <h3>Your first Petpass Pet</h3>
   <%= f.fields_for :pets do |p| %>  
     <div class="field">
-      <%= p.label :name %><br />
+      <%= p.label :name, "Name*" %><br />
       <%= p.text_field :name %>
     </div>
     <div class="field">
-      <%= p.label :avatar, "Pet Picture*" %><br />
+      <%= p.label :avatar, "Pet Picture" %><br />
       <%= p.file_field :avatar %>
     </div>
     <div class="field">
-      <%= p.label :breed %><br />
+      <%= p.label :breed, "Breed*" %><br />
       <%= p.text_field :breed %>
     </div>
     <div class="field">
-      <%= p.label :color %><br />
+      <%= p.label :color, "Color*" %><br />
       <%= p.text_field :color %>
     </div>
     <div class="field age">
-      <%= p.label :age %><br />
+      <%= p.label :age, "Age* (in years)" %><br />
       <%= p.number_field :age, class:"age-input" %>
     </div>
     <div class="field">
-      <%= p.label :sex %><br />
+      <%= p.label :sex, "Sex*" %><br />
       <%= p.select "sex", ["Male", "Female"] %>
     </div>
     <div class="field clear-both">
-      <%= p.label :markings %><br />
+      <%= p.label :markings, "Markings*" %><br />
       <%= p.text_field :markings %>
     </div>
     <h3>Vaccinations & Microchip Code</h3>
