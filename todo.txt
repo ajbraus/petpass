@@ -1,9 +1,17 @@
-get dotenv
-add test env variables to that file
-heroku config:set PUBLISHABLE_KEY=pk_test_8bq8bhBD3AZMkLDLi9iHEzf2 SECRET_KEY=sk_test_mJ6HBXhb5QDd6PpDExLDU5MQ
+setup dotevt tasks
 
-don't create multiple owners,
+create an owner sans pet - redirect to pet#index
+create and owner and pet - redirect to charge#new
+cancel payment - pet#index
+do payment - pet#index w flash confirm
+create and do payment - pet#index w flash confirm
+add new pet 
 
-if owner already exists just add pet to it
+add existing city liscense numbers
 
-add pet image
+create welcome email
+setup sendgrid from team@petpass.net
+create confirmation of license email
+
+
+create reminder email
