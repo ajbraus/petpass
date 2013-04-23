@@ -1,0 +1,25 @@
+<table class="table table-striped">
+
+  <%= @pets.each do |pet| %>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>Paid?</th>
+      <th>Licensed?</th>
+      <th>License</th>
+    </tr>
+  </thead>
+  <tr>
+    <td><%= pet.id %></td>
+    <td><%= pet.name %></td>
+    <td><%= pet.age %></td>
+    <td><%= pet.user.city %></td>
+    <td><%= pet.user.zip %></td>
+    <td><%= pet.licensed? %></td>
+    <td><%= link_to license_path(pet) %></td>
+  </tr>
+</table>

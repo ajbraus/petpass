@@ -58,5 +58,9 @@ class Pet < ActiveRecord::Base
     return spayed_neutered_attachment_file_size.present?
   end
 
+  def licensed?
+    self.name.present?
+  end
+
 end
 

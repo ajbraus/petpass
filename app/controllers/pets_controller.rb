@@ -17,6 +17,14 @@ class PetsController < ApplicationController
     end
   end
 
+  def list_all
+    unless current_user.admin?
+      redirect_to root_path
+      return
+    end
+    @pets = Pet.all
+  end
+
   def license
     @pet = Pet.find(params[:id])
 

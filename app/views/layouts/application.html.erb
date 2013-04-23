@@ -24,6 +24,7 @@
             <%= link_to "Forgot your password?", new_password_path('user') %>
           <% end %>
         <% else %>
+          <%= link_to "Account Settings", edit_user_registration_path %>
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
         <% end %>   
       </div>

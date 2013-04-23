@@ -1,14 +1,53 @@
+ pay for dog license + fee
+ pay for park license
+ track that they paid
+ create object License
+  :type
+  :municipality (:county)
+  :amount
+  :expired?
+  
+  def expires_on
+    self.created_at + 1.year
+  end
 
-create pet sans owner 
-  nest pet with user_id
+  def has_city_license?
+    return self.city_license.created_at < Time.now - 1.year
+  end
+
+  def has_park_license?
+    return self.park_license.created_at < Time.now - 1.year
+  end
+
+  def time_left
+    Date.now - (self.exires_on)
+  end
+
+  def self.check_license_expiration
+    Look up city licenses that are not expired
+    if close to expiration
+      send email reminder to renew
+    if expired today
+      expire lisence and tell them it expired
+    if expired 2 weeks ago tell them
+    if expired 4 weeks ago tell them
+    if expired 6 weeks . . .
+  end
+
+  when paying again for a license create a new license and expire the old one.
+
+
+registrations edit - add fields for user address etc
 
 our city print flow
+  
+save age as birthdate
+add breeds
+
 
 request us in your city
 
 61 municipalities in dane county dropdown for city
-
-buy liscense one-click
 
 create an owner sans pet - redirect to pet#index
 create and owner and pet - redirect to charge#new
