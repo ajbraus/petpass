@@ -1,41 +1,37 @@
-<h1>Listing pets</h1>
+<ul class="thumbnails">
+  <% @pets.each do |pet| %>
+  <li class="span4">
+    <div class="thumbnail">
+      <%= image_tag pet.avatar.url(:original) %>
+      <h3><%= pet.name %></h3>
+      <ul>
+        <li>
+          <strong>Age</strong> <%= pet.age %>
+        </li>
+        <li>
+          <strong>Color</strong> <%= pet.color %>
+        </li>
+        <li>
+          <strong>Breed</strong> <%= pet.breed %>
+        </li>
+        <li>
+          <strong>Sex</strong> <%= pet.sex %>
+        </li>
+        <li>
+          <strong>Markings</strong> <%= pet.markings %>
+        </li>
+      </ul>
+      <div>
+        <%= link_to "License", new_charge_path, class:"btn btn-primary" %>
+        <%= link_to 'Edit', edit_pet_path(pet), class:'btn btn-warning' %>
+        <%= link_to 'Remove', pet, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if current_user.admin? %>
+          <%= link_to 'View License', license_path(id:pet.id) %>
+        <% end %>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Breed</th>
-    <th>Rabies expiration</th>
-    <th>Color</th>
-    <th>Age</th>
-    <th>Sex</th>
-    <th>Markings</th>
-    <th>Rabies tag number</th>
-    <th>Spayed nutered</th>
-    <th>Owner</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @pets.each do |pet| %>
-  <tr>
-    <td><%= pet.name %></td>
-    <td><%= pet.breed %></td>
-    <td><%= pet.rabies_expiration %></td>
-    <td><%= pet.color %></td>
-    <td><%= pet.age %></td>
-    <td><%= pet.sex %></td>
-    <td><%= pet.markings %></td>
-    <td><%= pet.rabies_tag_number %></td>
-    <td><%= pet.spayed_nutered %></td>
-    <td><%= pet.owner %></td>
-    <td><%= link_to 'Show', pet %></td>
-    <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
-    <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Pet', new_pet_path %>
+<%= link_to 'New Pet', new_pet_path, class:'btn btn-success' %>

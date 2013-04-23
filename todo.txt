@@ -1,13 +1,22 @@
-setup dotevt tasks
+
+create pet sans owner 
+  nest pet with user_id
+
+our city print flow
+
+request us in your city
+
+61 municipalities in dane county dropdown for city
+
+buy liscense one-click
 
 create an owner sans pet - redirect to pet#index
 create and owner and pet - redirect to charge#new
 cancel payment - pet#index
 do payment - pet#index w flash confirm
 create and do payment - pet#index w flash confirm
-add new pet 
 
-add existing city liscense numbers
+add existing city license numbers
 
 create welcome email
 setup sendgrid from team@petpass.net
@@ -15,3 +24,8 @@ create confirmation of license email
 
 
 create reminder email
+
+
+create humane society type user
+
+multiple year license

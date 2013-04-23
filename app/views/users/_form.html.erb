@@ -1,10 +1,10 @@
-<%= form_for(@owner) do |f| %>
-  <% if @owner.errors.any? %>
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@owner.errors.count, "error") %> prohibited this owner from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @owner.errors.full_messages.each do |msg| %>
+      <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -79,7 +79,7 @@
       <%= p.text_field :color %>
     </div>
     <div class="field age">
-      <%= p.label :age, "Age* (in years)" %><br />
+      <%= p.label :age, "Age*" %><br />
       <%= p.number_field :age, class:"age-input" %>
     </div>
     <div class="field">
@@ -90,10 +90,10 @@
       <%= p.label :markings, "Markings*" %><br />
       <%= p.text_field :markings %>
     </div>
-    <h3>Vaccinations & Microchip Code</h3>
+    <h3>Spayed/Neutered, Vaccinations & Microchip Code</h3>
     <div class="field">
-      <%= label_tag :rabies_vaccination, "Rabies Vaccinated" %><br />
       <%= check_box_tag :rabies_vaccination %>
+      <%= label_tag :rabies_vaccination, "Rabies Vaccinated" %>
     </div>
     <div class="field rabies_tag" style="display:none;">
       <%= p.label :rabies_tag_number, "Rabies Tag Number*" %><br />
@@ -108,16 +108,16 @@
       <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy" %>
     </div>
     <div class="field">
-      <%= label_tag :spayed_neutered %><br />
       <%= check_box_tag :spayed_neutered %>
+      <%= label_tag :spayed_neutered %>
     </div>
     <div class="field upload_spayed" style="display:none;">
       <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
     </div>
     <div class="field">
-      <%= label_tag :has_microchip %><br />
       <%= check_box_tag :has_microchip %>
+      <%= label_tag :has_microchip %>
     </div>
     <div class="field show_micro" style="display:none;">
       <%= p.label :microchip_code, "Microchip Code*" %><br />
@@ -126,6 +126,6 @@
   <% end %>
 </div>
   <div class="actions">
-    <%= f.submit "Submit Owner & Pet", class:'login_button' %>
+    <%= f.submit "Submit user & Pet", class:'login_button' %>
   </div>
 <% end %>

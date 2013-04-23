@@ -1,13 +1,29 @@
 class PetsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.all
+    if user_signed_in?
+      @user = current_user
+      @pets = current_user.pets
+    else
+      redirect_to root_path 
+      return
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pets }
     end
+  end
+
+  def license
+    @pet = Pet.find(params[:id])
+
+    respond_to do |format|
+      format.html # license.html.erb
+      format.json { render json: @pet }
+    end    
   end
 
   # GET /pets/1
@@ -24,7 +40,8 @@ class PetsController < ApplicationController
   # GET /pets/new
   # GET /pets/new.json
   def new
-    @pet = Pet.new
+    @user = current_user
+    @pet = @user.pets.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +57,12 @@ class PetsController < ApplicationController
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.new(params[:pet])
+    @user = current_user
+    @pet = @user.pets.new(params[:pet])
 
     respond_to do |format|
       if @pet.save
-        format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Pet was successfully created.' }
         format.json { render json: @pet, status: :created, location: @pet }
       else
         format.html { render action: "new" }

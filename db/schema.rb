@@ -11,32 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419022412) do
-
-  create_table "owners", :force => true do |t|
-    t.string   "full_name"
-    t.string   "email",                  :default => "", :null => false
-    t.string   "address_one"
-    t.string   "address_two"
-    t.string   "zip"
-    t.string   "city"
-    t.string   "phone_number"
-    t.string   "state"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-  end
-
-  add_index "owners", ["email"], :name => "index_owners_on_email", :unique => true
-  add_index "owners", ["reset_password_token"], :name => "index_owners_on_reset_password_token", :unique => true
+ActiveRecord::Schema.define(:version => 20130421201108) do
 
   create_table "pets", :force => true do |t|
     t.string   "name"
@@ -47,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20130419022412) do
     t.string   "sex"
     t.string   "markings"
     t.string   "rabies_tag_number"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.string   "rabies_attachment_file_name"
@@ -63,9 +38,37 @@ ActiveRecord::Schema.define(:version => 20130419022412) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "liscense_id"
   end
 
+  add_index "pets", ["liscense_id"], :name => "index_pets_on_liscense_id"
   add_index "pets", ["microchip_code"], :name => "index_pets_on_microchip_code"
-  add_index "pets", ["owner_id"], :name => "index_pets_on_owner_id"
+  add_index "pets", ["user_id"], :name => "index_pets_on_user_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "full_name",              :default => "",    :null => false
+    t.string   "address_one",            :default => "",    :null => false
+    t.string   "address_two",            :default => ""
+    t.integer  "zip",                                       :null => false
+    t.string   "phone",                  :default => ""
+    t.string   "state",                  :default => "",    :null => false
+    t.string   "city",                   :default => "",    :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "admin",                  :default => false
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

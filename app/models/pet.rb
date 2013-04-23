@@ -1,17 +1,17 @@
 class Pet < ActiveRecord::Base
-  belongs_to :owner
-  attr_accessible :age, 
-  								:breed, 
-  								:color, 
-  								:markings, 
-  								:name, 
+  belongs_to :user
+  attr_accessible :name,
+                  :avatar,
+                  :breed, 
+                  :age, 
+  								:sex, 
+                  :color, 
+  								:markings,  
   								:rabies_expiration, 
   								:rabies_tag_number, 
-  								:sex, 
   								:spayed_neutered, 
   								:rabies_attachment,
   								:spayed_neutered_attachment,
-                  :avatar,
                   :microchip_code
 
   validates :age,
@@ -49,6 +49,14 @@ class Pet < ActiveRecord::Base
 
   validates :avatar,
             :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }                           
+
+  def nice_rabies_expiration
+    self.rabies_expiration.strftime "%A, %B %e"
+  end
+
+  def spayed_or_neutered?
+    return spayed_neutered_attachment_file_size.present?
+  end
 
 end
 

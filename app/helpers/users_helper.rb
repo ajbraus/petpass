@@ -1,4 +1,4 @@
-module OwnersHelper
+module UsersHelper
 
 def us_states
     [

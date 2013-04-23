@@ -9,10 +9,10 @@ class CreatePets < ActiveRecord::Migration
       t.string :sex
       t.string :markings
       t.string :rabies_tag_number
-      t.references :owner
+      t.references :user
 
       t.timestamps
     end
-    add_index :pets, :owner_id
+    add_index :pets, :user_id
   end
 end

@@ -1,54 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div id="notice"><%= notice %></div>
 
-<p>
-  <b>Name:</b>
-  <%= @pet.name %>
-</p>
+<div class="span8">
+  <div>
+    <b>Owner:</b>
+    <%= @pet.user.full_name %>
+  </div>
 
-<p>
-  <b>Breed:</b>
-  <%= @pet.breed %>
-</p>
+  <div>
+    <b>Name:</b>
+    <%= @pet.name %>
+  </div>
+  
+  <div>
+    <b>Sex:</b>
+    <%= @pet.sex %>
+  </div>
 
-<p>
-  <b>Rabies expiration:</b>
-  <%= @pet.rabies_expiration %>
-</p>
+  <div>
+    <b>Breed:</b>
+    <%= @pet.breed %>
+  </div>
 
-<p>
-  <b>Color:</b>
-  <%= @pet.color %>
-</p>
+  <div>
+    <b>Color:</b>
+    <%= @pet.color %>
+  </div>
 
-<p>
-  <b>Age:</b>
-  <%= @pet.age %>
-</p>
+  <div>
+    <b>Markings:</b>
+    <%= @pet.markings %>
+  </div>
 
-<p>
-  <b>Sex:</b>
-  <%= @pet.sex %>
-</p>
+  <div>
+    <b>Age:</b>
+    <%= @pet.age %>
+  </div>
 
-<p>
-  <b>Markings:</b>
-  <%= @pet.markings %>
-</p>
+  <div>
+    <b>Rabies tag number:</b>
+    <%= @pet.rabies_tag_number %>
+  </div>
 
-<p>
-  <b>Rabies tag number:</b>
-  <%= @pet.rabies_tag_number %>
-</p>
+  <div>
+    <b>Rabies expiration:</b>
+    <%= @pet.rabies_expiration %>
+  </div>
 
-<p>
-  <b>Spayed nutered:</b>
-  <%= @pet.spayed_nutered %>
-</p>
-
-<p>
-  <b>Owner:</b>
-  <%= @pet.owner %>
-</p>
+  <div>
+    <b>Spayed nutered:</b>
+  </div>
+</div>
 
 
 <%= link_to 'Edit', edit_pet_path(@pet) %> |

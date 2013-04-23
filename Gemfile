@@ -7,11 +7,15 @@ gem 'rails', '3.2.6'
 
 gem 'thin'
 gem 'pry', :group => :development
+gem 'pry-debugger', :group => :development
 gem 'coffeebeans'
 gem 'devise'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'dotenv-rails', :groups => [:development, :test]
+
+
+gem "twitter-bootstrap-rails"
 
 gem 'pg'
 gem 'paperclip'

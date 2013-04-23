@@ -1,13 +1,20 @@
 Petpass::Application.routes.draw do
-  devise_for :owners
+  devise_for :users, :controllers => { :registrations => 'registrations' }
 
-  root :to => 'owners#new'
+  root :to => redirect("/users/sign_up")
+
+  authenticated :user do
+    root :to => 'pets#index'
+  end
 
   resources :pets
 
-  resources :owners
+  resource :users, only: [:index, :show]
+  
+  match '/user/:id/license', to: "pets#license", as: 'license'
 
   resources :charges
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
