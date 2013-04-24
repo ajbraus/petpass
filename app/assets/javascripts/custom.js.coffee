@@ -1,8 +1,10 @@
 $ ->
+  #HEADER
   $('#logo img').wiggle();
   $('#logo').hover -> 
     $('#logo img').wiggle();
 
+  #FORM
   $('#rabies_vaccination').click ->
     $('.rabies_tag').toggle();
 
@@ -15,6 +17,17 @@ $ ->
   $('#add_pet').click ->
     $('#addPet').toggle();
     
-  # $('#app_logo img').wiggle();
-  # $('#app_logo').hover
-  #   -> $('#app_logo img').wiggle();
+
+  #ADMIN DASHBOARD  
+  $('#selectAll').click ->
+    $('.pet-row').click()
+
+
+  $("#new_user").validate();
+
+
+  #PAYMENT GATEWAY
+  $('#dogLicense').click ->
+    $('.stripe-button').attr('data-amount', '3000')
+  
+  $('#parkLicense').click ->

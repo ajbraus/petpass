@@ -16,9 +16,10 @@ ActiveRecord::Schema.define(:version => 20130421201108) do
   create_table "pets", :force => true do |t|
     t.string   "name"
     t.string   "breed"
-    t.string   "rabies_expiration"
+    t.date     "rabies_expiration"
     t.string   "color"
-    t.integer  "age"
+    t.date     "born_on"
+    t.boolean  "recent"
     t.string   "sex"
     t.string   "markings"
     t.string   "rabies_tag_number"
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130421201108) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
+    t.boolean  "senior",                 :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

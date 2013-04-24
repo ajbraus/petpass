@@ -20,17 +20,32 @@
         <li>
           <strong>Markings</strong> <%= pet.markings %>
         </li>
+        <li>
+          <strong>Spayed/Neutered</strong> 
+            <% if pet.spayed_or_neutered? %>
+              true (<%= link_to "proof", pet.spayed_neutered_attachment.url(:original) %>)
+            <% else %>
+              <span class="not_licensed">False</span><br />
+              <%= link_to "Add Proof of Spayed/Neutered", edit_pet_path(pet) %>
+            <% end %>
+        </li>
+        <li>
+          <strong>Rabies Vaccination</strong> 
+          <% if pet.vaccinated? %>
+            true (<%= link_to "proof", pet.rabies_attachment.url(:original) %>)
+          <% else %>
+            <span class="not_licensed">False</span><br />
+            <%= link_to "Add Proof of Rabies Vaccination", edit_pet_path(pet) %>
+          <% end %>
+        </li>                
+
       </ul>
-      <div>
-        
-        <%= form_tag charges_path do %>
-        <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-description="Dog License, <%= current_user.city %> 1yr"
-        data-amount="2500"></script>
+        <% if !pet.vaccinated? %>
+          <div class="btn-disabled">License <%= pet.name %></div>
+        <% else %>
+          <%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-success" %>
         <% end %>
         <%= link_to 'Edit', edit_pet_path(pet), class:'btn btn-warning' %>
-        <%= link_to 'Remove', pet, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         <% if current_user.admin? %>
           <%= link_to 'View License', license_path(id:pet.id) %>
         <% end %>

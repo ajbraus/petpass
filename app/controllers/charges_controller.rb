@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
 before_filter :authenticate_user!
   def new
+    @pet = Pet.find(params[:id])
   end
 
   def create

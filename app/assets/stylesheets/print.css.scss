@@ -1,0 +1,9 @@
+@media print {
+  .page-break { display: block; page-break-before: always; }
+  header, footer {
+    display:none;
+  }
+  .petpass-stamp {
+    display:inline-block;
+  }
+}

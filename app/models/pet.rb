@@ -3,7 +3,7 @@ class Pet < ActiveRecord::Base
   attr_accessible :name,
                   :avatar,
                   :breed, 
-                  :age, 
+                  :born_on, 
   								:sex, 
                   :color, 
   								:markings,  
@@ -12,9 +12,10 @@ class Pet < ActiveRecord::Base
   								:spayed_neutered, 
   								:rabies_attachment,
   								:spayed_neutered_attachment,
-                  :microchip_code
+                  :microchip_code,
+                  :recent
 
-  validates :age,
+  validates :born_on,
   					:breed,
   					:color,
   					:name,
@@ -58,8 +59,16 @@ class Pet < ActiveRecord::Base
     return spayed_neutered_attachment_file_size.present?
   end
 
+  def vaccinated?
+    return rabies_attachment_file_size.present?
+  end
+
   def licensed?
     self.name.present?
+  end
+
+  def age
+    Date.today - self.born_on
   end
 
 end

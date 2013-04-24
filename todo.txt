@@ -1,9 +1,33 @@
+ add default image to AWS
+
+ add error formating for validate
+
+ adjust fee schedule automatically
+  - 5$ late fee?
+  If After April 1
+  Pet is over 5 months old
+  Have had pet for more than 30 days 
+  A city of madison resident for more than 30 days
+
+  - 10$ prorated fee
+  If on or after July 1
+  Pet is younger than five months old
+
+
+park fee schedule
+Annual $ 30.00
+Senior (65+) $ 15.00
+Disabled $ 15.00
+Additional Dog (ea.) $ 14.00
+Replacement $ 14.00
+
  pay for dog license + fee
  pay for park license
  track that they paid
  create object License
   :type
-  :municipality (:county)
+  :municipality 
+  :county
   :amount
   :expired?
   
@@ -34,8 +58,11 @@
     if expired 6 weeks . . .
   end
 
-  when paying again for a license create a new license and expire the old one.
+  when paying for a license create a new license and expire any old ones. Licensed at multiple cities. . .
 
+
+getter and setter method for dates 
+Date.strptime('03/02/2001', '%d/%m/%Y')
 
 registrations edit - add fields for user address etc
 
@@ -43,7 +70,7 @@ our city print flow
   
 save age as birthdate
 add breeds
-
+save rabies expiration as date
 
 request us in your city
 

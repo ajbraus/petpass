@@ -1,12 +1,80 @@
 <%= form_tag charges_path do %>
-<article>
-  <label class="amount">
-    <span>Amount: $25.00</span>
-  </label>
-</article>
-
+<div class="payment-gateway offset2 span7">
+  <h4>
+    <div>
+      Pet: <%= @pet.name.upcase %>
+    </div>
+    <div>
+      City: <%= current_user.city.upcase + " " + current_user.state.upcase %>
+    </div>
+  </h4>
+  <div class="row">
+    <div class="city-license span6">
+      <h5>Dog License</h5>
+      <table class="table table-striped">
+        <tr>
+          <td><input type="radio" name="group2" checked="true" class="pet-row" /></td>
+          <td>Municipal Fee</td>
+          <% if #@pet.age < 5.months && Date.today < Date.parse("July") %>
+            <td>$<span class="fee">10</span>.00</td>
+          <% else %>
+            <td>$<span class="fee">20</span>.00</td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+    <div class="park-license span6">
+      <h5>Park License</h5>
+        <table class="table table-striped" id="parkFeeSchedule">
+          <tr>
+            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td>Annual</td>
+            <td>$<span class="fee">30</span>.00</td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td>Senior</td>
+            <td>$<span class="fee">15</span>.00</td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td>Disabled</td>
+            <td>$<span class="fee">15</span>.00</td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td>Additional Dog (ea.)</td>
+            <td>$<span class="fee">14</span>.00</td>
+          </tr>
+          <tr>
+            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td>Replacement</td>
+            <td>$<span class="fee">14</span>.00</td>
+          </tr>          
+        </table>
+      </div>
+  </div>
+  <div class="row total">
+    <% if Date.today < Date.parse("April") && @pet.age > 5.months && !@pet.recent? %>    
+      <div>
+        Late Fee: $5.00
+      </div>
+    <% end %>
+    <div>
+      Service Fee*: $5.00
+    </div>
+    <div>
+      <% if Date.today < Date.parse("April") && @pet.age > 5.months && !@pet.recent? %>
+        Total: <strong id="total">$15.00</strong>
+      <% else %>
+        Total: <strong id="total">$25.00</strong>
+      <% end %>
+    </div>
+  </div>
 <script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-        data-description="A month's subscription"
-        data-amount="2500"></script>
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="A month's subscription"
+      data-amount="2500"></script>
+</div>
+
 <% end %>

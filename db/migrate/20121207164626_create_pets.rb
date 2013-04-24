@@ -3,9 +3,10 @@ class CreatePets < ActiveRecord::Migration
     create_table :pets do |t|
       t.string :name
       t.string :breed
-      t.string :rabies_expiration
+      t.date :rabies_expiration
       t.string :color
-      t.integer :age
+      t.date :born_on
+      t.boolean :recent
       t.string :sex
       t.string :markings
       t.string :rabies_tag_number

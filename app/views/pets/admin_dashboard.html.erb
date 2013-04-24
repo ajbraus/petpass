@@ -1,8 +1,7 @@
 <table class="table table-striped">
-
-  <%= @pets.each do |pet| %>
   <thead>
     <tr>
+      <th><input type="checkbox" id="selectAll" /></th>
       <th>#</th>
       <th>Name</th>
       <th>Age</th>
@@ -13,13 +12,18 @@
       <th>License</th>
     </tr>
   </thead>
+  <% @pets.each do |pet| %>
   <tr>
+    <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
     <td><%= pet.id %></td>
     <td><%= pet.name %></td>
     <td><%= pet.age %></td>
     <td><%= pet.user.city %></td>
     <td><%= pet.user.zip %></td>
+    <td></td>
     <td><%= pet.licensed? %></td>
-    <td><%= link_to license_path(pet) %></td>
+    <td><%= link_to "view license", license_path(pet) %></td>
   </tr>
+  <% end %>
 </table>
+<%= link_to "Print Selected", print_license_path, class:"btn" %>

@@ -1,5 +1,28 @@
 class PetsController < ApplicationController
   before_filter :authenticate_user!
+
+  def admin_dashboard
+    unless current_user.admin?
+      redirect_to root_path
+      return
+    end
+    @pets = Pet.all
+  end
+
+  def license
+    @pet = Pet.find(params[:id])
+
+    respond_to do |format|
+      format.html # license.html.erb
+      format.json { render json: @pet }
+    end    
+  end
+
+  def print_license
+
+  end
+
+  
   # GET /pets
   # GET /pets.json
   def index
@@ -15,23 +38,6 @@ class PetsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @pets }
     end
-  end
-
-  def list_all
-    unless current_user.admin?
-      redirect_to root_path
-      return
-    end
-    @pets = Pet.all
-  end
-
-  def license
-    @pet = Pet.find(params[:id])
-
-    respond_to do |format|
-      format.html # license.html.erb
-      format.json { render json: @pet }
-    end    
   end
 
   # GET /pets/1
@@ -86,7 +92,7 @@ class PetsController < ApplicationController
 
     respond_to do |format|
       if @pet.update_attributes(params[:pet])
-        format.html { redirect_to @pet, notice: 'Pet was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Pet was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

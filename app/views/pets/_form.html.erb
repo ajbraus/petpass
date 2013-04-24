@@ -20,20 +20,24 @@
     <%= f.file_field :avatar %>
   </div>
   <div class="field">
-    <%= f.label :breed, "Breed*" %><br />
-    <%= f.text_field :breed %>
+    <div class="row">
+      <div class="span3">
+        <%= f.label :breed, "Breed*" %><br />
+        <%= f.select :breed, breeds, class:"required" %>
+      </div>
+      <div class="span3">
+        <%= f.label :sex, "Sex*" %><br />
+        <%= f.select "sex", ["Male", "Female"], class:"required" %>
+      </div>
+    </div>
   </div>
+  <div class="field">
+    <%= f.label :born_on, "Birth day (estimated)*" %><br />
+    <%= f.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy" %>
+  </div> 
   <div class="field">
     <%= f.label :color, "Color*" %><br />
     <%= f.text_field :color %>
-  </div>
-  <div class="field age">
-    <%= f.label :age, "Age*" %><br />
-    <%= f.number_field :age, class:"age-input" %>
-  </div>
-  <div class="field">
-    <%= f.label :sex, "Sex*" %><br />
-    <%= f.select "sex", ["Male", "Female"] %>
   </div>
   <div class="field clear-both">
     <%= f.label :markings, "Markings*" %><br />
@@ -73,6 +77,6 @@
     <%= f.text_field :microchip_code %>
   </div>   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:"btn btn-warning" %>
   </div>
 <% end %>
