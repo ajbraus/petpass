@@ -1,35 +1,15 @@
- add default image to AWS
+Get payment to submit
+spayed neuter price reduction
 
- add error formating for validate
-
- adjust fee schedule automatically
-  - 5$ late fee?
-  If After April 1
-  Pet is over 5 months old
-  Have had pet for more than 30 days 
-  A city of madison resident for more than 30 days
-
-  - 10$ prorated fee
-  If on or after July 1
-  Pet is younger than five months old
-
-
-park fee schedule
-Annual $ 30.00
-Senior (65+) $ 15.00
-Disabled $ 15.00
-Additional Dog (ea.) $ 14.00
-Replacement $ 14.00
-
- pay for dog license + fee
- pay for park license
- track that they paid
  create object License
   :type
   :municipality 
   :county
-  :amount
-  :expired?
+  :amount_paid
+  
+  def expired?
+    return self.created_at < Date.today + 1.year
+  end
   
   def expires_on
     self.created_at + 1.year
@@ -58,27 +38,24 @@ Replacement $ 14.00
     if expired 6 weeks . . .
   end
 
-  when paying for a license create a new license and expire any old ones. Licensed at multiple cities. . .
-
-
-getter and setter method for dates 
-Date.strptime('03/02/2001', '%d/%m/%Y')
+when paying for a license create a new license and expire any old ones. Licensed at multiple cities. . .
 
 registrations edit - add fields for user address etc
 
-our city print flow
-  
-save age as birthdate
-add breeds
-save rabies expiration as date
+our city print flow - make print all link
 
 request us in your city
 
+Licensing is only allowed in Wisconsin
+
+
+-----------------------------------------------------
+
+
+add multiple year licenses
+
 61 municipalities in dane county dropdown for city
 
-create an owner sans pet - redirect to pet#index
-create and owner and pet - redirect to charge#new
-cancel payment - pet#index
 do payment - pet#index w flash confirm
 create and do payment - pet#index w flash confirm
 
@@ -88,10 +65,28 @@ create welcome email
 setup sendgrid from team@petpass.net
 create confirmation of license email
 
-
 create reminder email
-
 
 create humane society type user
 
 multiple year license
+
+DONE
+
+ adjust fee schedule automatically
+  - 5$ late fee?
+  If After April 1
+  Pet is over 5 months old
+  Have had pet for more than 30 days 
+  A city of madison resident for more than 30 days
+
+  - 10$ prorated fee
+  If on or after July 1
+  Pet is younger than five months old
+
+park fee schedule
+Annual $ 30.00
+Senior (65+) $ 15.00
+Disabled $ 15.00
+Additional Dog (ea.) $ 14.00
+Replacement $ 14.00

@@ -27,7 +27,7 @@ class Pet < ActiveRecord::Base
                              :storage => :s3,
                              :s3_credentials => S3_CREDENTIALS,
                              :path => "pet_file_uploads/:id/avatar.:extension",
-                             :default_url => "https://s3.amazonaws.com/petpass/pet/avatar/original/default_avatar.png"
+                             :default_url => "https://s3.amazonaws.com/petpass/default_avatar.png"
 
 
   has_attached_file :rabies_attachment,
@@ -35,14 +35,14 @@ class Pet < ActiveRecord::Base
                              :storage => :s3,
                              :s3_credentials => S3_CREDENTIALS,
                              :path => "pet_file_uploads/:id/rabies_attachment.:extension",
-                             :default_url => "https://s3.amazonaws.com/petpass/pet/rabies_attachment/original/default_rabies_attachment.png"
+                             :default_url => "https://s3.amazonaws.com/petpass/default_rabies_attachment.png"
 
   has_attached_file :spayed_neutered_attachment,
                              :convert_options => { :original => '-quality 40' },
                              :storage => :s3,
                              :s3_credentials => S3_CREDENTIALS,
                              :path => "pet_file_uploads/:id/spayed_neutered_attachment.:extension",
-                             :default_url => "https://s3.amazonaws.com/petpass/pet/spayed_neutered_attachment/original/default_spayed_neutered_attachment.png"
+                             :default_url => "https://s3.amazonaws.com/petpass/default_spayed_neutered_attachment.png"
 
 
   validates	:rabies_attachment, :spayed_neutered_attachment,
@@ -60,7 +60,11 @@ class Pet < ActiveRecord::Base
   end
 
   def vaccinated?
-    return rabies_attachment_file_size.present?
+    return rabies_attachment_file_size.present? && rabies_expiration + 1.year > Date.today
+  end
+
+  def until_vaccination_expires
+    Date.today - rabies_expiration + 1.year
   end
 
   def licensed?
@@ -68,7 +72,9 @@ class Pet < ActiveRecord::Base
   end
 
   def age
-    Date.today - self.born_on
+    diff = Date.today - self.born_on
+    diff = diff.to_i
+    return (diff/365.25).to_i
   end
 
 end

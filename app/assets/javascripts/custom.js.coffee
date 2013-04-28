@@ -22,12 +22,26 @@ $ ->
   $('#selectAll').click ->
     $('.pet-row').click()
 
-
   $("#new_user").validate();
 
-
   #PAYMENT GATEWAY
-  $('#dogLicense').click ->
-    $('.stripe-button').attr('data-amount', '3000')
+  municipalFee = parseInt($('.mfee').text())
+  total = $('#total')
+  total.text(municipalFee + 5)
   
-  $('#parkLicense').click ->
+  $('#annualInput').click ->
+    parkFee = parseInt($("#annualFee").text())
+    total.html(municipalFee + parkFee + 5)
+  $('#seniorInput').click ->
+    parkFee = parseInt($("#seniorFee").text())
+    total.html(municipalFee + parkFee + 5)
+  $('#disabledInput').click ->
+    parkFee = parseInt($("#disabledFee").text())
+    total.html(municipalFee + parkFee + 5)
+  $('#addInput').click ->
+    parkFee = parseInt($("#addFee").text())
+    total.html(municipalFee + parkFee + 5)
+  $('#replacementInput').click ->
+    parkFee = parseInt($("#replacementFee").text())
+    total.html(municipalFee + parkFee + 5)
+

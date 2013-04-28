@@ -1125,3 +1125,9 @@ background: lightgrey;
 	background:lightgrey;
 }
 }
+
+.new-pet {
+	position: absolute;
+right: 26px;
+top: 30px;
+}

@@ -1,5 +1,5 @@
 <h1>Edit Pet Record</h1>
 
 <%= render 'form' %>
-<%= link_to 'Remove', @pet, class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Cancel', pets_path %>
+<%= link_to 'Cancel', pets_path %> | 
+<%= link_to 'Remove Pet From Petpass', @pet, method: :delete, data: { confirm: 'Are you sure?' } %>

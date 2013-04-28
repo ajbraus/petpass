@@ -14,11 +14,11 @@
       <table class="table table-striped">
         <tr>
           <td><input type="radio" name="group2" checked="true" class="pet-row" /></td>
-          <td>Municipal Fee</td>
+          <td>Municipal Fee*</td>
           <% if #@pet.age < 5.months && Date.today < Date.parse("July") %>
-            <td>$<span class="fee">10</span>.00</td>
+            <td>$<span class="mfee">10</span>.00</td>
           <% else %>
-            <td>$<span class="fee">20</span>.00</td>
+            <td>$<span class="mfee">20</span>.00</td>
           <% end %>
         </tr>
       </table>
@@ -27,29 +27,29 @@
       <h5>Park License</h5>
         <table class="table table-striped" id="parkFeeSchedule">
           <tr>
-            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td><input type="radio" name="group1" class="pet-row" id="annualInput" /></td>
             <td>Annual</td>
-            <td>$<span class="fee">30</span>.00</td>
+            <td>$<span class="pfee" id="annualFee">30</span>.00</td>
           </tr>
           <tr>
-            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td><input type="radio" name="group1" class="pet-row" id="seniorInput" /></td>
             <td>Senior</td>
-            <td>$<span class="fee">15</span>.00</td>
+            <td>$<span class="pfee" id="seniorFee">15</span>.00</td>
           </tr>
           <tr>
-            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td><input type="radio" name="group1" class="pet-row" id="disabledInput" /></td>
             <td>Disabled</td>
-            <td>$<span class="fee">15</span>.00</td>
+            <td>$<span class="pfee" id="disabledFee">15</span>.00</td>
           </tr>
           <tr>
-            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td><input type="radio" name="group1" class="pet-row" id="addInput" /></td>
             <td>Additional Dog (ea.)</td>
-            <td>$<span class="fee">14</span>.00</td>
+            <td>$<span class="pfee" id="addFee">14</span>.00</td>
           </tr>
           <tr>
-            <td><input type="radio" name="group1" class="pet-row" /></td>
+            <td><input type="radio" name="group1" class="pet-row" id="replacementInput" /></td>
             <td>Replacement</td>
-            <td>$<span class="fee">14</span>.00</td>
+            <td>$<span class="pfee" id="replacementFee">14</span>.00</td>
           </tr>          
         </table>
       </div>
@@ -61,20 +61,38 @@
       </div>
     <% end %>
     <div>
-      Service Fee*: $5.00
+      Petpass Service Fee: $5.00
     </div>
     <div>
-      <% if Date.today < Date.parse("April") && @pet.age > 5.months && !@pet.recent? %>
-        Total: <strong id="total">$15.00</strong>
-      <% else %>
-        Total: <strong id="total">$25.00</strong>
-      <% end %>
+        Total: <strong>$<span id="total"></span>.00</strong>
     </div>
   </div>
-<script src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-description="A month's subscription"
-      data-amount="2500"></script>
+  <div id="customButton" class="btn btn-primary custom_button">
+    Confirm & Pay
+  </div>
+  <script>
+    $('#customButton').click(function(){
+      var token = function(res){
+        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+        $('form').append($input).submit();
+      };
+
+      var total = $("#total").text();
+
+      StripeCheckout.open({
+        key:         "<%= ENV['PUBLISHABLE_KEY'] %>",
+        address:     true,
+        amount:      total*100,
+        name:        "<%= @pet.name.capitalize %>",
+        description: "Dog License",
+        panelLabel:  'Checkout',
+        image:       '/assets/round_tag.png',
+        token:       token
+      });
+
+      return false;
+    });
+  </script>
 </div>
 
 <% end %>

@@ -16,7 +16,7 @@ before_filter :authenticate_user!
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => @amount,
-      :description => 'Rails Stripe customer',
+      :description => 'Petpass customer',
       :currency    => 'usd'
     )
 
