@@ -1,0 +1,65 @@
+<h2>Unsubmited Munciple Licenses</h2>
+<h5>total: <%= @municiple_licenses.count %></h5>
+<h5>total owed: $<%= @total_municiple_charge %></h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="selectAll" /></th>
+      <th>#</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>Vaccinated?</th>
+      <th>License</th>
+    </tr>
+  </thead>
+  <% @municiple_licenses.each do |ml| %>
+  <% pet = ml.pet %>
+  <tr>
+    <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
+    <td><%= ml.id %></td>
+    <td><%= pet.name %></td>
+    <td><%= pet.age %></td>
+    <td><%= pet.user.city %></td>
+    <td><%= pet.user.zip %></td>
+    <td><%= pet.vaccinated? %></td>
+    <td><%= link_to "view license", license_municiple_path(id:pet.id) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Print Selected", print_license_path, class:"btn" %>
+
+<hr>
+
+<h2>Unsubmitted Park Licenses</h2>
+<h5>total: <%= @park_licenses.count %></h5>
+<h5>total owed: $<%= @total_park_charge %></h5>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="selectAll" /></th>
+      <th>#</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+      <th>Zip</th>
+      <th>Vaccinated?</th>
+      <th>License</th>
+    </tr>
+  </thead>
+  <% @park_licenses.each do |pl| %>
+  <% pet = pl.pet %>
+  <tr>
+    <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
+    <td><%= pl.id %></td>
+    <td><%= pet.name %></td>
+    <td><%= pet.age %></td>
+    <td><%= pet.user.city %></td>
+    <td><%= pet.user.zip %></td>
+    <td><%= pet.vaccinated? %></td>
+    <td><%= link_to "view license", license_park_path(id:pet.id) %></td>
+  </tr>
+  <% end %>
+</table>
+<%= link_to "Print Selected", print_license_path, class:"btn" %>

@@ -1,5 +1,6 @@
 class Pet < ActiveRecord::Base
   belongs_to :user
+  has_many :licenses
   attr_accessible :name,
                   :avatar,
                   :breed, 
@@ -52,7 +53,7 @@ class Pet < ActiveRecord::Base
             :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }                           
 
   def nice_rabies_expiration
-    self.rabies_expiration.strftime "%A, %B %e"
+    self.rabies_expiration.strftime "%b %e %Y"
   end
 
   def spayed_or_neutered?

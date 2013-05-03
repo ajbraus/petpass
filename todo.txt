@@ -1,53 +1,27 @@
-Get payment to submit
+during pet create check ip address, if from humane society then mark spayed_or_neutered as true
+late fee
+
 spayed neuter price reduction
 
- create object License
-  :type
-  :municipality 
-  :county
-  :amount_paid
-  
-  def expired?
-    return self.created_at < Date.today + 1.year
-  end
-  
-  def expires_on
-    self.created_at + 1.year
-  end
+add county to user
 
-  def has_city_license?
-    return self.city_license.created_at < Time.now - 1.year
-  end
-
-  def has_park_license?
-    return self.park_license.created_at < Time.now - 1.year
-  end
-
-  def time_left
-    Date.now - (self.exires_on)
-  end
-
-  def self.check_license_expiration
-    Look up city licenses that are not expired
-    if close to expiration
-      send email reminder to renew
-    if expired today
-      expire lisence and tell them it expired
-    if expired 2 weeks ago tell them
-    if expired 4 weeks ago tell them
-    if expired 6 weeks . . .
-  end
-
-when paying for a license create a new license and expire any old ones. Licensed at multiple cities. . .
+When paying for a license
+  Check if another license exists in the same county
 
 registrations edit - add fields for user address etc
 
-our city print flow - make print all link
+Admin dashboard 
+  make checkboxes work
+  make mass printing work
+  make park license form look like city's
 
 request us in your city
+like us on facebook
+Tweet about us
+Follow us on twitter
+evangelize
 
 Licensing is only allowed in Wisconsin
-
 
 -----------------------------------------------------
 

@@ -11,9 +11,12 @@ Petpass::Application.routes.draw do
 
   resource :users, only: [:index, :show]
   
-  match '/user/:id/license', to: "pets#license", as: 'license'
   match '/admin_dashboard', to: "pets#admin_dashboard", as:"admin_dashboard"
   match '/print_license', to: "pets#print_license", as:"print_license"
+
+  match 'license/park' => 'licenses#park'
+  match 'license/municiple' => 'licenses#municiple'
+  resources :licenses, only: [:index]
 
   resources :charges
 

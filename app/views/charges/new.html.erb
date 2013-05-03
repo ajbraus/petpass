@@ -72,12 +72,23 @@
   </div>
   <script>
     $('#customButton').click(function(){
+      var municiple_price = parseInt($(".mfee").text())
+      var total = parseInt($("#total").text())
+      var park_price = total - municiple_price
+      // var checkedRadios = $('#parkFeeSchedule').find('input:radio:checked');
+      // if (checkedRadios.length > 0) {
+      //   var petLicense = true
+      // } else {
+      //   var petLicense = false
+      // }   
+
       var token = function(res){
         var $input = $('<input type=hidden name=stripeToken />').val(res.id);
-        $('form').append($input).submit();
+        var $petId = $('<input type=hidden name=pet_id />').val(<%= @pet.id %>);
+        var $municiplePrice = $('<input type=hidden name=municiple_price />').val(municiple_price);
+        var $parkPrice = $('<input type=hidden name=park_price />').val(park_price);
+        $('form').append($input, $petId, $parkPrice, $municiplePrice).submit();
       };
-
-      var total = $("#total").text();
 
       StripeCheckout.open({
         key:         "<%= ENV['PUBLISHABLE_KEY'] %>",

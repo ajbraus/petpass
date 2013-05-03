@@ -1,0 +1,138 @@
+<style>
+table.fixed { table-layout:fixed; }
+table.fixed td { overflow: hidden; }
+td { height: 70px; vertical-align: top; }
+.short { height:30px;}
+.align-center { text-align: center; }
+</style>
+
+<TABLE BORDER>
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+    <col width="40px" />
+ <TR>
+  <TD COLSPAN=12>Owner's Name 
+    <br />
+    <br />
+    <strong><%= @pet.user.full_name %></strong> 
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN=9>Street Address
+    <br />
+    <br />
+    <strong><%= @pet.user.address_one %>
+    <br />
+    <strong><%= @pet.user.address_two %></strong> 
+  </TD>
+  <TD COLSPAN=3>Zip Code
+    <br />
+    <br />
+    <strong><%= @pet.user.zip %></strong> 
+  </TD>
+ </TR>
+ <TR>
+  <TD COLSPAN=4>Name of Dog
+    <br />
+    <br />
+    <strong><%= @pet.name %></strong> 
+  </TD>
+  <TD COLSPAN=4>Breed
+    <br />
+    <br />
+    <strong><%= @pet.breed %></strong> 
+  </TD>
+  <TD COLSPAN=4>Rabies Shot Expir. Date
+    <br />
+    <br />
+    <strong><%= @pet.rabies_expiration %></strong> 
+  </TD>
+ </TR>
+ <TR >
+  <TD class="short align-center" COLSPAN=3>Color</TD>
+  <TD class="short align-center" COLSPAN=1>Age</TD>
+  <TH class="short align-center" COLSPAN=4>Choose one</TH>
+  <TD class="short" COLSPAN=4>Rabies Tag No.<br /><strong><%= @pet.rabies_tag_number.upcase %></strong></TD>
+ </TR>
+ <TR>
+  <TD COLSPAN=3>
+    <br />
+    <br />
+    <strong><%= @pet.color %></strong> 
+  </TD>
+  <TD COLSPAN=1>
+    <br />
+    <br />
+    <strong><%= @pet.age %></strong> 
+  </TD>
+  <TD COLSPAN=1>Neutered Male
+    <br />
+    <br />
+    <% if @pet.sex == "Male" && @pet.spayed_or_neutered? %>
+      <strong>X</strong>
+    <% end %>
+  </TD>
+  <TD COLSPAN=1>Unneutered Male
+    <br />
+    <br />
+    <% if @pet.sex == "Male" && !@pet.spayed_or_neutered? %>
+      <strong>X</strong>
+    <% end %>
+  </TD>
+  <TD COLSPAN=1>Spayed Female
+    <br />
+    <br />
+    <% if @pet.sex == "Female" && @pet.spayed_or_neutered? %>
+      <strong>X</strong>
+    <% end %>
+  </TD>
+  <TD COLSPAN=1>Unspayed Female
+    <br />
+    <br />
+    <% if @pet.sex == "Female" && !@pet.spayed_or_neutered? %>
+      <strong>X</strong>
+    <% end %>
+  </TD>
+  <TD COLSPAN=4>Markings
+    <br />
+    <br />
+    <strong><%= @pet.markings %></strong>
+  </TD>
+ </TR>
+ <TR>
+  <TH COLSPAN=12 style="color:white;background-color:black;">
+    FOR MUNICIPAL CLERK USER ONLY BELOW THIS LINE
+  </TH>
+ </TR>
+ <TR>
+  <TD class="align-center" COLSPAN=2>Date<hr></TD>
+  <TD class="align-center" COLSPAN=5>License No.<hr></TD>
+  <TD class="align-center" COLSPAN=2>Amount<hr></TD>
+  <TD class="align-center" COLSPAN=5>Remarks<hr></TD>
+ </TR>
+</TABLE>
+<% if @pet.vaccinated? %>
+  <div class="page-break"></div>
+  <h3>Proof of Rabies Vaccination</h3>
+  <%= image_tag @pet.rabies_attachment.url(:original) %>
+<% else %>
+  <h5 class="not_licensed">No Proof of Rabies Vaccination</h5>
+  <%= link_to "Add Proof of Rabies Vaccination", edit_pet_path(@pet) %>
+<% end %>
+<% if @pet.spayed_or_neutered? %>
+  <div class="page-break"></div>
+  <h3>Proof of Spayed / Neutered</h3>
+  <%= image_tag @pet.spayed_neutered_attachment.url(:original) %>
+<% else %>
+  <h5 class="not_licensed">No Proof of Spayed/Neutered</h5> 
+  <%= link_to "Add Proof of Spayed/Neutered", edit_pet_path(@pet) %>
+<% end %>

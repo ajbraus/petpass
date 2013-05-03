@@ -37,17 +37,23 @@
             <span class="not_licensed">False</span><br />
             <%= link_to "Add Proof of Rabies Vaccination", edit_pet_path(pet) %>
           <% end %>
+          <div>
+            <strong>Expires on</strong> <%= pet.nice_rabies_expiration %>
+          </div>
         </li>                
 
       </ul>
         <% if !pet.vaccinated? %>
           <div class="btn-disabled">License <%= pet.name %></div>
+        <% elsif pet.licensed? %>
+          <div class="licensed"><strong>LICENSED</strong></div>
+          <div>License expires in <%= pet.licenses.where('kind = ?', "municiple").first.time_until_expires %> days
         <% else %>
           <%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-success" %>
         <% end %>
         <%= link_to 'Edit', edit_pet_path(pet), class:'btn btn-warning' %>
         <% if current_user.admin? %>
-          <%= link_to 'View License', license_path(id:pet.id) %>
+          <%= link_to 'View Licenses', licenses_path(pet) %>
         <% end %>
       </div>
     </div>
