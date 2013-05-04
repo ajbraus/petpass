@@ -61,15 +61,38 @@ class Pet < ActiveRecord::Base
   end
 
   def vaccinated?
-    return rabies_attachment_file_size.present? && rabies_expiration + 1.year > Date.today
+    return rabies_attachment_file_size.present? && rabies_expiration + 1.year > Date.today && rabies_tag_number.present?
   end
 
   def until_vaccination_expires
     Date.today - rabies_expiration + 1.year
   end
 
-  def licensed?
-    self.name.present?
+  def has_municiple_license?
+    self.licenses.where(kind: "municiple").each do |l|
+      unless l.expired?
+        return true
+      end
+    end
+    return false
+  end
+
+  def has_park_license?
+    self.licenses.where(kind: "park").each do |l|
+      unless l.expired?
+        return true
+      end
+    end
+    return false
+  end
+
+  def has_any_license?
+    self.licenses.each do |l|
+      unless l.expired?
+        return true
+      end
+    end
+    return false
   end
 
   def age

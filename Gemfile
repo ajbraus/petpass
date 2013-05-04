@@ -14,6 +14,8 @@ gem 'devise'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'dotenv-rails', :groups => [:development, :test]
 
+gem 'daemons'
+gem 'delayed_job_active_record'
 
 gem "twitter-bootstrap-rails"
 

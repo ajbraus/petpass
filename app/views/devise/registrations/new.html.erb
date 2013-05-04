@@ -10,7 +10,6 @@
   <%= devise_error_messages! %>
 
   <h3>Get Started</h3>
-  <span class="red small">We only share your information with your permission</span>
   <div class="field">
     <%= f.label :full_name, "Full Name*" %><br />
     <%= f.text_field :full_name, :autofocus => true, class:"required" %>
@@ -29,30 +28,37 @@
   </div>
 
   <h3>Your Personal Information</h3>
+  <span class="red small">We only share your information with your permission</span><br />
+  <br />
   <div class="field">
     <%= f.label :address_one, "Address*" %><br />
     <%= f.text_field :address_one, class:"required" %>
   </div>
   <div class="field">
-    <%= f.label :address_two, "Address line two (optional)" %><br />
+    <%= f.label :address_two, "Address line two" %><br />
     <%= f.text_field :address_two %>
   </div>
   <div class="field pull-left">
-    <%= f.label :city, "City*" %><br />
+    <%= f.label :city, "Municipality*" %><br />
     <%= f.text_field :city, class:"city required" %>
   </div>
   <div class="field">
-    <%= f.label :phone, "Phone number (optional)" %><br />
-    <%= f.text_field :phone, placeholder: "(555)555-5555" %>
+    <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
+    <%= f.text_field :phone, placeholder: "(555) 555-5555" %>
   </div>
   <div class="field pull-left">
-    <%= f.label :state, "State*" %><br />
-    <%= f.select :state, us_states, class:"state required" %>
+    <div class="pull-left">
+      <%= f.label :state, "State*" %><br />
+      <%= f.select :state, wisconsin, class:"state required" %><br>
+    </div>
+    <div class="field pull-left">
+      <%= f.label :zip, "Zip*" %><br />
+      <%= f.text_field :zip, class:"zip required" %>
+    </div>
   </div>  
-  <div class="field pull-left">
-    <%= f.label :zip, "Zip*" %><br />
-    <%= f.text_field :zip, class:"zip required" %>
-  </div>
+  <div class="clear-both">
+    Can't find your State? <%= link_to "request us in your city", "mailto:petpassteam@gmail.com?subject=Come to my city Petpass!" %> <br />
+  </div> 
   <h3>Pet Information</h3>
   <%= f.fields_for :pets, resource.pets.build do |p| %>  
     <div class="field">
@@ -64,7 +70,7 @@
       <%= p.text_field :name, class:"required" %>
     </div>
     <div class="field">
-      <%= p.label :avatar, "Pet Picture" %><br />
+      <%= p.label :avatar, "Pet Picture (helps with lost pet recovery)" %><br />
       <%= p.file_field :avatar %>
     </div>
     <div class="field">
@@ -80,7 +86,7 @@
     </div>
     </div>
     <div class="field age">
-      <%= p.label :born_on, "Birth day (estimated)*" %><br />
+      <%= p.label :born_on, "Birth day (dd/mm/yyyy)*" %><br />
       <%= p.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy" %>
     </div>     
     <div class="field">
@@ -93,29 +99,29 @@
     </div>
     <h3>Vaccinations & Microchip Code</h3>
     <div class="field">
-      <%= check_box_tag :rabies_vaccination %><%= label_tag :rabies_vaccination, "Rabies Vaccinated" %>
+      <%= check_box_tag :rabies_vaccination %><%= label_tag :rabies_vaccination, "Rabies Vaccinated?" %>
     </div>
     <div class="field rabies_tag" style="display:none;">
       <%= p.label :rabies_tag_number, "Rabies Tag Number*" %><br />
       <%= p.text_field :rabies_tag_number %>
     </div>
     <div class="field rabies_tag" style="display:none;">
-      <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
+      <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination*" %><br />
       <%= p.file_field :rabies_attachment %>
     </div>
     <div class="field rabies_tag" style="display:none;">
-      <%= p.label :rabies_expiration, "Rabies Expiration" %><br />
-      <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy" %>
+      <%= p.label :rabies_expiration, "Rabies Expiration* (dd/mm/yyyy)" %><br />
+      <%= p.text_field :rabies_expiration, placeholder:"dd/mm/yyyy" %>
     </div>
     <div class="field">
-      <%= check_box_tag :spayed_neutered %><%= label_tag :spayed_neutered %>
+      <%= check_box_tag :spayed_neutered %><%= label_tag :spayed_neutered, "Spayed or Neutered?" %>
     </div>
     <div class="field upload_spayed" style="display:none;">
-      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
+      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
     </div>
     <div class="field">
-      <%= check_box_tag :has_microchip %><%= label_tag :has_microchip %>
+      <%= check_box_tag :has_microchip %><%= label_tag :has_microchip, "Microchipped? (helps with lost pet recovery)" %>
     </div>
     <div class="field show_micro" style="display:none;">
       <%= p.label :microchip_code, "Microchip Code*" %><br />

@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
              :zip,
              presence: true
 
+  after_create :send_welcome
+
   def first_name
     full_name.split(' ')[0]
   end
@@ -44,6 +46,6 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome
-    Notifier.delay.welcome(self)
+    Notifier.delay.welcome(self, self.pets.first)
   end
 end

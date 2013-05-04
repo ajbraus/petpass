@@ -387,8 +387,8 @@ list-style-type: disc;
 	width: 260px;
 }
 
-#signup input[name=zip] {
-	width: 70px;
+#user_zip {
+	width: 80px;
 }
 
 #signup input[type=checkbox] {
@@ -694,7 +694,7 @@ right: 80px;
 }
 
 .green {
-	color:red;
+	color:green;
 }
 
 #profile_status {
@@ -982,6 +982,12 @@ input[type=password], input[type=text], input[type=file] {
 	width: 300px;
 }
 
+input[type=file] {
+	height: 80px;
+padding-top: 23px;
+line-height: 0;
+}
+
 ul, li {
 	list-style: none;
 }
@@ -1015,7 +1021,7 @@ box-shadow:         1px 1px 15px #CD0000;
 .btn-disabled {
 	display: inline-block;
 padding: 4px 12px;
-margin-bottom: 0;
+margin: 10px 0 10px 0;
 font-size: 14px;
 line-height: 20px;
 text-align: center;
@@ -1126,8 +1132,3 @@ background: lightgrey;
 }
 }
 
-.new-pet {
-	position: absolute;
-right: 26px;
-top: 30px;
-}

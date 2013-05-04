@@ -44,35 +44,26 @@
     <%= f.text_field :markings %>
   </div>
   <h3>Vaccinations & Microchip Code</h3>
-  <div class="field">
-    <%= check_box_tag :rabies_vaccination %>
-    <%= label_tag :rabies_vaccination, "Rabies Vaccinated" %>
-  </div>
-  <div class="field rabies_tag" style="display:none;">
-    <%= f.label :rabies_tag_number, "Rabies Tag Number*" %><br />
+  <h4>Rabies Vaccination</h4>
+  <div class="field rabies_tag">
+    <%= f.label :rabies_tag_number, "Rabies Tag Number" %><br />
     <%= f.text_field :rabies_tag_number %>
   </div>
-  <div class="field rabies_tag" style="display:none;">
+  <div class="field rabies_tag">
     <%= f.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
     <%= f.file_field :rabies_attachment %>
   </div>
-  <div class="field rabies_tag" style="display:none;">
+  <div class="field rabies_tag">
     <%= f.label :rabies_expiration %><br />
     <%= f.text_field :rabies_expiration, placeholder:"mm/dd/yyyy" %>
   </div>
-  <div class="field">
-    <%= check_box_tag :spayed_neutered %>
-    <%= label_tag :spayed_neutered %>
-  </div>
-  <div class="field upload_spayed" style="display:none;">
+  <h4>Spayed Neutered</h4>
+  <div class="field upload_spayed">
     <%= f.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
     <%= f.file_field :spayed_neutered_attachment %>
   </div>
-  <div class="field">
-    <%= check_box_tag :has_microchip %>
-    <%= label_tag :has_microchip %>
-  </div>
-  <div class="field show_micro" style="display:none;">
+  <h4>Microchip</h4>
+  <div class="field show_micro">
     <%= f.label :microchip_code, "Microchip Code*" %><br />
     <%= f.text_field :microchip_code %>
   </div>   

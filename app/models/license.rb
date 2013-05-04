@@ -3,7 +3,7 @@ class License < ActiveRecord::Base
   belongs_to :pet
 
   def expired?
-    return self.created_at < Date.today + 1.year
+    return Date.today > self.created_at.to_date + 1.year
   end
   
   def expires_on

@@ -1,10 +1,18 @@
 class LicensesController < ApplicationController
-
   def index    
-    @park_licenses = License.where("created_at < ? AND kind = ?", Date.today + 1.year, "park")
+    pet_id = params[:pet_id]
+    if pet_id.present?
+      @park_licenses = License.where("pet_id = ? AND created_at < ? AND kind = ?", pet_id, Date.today + 1.year, "park")
+      @municiple_licenses = License.where("pet_id = ? AND created_at < ? AND kind = ?", pet_id, Date.today + 1.year, "municiple")
+    elsif pet_id.blank? && current_user.admin?
+      @park_licenses = License.where("created_at < ? AND kind = ?", Date.today + 1.year, "park")
+      @municiple_licenses = License.where("created_at < ? AND kind = ?", Date.today + 1.year, "municiple")
+    else
+      @park_licenses = current_user.pets.licenses.where("created_at < ? AND kind =?", Date.today + 1.year, "park")
+      @municiple_licenses = current_user.pents.licenses.where("created_at < ? AND kind = ?", Date.today + 1.year, "municiple")      
+    end
+
     @total_park_charge = @park_licenses.inject(0) {|sum, ml| sum += ml.amount_paid.to_i }/100
-    
-    @municiple_licenses = License.where("created_at < ? AND kind = ?", Date.today + 1.year, "municiple")
     @total_municiple_charge = @municiple_licenses.inject(0) {|sum, ml| sum += ml.amount_paid.to_i }/100
   end
 

@@ -1,27 +1,20 @@
+write emails
+
 during pet create check ip address, if from humane society then mark spayed_or_neutered as true
 late fee
 
 spayed neuter price reduction
 
-add county to user
+add county to user - reset database
 
 When paying for a license
   Check if another license exists in the same county
 
-registrations edit - add fields for user address etc
-
 Admin dashboard 
+  tab park and municiple licenses 
   make checkboxes work
   make mass printing work
   make park license form look like city's
-
-request us in your city
-like us on facebook
-Tweet about us
-Follow us on twitter
-evangelize
-
-Licensing is only allowed in Wisconsin
 
 -----------------------------------------------------
 

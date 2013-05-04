@@ -27,6 +27,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :phone, :default => ""
       t.string :state, :null => false, :default => ""
       t.string :city, :null => false, :default => ""
+      t.string :county, :null => false, :default => ""
 
       ## Confirmable
       # t.string   :confirmation_token

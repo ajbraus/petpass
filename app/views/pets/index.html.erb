@@ -1,66 +1,66 @@
 <ul class="thumbnails">
   <% @pets.each do |pet| %>
-  <li class="span4">
-    <div class="thumbnail">
-      <%= image_tag pet.avatar.url(:original) %>
-      <h3><%= pet.name.capitalize %></h3>
-      <ul>
-        <li>
-          <strong>Age</strong> <%= pet.age %>
-        </li>
-        <li>
-          <strong>Color</strong> <%= pet.color %>
-        </li>
-        <li>
-          <strong>Breed</strong> <%= pet.breed %>
-        </li>
-        <li>
-          <strong>Sex</strong> <%= pet.sex %>
-        </li>
-        <li>
-          <strong>Markings</strong> <%= pet.markings %>
-        </li>
-        <li>
-          <strong>Spayed/Neutered</strong> 
-            <% if pet.spayed_or_neutered? %>
-              true (<%= link_to "proof", pet.spayed_neutered_attachment.url(:original) %>)
+    <li class="span4">
+      <div class="thumbnail">
+        <%= image_tag pet.avatar.url(:original) %>        
+        <h3><%= pet.name.capitalize %></h3>        
+        <%= link_to 'Edit', edit_pet_path(pet), class:"pull-right" %>
+        <ul>
+          <li>
+            <strong>Age</strong> <%= pet.age %>
+          </li>
+          <li>
+            <strong>Color</strong> <%= pet.color %>
+          </li>
+          <li>
+            <strong>Breed</strong> <%= pet.breed %>
+          </li>
+          <li>
+            <strong>Sex</strong> <%= pet.sex %>
+          </li>
+          <li>
+            <strong>Markings</strong> <%= pet.markings %>
+          </li>
+          <li>
+            <strong>Spayed/Neutered</strong> 
+              <% if pet.spayed_or_neutered? %>
+                <span class="green">True</span> (<%= link_to "View Proof", pet.spayed_neutered_attachment.url(:original) %>)
+              <% else %>
+                <span class="not_licensed">False</span> (<%= link_to "Add Proof", edit_pet_path(pet) %>)
+              <% end %>
+          </li>
+          <li>
+            <strong>Rabies Vaccination</strong> 
+            <% if pet.vaccinated? %>
+              <span class="green">True</span> (<%= link_to "View Proof", pet.rabies_attachment.url(:original) %>)
+              <div>
+                <strong>Rabies Vaccination expires on</strong> <%= pet.nice_rabies_expiration %>
+              </div>
             <% else %>
-              <span class="not_licensed">False</span><br />
-              <%= link_to "Add Proof of Spayed/Neutered", edit_pet_path(pet) %>
+              <span class="not_licensed">False</span> (<%= link_to "Add Info", edit_pet_path(pet) %>)
             <% end %>
-        </li>
-        <li>
-          <strong>Rabies Vaccination</strong> 
-          <% if pet.vaccinated? %>
-            true (<%= link_to "proof", pet.rabies_attachment.url(:original) %>)
-          <% else %>
-            <span class="not_licensed">False</span><br />
-            <%= link_to "Add Proof of Rabies Vaccination", edit_pet_path(pet) %>
-          <% end %>
-          <div>
-            <strong>Expires on</strong> <%= pet.nice_rabies_expiration %>
-          </div>
-        </li>                
+          </li>                
 
-      </ul>
+        </ul>        
         <% if !pet.vaccinated? %>
-          <div class="btn-disabled">License <%= pet.name %></div>
-        <% elsif pet.licensed? %>
-          <div class="licensed"><strong>LICENSED</strong></div>
-          <div>License expires in <%= pet.licenses.where('kind = ?', "municiple").first.time_until_expires %> days
-        <% else %>
+          <%= link_to "Add Rabies Info to License #{pet.name}", edit_pet_path(pet), class:"btn-disabled" %>
+        <% elsif !pet.has_municiple_license? %>
           <%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-success" %>
+        <% else %> 
+          <div class="licensed"><strong>CITY LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "municiple").first.time_until_expires %> days</div>
         <% end %>
-        <%= link_to 'Edit', edit_pet_path(pet), class:'btn btn-warning' %>
-        <% if current_user.admin? %>
-          <%= link_to 'View Licenses', licenses_path(pet) %>
+        <% if pet.has_park_license? %>
+          <div class="green"><strong>PARK LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "park").first.time_until_expires %> days</div>
+        <% else %>
+          <%= link_to "Get Park License for #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-success" %>
         <% end %>
-      </div>
-    </div>
-  </li>
+        <% if pet.has_any_license? %>
+          <%= link_to "View #{pet.name}'s Licenses", licenses_path(pet_id: pet.id) %>
+        <% end %>
+
+    </li>
   <% end %>
 </ul>
-<%= link_to 'New Pet', new_pet_path, class:'btn btn-success new-pet' %>
 <hr>
 <div class="container">
   <div class="row">

@@ -41,9 +41,10 @@ before_filter :authenticate_user!
       amount_paid: @city_fee,
       municipality: current_user.city
       )
-    city_license.save
-
-    redirect_to root_path, notice:"Successfully submited your license for #{@pet.name}. Confirmation email sent to #{current_user.email}"
+    if params[:park_price].present? && city_license.save?
+      Notifier.delay.confirmation_of_submission(@user, @pet)
+      redirect_to root_path, notice:"Successfully submited your license for #{@pet.name}. Confirmation email sent to #{current_user.email}"
+    end
     return
 
   rescue Stripe::CardError => e

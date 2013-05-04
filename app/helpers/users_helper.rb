@@ -1,5 +1,11 @@
 module UsersHelper
 
+def wisconsin
+  [     
+    ['Wisconsin', 'WI']
+  ]
+end
+
 def us_states
     [
       ['Alabama', 'AL'],
