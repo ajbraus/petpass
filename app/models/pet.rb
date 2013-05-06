@@ -101,5 +101,21 @@ class Pet < ActiveRecord::Base
     return (diff/365.25).to_i
   end
 
+  def self.need_information
+    Pet.all.each do |p|
+      unless p.vaccinated? && p.spayed_or_neutered? && p.rabies_expiration.present? && p.rabies_tag_number.present?
+        Notifier.delay.need_information(p)
+      end
+    end
+  end
+
+  def self.no_license_reminder
+    Pet.all.each do |p|
+      if p.licenses.blank?
+        Notifier.delay.no_license_reminder(p)
+      end
+    end
+  end
+
 end
 

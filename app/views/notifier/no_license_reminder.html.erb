@@ -1,0 +1,27 @@
+<h4 class="h4"><%= @user.full_name %>, </h4>
+<strong>Reminder to License <%= @pet.name %></strong> - Through Petpass you can license your pet with your local municipality and get a park pass.
+<br />
+<br />
+<TABLE>
+  <TR>
+    <TH>PET</TH>
+    <TH>SPAYED/NEUTERED PROOF</TH>
+    <TH>RABIES VACCINATION PROOF</TH>
+    <TH>RABIES TAG NUMBER</TH>
+    <TH>RABIES EXPIRATION</TH>
+    <TH>MUNICIPLE LICENSE</TH>
+    <TH>PARK LICENSE</TH>
+  </TR>
+    <TR>
+      <TD><%= @pet.name %></TD>
+      <TD><%= @pet.spayed_or_neutered? %></TD>
+      <TD><%= @pet.vaccinated? %></TD>
+      <TD><%= @pet.rabies_tag_number.present? %></TD>
+      <TD><%= @pet.rabies_expiration.present? %></TD>
+      <% if @pet.vaccinated? %>
+        <TD><%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-success" %></TD>
+      <% else %>
+        <TD><%= link_to 'Add Rabies Vaccination before Licensing', edit_pet_path(@pet) %></TD>
+      <% end %>
+    </TR>
+</TABLE

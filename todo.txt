@@ -1,33 +1,40 @@
-write emails
-
-send email upon
- welcome
- confirm pet license submitted
- confirm pet license submitted to local authority
- reminder - you need to get proof of rabies vaccination before you can license
- reminder - you signed up but haven't licensed
-
-during pet create check ip address, if from humane society then mark spayed_or_neutered as true
-late fee
-
-spayed neuter price reduction
-
-add county to user - reset database
-
-When paying for a license
-  Check if another license exists in the same county
-
-Add Cats
-
-add late fee
-
-do logic for initial fee based on spayed neutered
 
 Admin dashboard 
   tab park and municiple licenses 
   make checkboxes work
   make mass printing work
   make park license form look like city's
+
+when mess up login go back to home (not sessions#new)
+
+reset password bug - Missing host to link to! Please provide the :host parameter
+
+DONE write emails
+ DONE welcome
+ DONE confirm pet license submitted
+  reminder - you need to get proof of rabies vaccination before you can license (sends every two weeks)
+    create heroku scheduler task
+  reminder - you signed up but haven't licensed
+    create heroku scheduler task
+  test all
+
+Add Cats - added to pet model, 
+  reset database
+  add checkbox to form
+
+Add county to user - 
+  reset database
+  add to form
+  validate that match with zip code
+
+spayed neuter price reduction
+add late fee
+
+during pet create check ip address, if from humane society then mark spayed_or_neutered as true
+late fee
+
+When paying for a license
+  Check if another license exists in the same county
 
 -----------------------------------------------------
 
