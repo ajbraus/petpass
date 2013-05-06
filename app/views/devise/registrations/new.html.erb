@@ -1,11 +1,20 @@
-<div id="hero">
-  <div class="offset7 span5">
-    <h1>Join Petpass</h1>
-    <h4>Put the pet services of your local community and government at your fingertips. Store your pet data and license your pet through the cloud. </h4>
+<div class="row hero">
+  <div class="span7">
+    <%= image_tag 'hero/hero.png' %>
+  </div>
+  <div class="span5 pitch">
+    <h2>Manage your pet's licenses and medical information</h2>
+    <div class="lead">
+      Petpass . . . 
+      <ul>
+        <li>puts local government and pet services at your fingertips</li>
+        <li>lets you access your pet's data from anywhere</li>
+        <li>helps to recover your pet</li>
+    </div>
   </div>
 </div>
-<div class="new_owner_form">
 
+<div class="new_owner_form row">
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -128,6 +137,7 @@
       <%= p.text_field :microchip_code %>
     </div>    
   <% end %>
+
   <div class="actions">
     <%= f.submit "Register Owner and Pet", class:'login_button' %>
   </div>

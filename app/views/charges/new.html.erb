@@ -15,11 +15,7 @@
         <tr>
           <td><input type="radio" name="group2" checked="true" class="pet-row" /></td>
           <td>Municipal Fee*</td>
-          <% if #@pet.age < 5.months && Date.today < Date.parse("July") %>
-            <td>$<span class="mfee">10</span>.00</td>
-          <% else %>
-            <td>$<span class="mfee">20</span>.00</td>
-          <% end %>
+            <td>$<span class="mfee"><%= @initial_fee %></span>.00</td>
         </tr>
       </table>
     </div>
@@ -57,7 +53,7 @@
   <div class="row total">
     <% if Date.today < Date.parse("April") && @pet.age > 5.months && !@pet.recent? %>    
       <div>
-        Late Fee: $5.00
+        Late Fee: $<span id="lateFee">5</span>.00
       </div>
     <% end %>
     <div>

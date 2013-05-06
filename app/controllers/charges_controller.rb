@@ -2,6 +2,19 @@ class ChargesController < ApplicationController
 before_filter :authenticate_user!
   def new
     @pet = Pet.find(params[:id])
+    if @pet.age < 5.months && Date.today < Date.parse("July")
+      if @pet.spayed_or_neutered?
+        @intial_fee = 7.50
+      else 
+        @intial_fee = 10
+      end
+    else 
+      if @pet.spayed_or_neutered?
+        @intial_fee = 20 
+      else
+        @intial_fee = 20 
+      end
+    end
   end
 
   def create

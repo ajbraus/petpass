@@ -97,17 +97,9 @@ background-color: transparent;
 	width:120px;
 }
 
-#hero {
-	border-bottom:1px solid lightgrey;
-width: 960px;
-height: 400px;
-margin: 0 auto;
-margin-bottom:50px;
-background-image: url(/assets/hero/hero.png);
-background-color: white;
-background-repeat: no-repeat;
-background-position: bottom left;
-background-size: 59%;
+.hero {
+	border-bottom:#eee;
+
 }
 
 #descText {
@@ -131,17 +123,6 @@ background-size: 59%;
 	font-size: 20px;
 	line-height: 20px;
 	/*margin-right: 40px;*/
-}
-
-
-#signupHero {
-position: relative;
-left: 87px;
-top: 30px;
-}
-
-#signupHero a {
-	text-decoration: none;
 }
 
 #winset {
@@ -1132,3 +1113,6 @@ background: lightgrey;
 }
 }
 
+.pitch {
+	margin-top:20px;
+}

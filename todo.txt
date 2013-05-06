@@ -1,5 +1,12 @@
 write emails
 
+send email upon
+ welcome
+ confirm pet license submitted
+ confirm pet license submitted to local authority
+ reminder - you need to get proof of rabies vaccination before you can license
+ reminder - you signed up but haven't licensed
+
 during pet create check ip address, if from humane society then mark spayed_or_neutered as true
 late fee
 
@@ -9,6 +16,12 @@ add county to user - reset database
 
 When paying for a license
   Check if another license exists in the same county
+
+Add Cats
+
+add late fee
+
+do logic for initial fee based on spayed neutered
 
 Admin dashboard 
   tab park and municiple licenses 
