@@ -21,6 +21,7 @@ class Pet < ActiveRecord::Base
   					:color,
   					:name,
   					:sex,
+            :species,
   					presence: true
 
   has_attached_file :avatar,
@@ -51,6 +52,8 @@ class Pet < ActiveRecord::Base
 
   validates :avatar,
             :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }                           
+
+  SPECIES = ["Dog", "Cat"]
 
   def nice_rabies_expiration
     self.rabies_expiration.strftime "%b %e %Y"

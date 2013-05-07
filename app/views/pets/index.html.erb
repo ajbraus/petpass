@@ -3,7 +3,7 @@
     <li class="span4">
       <div class="thumbnail">
         <%= image_tag pet.avatar.url(:original) %>        
-        <h3><%= pet.name.capitalize %></h3>        
+        <h3><%= pet.name.capitalize %></h3> <span class="small grey">(<%= pet.species %>)</span>
         <%= link_to 'Edit', edit_pet_path(pet), class:"pull-right" %>
         <ul>
           <li>

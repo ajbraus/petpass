@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
              :full_name,
              :state,
              :zip,
+             :county,
              presence: true
 
   after_create :send_welcome

@@ -11,7 +11,7 @@ class CreatePets < ActiveRecord::Migration
       t.string :markings
       t.string :rabies_tag_number
       t.references :user
-      t.boolean :cat
+      t.string :species
 
       t.timestamps
     end

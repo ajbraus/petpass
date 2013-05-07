@@ -5,6 +5,7 @@
 <TABLE>
   <TR>
     <TH>PET</TH>
+    <TH>SPECIES</TH>
     <TH>SPAYED/NEUTERED PROOF</TH>
     <TH>RABIES VACCINATION PROOF</TH>
     <TH>RABIES TAG NUMBER</TH>
@@ -14,6 +15,7 @@
   </TR>
     <TR>
       <TD><%= @pet.name %></TD>
+      <TD><%= @pet.species %></TD>
       <TD><%= @pet.spayed_or_neutered? %></TD>
       <TD><%= @pet.vaccinated? %></TD>
       <TD><%= @pet.rabies_tag_number.present? %></TD>

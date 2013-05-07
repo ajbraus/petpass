@@ -39,6 +39,10 @@
     <%= f.text_field :city, class:"city required" %>
   </div>
   <div class="field">
+    <%= f.label :county, "County*" %><br />
+    <%= f.text_field :county %>
+  </div>
+  <div class="field">
     <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
     <%= f.text_field :phone, placeholder: "(555) 555-5555" %>
   </div>

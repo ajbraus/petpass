@@ -1,4 +1,3 @@
-
 Admin dashboard 
   tab park and municiple licenses 
   make checkboxes work
@@ -9,6 +8,10 @@ when mess up login go back to home (not sessions#new)
 
 reset password bug - Missing host to link to! Please provide the :host parameter
 
+setup support@petpass.net
+
+setup SQL access to DB (for Niko)
+
 DONE write emails
  DONE welcome
  DONE confirm pet license submitted
@@ -18,13 +21,9 @@ DONE write emails
     create heroku scheduler task
   test all
 
-Add Cats - added to pet model, 
-  reset database
-  add checkbox to form
+Check if sex is spayed or not and present proof file input
 
 Add county to user - 
-  reset database
-  add to form
   validate that match with zip code
 
 spayed neuter price reduction
@@ -36,27 +35,14 @@ late fee
 When paying for a license
   Check if another license exists in the same county
 
------------------------------------------------------
-
-
-add multiple year licenses
-
-61 municipalities in dane county dropdown for city
-
-do payment - pet#index w flash confirm
-create and do payment - pet#index w flash confirm
+multiple year license
 
 add existing city license numbers
 
-create welcome email
-setup sendgrid from team@petpass.net
-create confirmation of license email
+-----------------------------------------------------
 
-create reminder email
 
-create humane society type user
-
-multiple year license
+DONE create reminder email
 
 DONE
 
@@ -77,3 +63,5 @@ Senior (65+) $ 15.00
 Disabled $ 15.00
 Additional Dog (ea.) $ 14.00
 Replacement $ 14.00
+
+DONE add cats

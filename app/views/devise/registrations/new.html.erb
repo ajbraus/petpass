@@ -4,21 +4,20 @@
   </div>
   <div class="span5 pitch">
     <h2>Manage your pet's licenses and medical information</h2>
-    <div class="lead">
+    <div class="lead whachaget">
       Petpass . . . 
-      <ul>
-        <li>puts local government and pet services at your fingertips</li>
-        <li>lets you access your pet's data from anywhere</li>
-        <li>helps to recover your pet</li>
+        <p>puts local pet services at your fingertips</p>
+        <p>lets you access your pet's data from anywhere</p>
+        <p>helps to recover your pet</p>
     </div>
   </div>
 </div>
 
-<div class="new_owner_form row">
+<div class="row">
+<div class="span6">
+  <h3>Get Started</h3>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <h3>Get Started</h3>
   <div class="field">
     <%= f.label :full_name, "Full Name*" %><br />
     <%= f.text_field :full_name, :autofocus => true, class:"required" %>
@@ -52,6 +51,10 @@
     <%= f.text_field :city, class:"city required" %>
   </div>
   <div class="field">
+    <%= f.label :county, "County*" %><br />
+    <%= f.text_field :county %>
+  </div>
+  <div class="field">
     <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
     <%= f.text_field :phone, placeholder: "(555) 555-5555" %>
   </div>
@@ -68,20 +71,37 @@
   <div class="clear-both">
     Can't find your State? <%= link_to "request us in your city", "mailto:petpassteam@gmail.com?subject=Come to my city Petpass!" %> <br />
   </div> 
-  <h3>Pet Information</h3>
+  <h3>Pet Information</h3>  
   <%= f.fields_for :pets, resource.pets.build do |p| %>  
+    <div class="field">
+      <%= p.label :name, "Pet Name*" %><br />
+      <%= p.text_field :name, class:"required" %>
+    </div>  
+    <div class="field">
+      <div><label>Species</label></div>
+      <% Pet::SPECIES.each do |s| %>
+        <%= p.radio_button :species, "#{s}", id:"radio#{(Pet::SPECIES.index(s) + 1)}", class:"required" %>
+        <%= p.label "radio#{(Pet::SPECIES.index(s) + 1)}", "#{s.humanize}" %>
+      <% end %>
+    </div>
+    <br />
     <div class="field">
       <%= p.check_box :recent %> 
       <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>
     </div>     
     <div class="field">
-      <%= p.label :name, "Pet Name*" %><br />
-      <%= p.text_field :name, class:"required" %>
-    </div>
-    <div class="field">
       <%= p.label :avatar, "Pet Picture (helps with lost pet recovery)" %><br />
       <%= p.file_field :avatar %>
     </div>
+    <br />
+    <div class="field">
+      <%= check_box_tag :has_microchip %> <%= label_tag :has_microchip, "Microchipped? (helps with lost pet recovery)" %>
+    </div>
+    <div class="field show_micro" style="display:none;">
+      <%= p.label :microchip_code, "Microchip Code*" %><br />
+      <%= p.text_field :microchip_code %>
+    </div>
+    <br />       
     <div class="field">
       <div class="row">
       <div class="span3">
@@ -90,8 +110,12 @@
       </div>
       <div class="span3">
         <%= p.label :sex, "Sex*" %><br />
-        <%= p.select "sex", ["Male", "Female"], class:"required" %>
+        <%= p.select "sex", ["Male Neutered", "Male Intact", "Female Spayed", "Female Intact"], class:"required" %>
       </div>
+    </div>
+    <div class="field upload_spayed" style="display:none;">
+      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
+      <%= p.file_field :spayed_neutered_attachment %>
     </div>
     </div>
     <div class="field age">
@@ -106,36 +130,19 @@
       <%= p.label :markings, "Markings*" %><br />
       <%= p.text_field :markings, class:"required" %>
     </div>
-    <h3>Vaccinations & Microchip Code</h3>
-    <div class="field">
-      <%= check_box_tag :rabies_vaccination %><%= label_tag :rabies_vaccination, "Rabies Vaccinated?" %>
-    </div>
-    <div class="field rabies_tag" style="display:none;">
-      <%= p.label :rabies_tag_number, "Rabies Tag Number*" %><br />
+    <h3>Rabies Vaccination</h3>
+    <div class="field rabies_tag">
+      <%= p.label :rabies_tag_number, "Rabies Tag Number" %><br />
       <%= p.text_field :rabies_tag_number %>
     </div>
-    <div class="field rabies_tag" style="display:none;">
-      <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination*" %><br />
+    <div class="field rabies_tag">
+      <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
       <%= p.file_field :rabies_attachment %>
     </div>
-    <div class="field rabies_tag" style="display:none;">
+    <div class="field rabies_tag">
       <%= p.label :rabies_expiration, "Rabies Expiration* (dd/mm/yyyy)" %><br />
       <%= p.text_field :rabies_expiration, placeholder:"dd/mm/yyyy" %>
-    </div>
-    <div class="field">
-      <%= check_box_tag :spayed_neutered %><%= label_tag :spayed_neutered, "Spayed or Neutered?" %>
-    </div>
-    <div class="field upload_spayed" style="display:none;">
-      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
-      <%= p.file_field :spayed_neutered_attachment %>
-    </div>
-    <div class="field">
-      <%= check_box_tag :has_microchip %><%= label_tag :has_microchip, "Microchipped? (helps with lost pet recovery)" %>
-    </div>
-    <div class="field show_micro" style="display:none;">
-      <%= p.label :microchip_code, "Microchip Code*" %><br />
-      <%= p.text_field :microchip_code %>
-    </div>    
+    </div> 
   <% end %>
 
   <div class="actions">
@@ -143,21 +150,28 @@
   </div>
 <% end %>
 </div>
-<div id="winset">
-  <div id="imgThree" class="right img"></div>
-  <div class="left winText">
-    <h2>Safe Pets Make Safe Neighborhoods</h2>
-    <p>Owners can manage their pet's account and post information about their pet for review by vet clinics and government officials.</p>       
+
+<div class="span6">
+  <div class="win">
+    <%= image_tag "hugging.jpg", class:"img" %>
+    <div>
+      <h3>Safe Pets Make Safe Neighborhoods</h3>
+      <div class="lead">Owners can manage their pet's account and post information about their pet for review by vet clinics and government officials.</div>       
+    </div>
+
+  <div class="win">
+    <%= image_tag "kitten_pulse.jpg", class:"img" %>
+    <div>
+      <h3>Pet Services at Your Fingertips</h3>
+      <div class="lead">In the event of a lost, sick, or found pet, the PetPass online and mobile network can respond more quickly than traditional fliers and faxes.</div>  
+    </div>
   </div>
-  <div id="imgOne" class="right img"></div>
-  <div class="right winText">
-    <h2>Pet Services at Your Fingertips</h2>
-    <p>In the event of a lost, sick, or found pet, the PetPass online and mobile network can respond more quickly than traditional fliers and faxes.</p>  
-  </div>
-  <div>
-  <div id="imgTwo" class="right img"></div>
-  <div class="left winText">
-    <h2>Connecting People Who Care</h2>
-    <p>PetPass helps pet owners ensure their pet's health and wellness by connecting them with people and professionals who can help.</p>   
+
+  <div class="win">
+    <%= image_tag "husky.jpg", class:"img" %>
+    <div>
+      <h3>Connecting People Who Care</h3>
+      <div class="lead">PetPass helps pet owners ensure their pet's health and wellness by connecting them with people and professionals who can help.</div>   
+    </div>
   </div>
 </div>

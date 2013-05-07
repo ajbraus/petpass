@@ -125,13 +125,6 @@ background-color: transparent;
 	/*margin-right: 40px;*/
 }
 
-#winset {
-margin:auto;
-height:950px;
-width:480px;
-float:right;
-}
-
 .wintext {
 text-align: left;
 /*Background of whole winText div is NOT turning white!*/
@@ -152,24 +145,6 @@ font-size: 1.3em;
 color: grey;
 line-height: 25px;
 }
-
-.right {
-float: right;
-height: 220px;
-width: 380px;
-margin-right: 30px;
-/*-moz-border-radius: 600px 800px 900px 700px / 800px 900px 700px 400px;
-border-radius: 600px 800px 900px 700px / 800px 900px 700px 400px;*/
-}
-
-.left {
-float: left;
-height: 180px;
-width: 450px;
-margin-left: 30px;
-/*-moz-border-radius: 600px 800px 900px 700px / 800px 900px 700px 400px;
-border-radius: 600px 800px 900px 700px / 800px 900px 700px 400px;
-*/}
 
 .img {
 background-repeat: no-repeat;
@@ -869,7 +844,7 @@ text-align: center;
 .new_owner_form {
 	float:left;
 	width:400px;
-	margin-left: 40px;
+	margin-left: 10px;
 }
 .field {
   margin-left:15px;
@@ -1115,4 +1090,20 @@ background: lightgrey;
 
 .pitch {
 	margin-top:20px;
+}
+
+.grey {
+	color: #eee;
+}
+
+.win {
+	margin:50px 5px;
+}
+
+.whachaget {
+	margin-top: 35px;
+}
+
+p {
+	margin-left:10px;
 }

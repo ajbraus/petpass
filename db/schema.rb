@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20130503212218) do
 
   create_table "licenses", :force => true do |t|
     t.string   "kind"
-    t.string   "amount_paid"
+    t.integer  "amount_paid"
     t.string   "county"
     t.string   "municipality"
     t.integer  "pet_id"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130503212218) do
     t.string   "markings"
     t.string   "rabies_tag_number"
     t.integer  "user_id"
+    t.string   "species"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
     t.string   "rabies_attachment_file_name"
@@ -90,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20130503212218) do
     t.string   "phone",                  :default => ""
     t.string   "state",                  :default => "",    :null => false
     t.string   "city",                   :default => "",    :null => false
+    t.string   "county",                 :default => "",    :null => false
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
