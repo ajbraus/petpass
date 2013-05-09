@@ -14,6 +14,7 @@ class Pet < ActiveRecord::Base
   								:rabies_attachment,
   								:spayed_neutered_attachment,
                   :microchip_code,
+                  :species,
                   :recent
 
   validates :born_on,

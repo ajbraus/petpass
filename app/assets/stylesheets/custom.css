@@ -80,13 +80,6 @@ text-decoration: underline;
 background-color: transparent;
 }
 
-.signin_signup {
-	margin-top:5px;
-	margin-right: 5px;
-	float: right;
-	text-align: right;
-}
-
 .signin_signup input[type=text], .signin_signup input[type=password] {
 	border: 1px solid #e1e1e1;
 	padding:4px 7px;
@@ -95,6 +88,7 @@ background-color: transparent;
 	right:3px;
 	font-size: 14px;
 	width:120px;
+	margin:0;
 }
 
 .hero {
@@ -934,7 +928,7 @@ input.age-input {
 	margin-top:30px;
 }
 
-input[type=password], input[type=text], input[type=file] {
+input[type=password], input[type=text], input[type=file], input[type=email] {
 	width: 300px;
 }
 
@@ -1106,4 +1100,17 @@ background: lightgrey;
 
 p {
 	margin-left:10px;
+}
+
+.margin-left {
+	margin-left:21px;
+}
+
+.margin-auto {
+	margin:auto;
+	width:300px;
+}
+
+.btn {
+	margin: 10px;
 }

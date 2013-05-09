@@ -5,12 +5,13 @@ $ ->
     $('#logo img').wiggle();
 
   #FORM
-  $('#rabies_vaccination').click ->
-    $('.rabies_tag').toggle();
+  $('#user_pets_attributes_0_sex, #pet_sex').change ->
+    option = $('#user_pets_attributes_0_sex option:selected').text();
+    if option == "Male Neutered" || option == "Female Spayed"
+      $('.upload_spayed').show();
+    else
+      $('.upload_spayed').hide();
 
-  $('#spayed_neutered').click ->
-    $('.upload_spayed').toggle();
-  
   $('#has_microchip').click ->
     $('.show_micro').toggle();
 

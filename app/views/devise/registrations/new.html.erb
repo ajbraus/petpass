@@ -13,11 +13,12 @@
   </div>
 </div>
 
+<%= devise_error_messages! %>
+
 <div class="row">
 <div class="span6">
   <h3>Get Started</h3>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
   <div class="field">
     <%= f.label :full_name, "Full Name*" %><br />
     <%= f.text_field :full_name, :autofocus => true, class:"required" %>
@@ -46,7 +47,7 @@
     <%= f.label :address_two, "Address line two" %><br />
     <%= f.text_field :address_two %>
   </div>
-  <div class="field pull-left">
+  <div class="field">
     <%= f.label :city, "Municipality*" %><br />
     <%= f.text_field :city, class:"city required" %>
   </div>
@@ -104,19 +105,19 @@
     <br />       
     <div class="field">
       <div class="row">
-      <div class="span3">
-        <%= p.label :breed, "Breed*" %><br />
-        <%= p.select :breed, breeds, class:"required" %>
-      </div>
-      <div class="span3">
-        <%= p.label :sex, "Sex*" %><br />
-        <%= p.select "sex", ["Male Neutered", "Male Intact", "Female Spayed", "Female Intact"], class:"required" %>
+        <div class="pull-left margin-left">
+          <%= p.label :breed, "Breed*" %><br />
+          <%= p.select :breed, breeds, class:"required" %>
+        </div>        
+        <div class="pull-left margin-left">
+          <%= p.label :sex, "Sex*" %><br />
+          <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
+        </div>      
       </div>
     </div>
     <div class="field upload_spayed" style="display:none;">
       <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
-    </div>
     </div>
     <div class="field age">
       <%= p.label :born_on, "Birth day (dd/mm/yyyy)*" %><br />
@@ -124,11 +125,11 @@
     </div>     
     <div class="field">
       <%= p.label :color, "Color*" %><br />
-      <%= p.text_field :color, class:"required" %>
+      <%= p.text_field :color, class:"required", autocomplete: false %>
     </div>  
     <div class="field clear-both">
       <%= p.label :markings, "Markings*" %><br />
-      <%= p.text_field :markings, class:"required" %>
+      <%= p.text_field :markings, class:"required", autocomplete: false %>
     </div>
     <h3>Rabies Vaccination</h3>
     <div class="field rabies_tag">

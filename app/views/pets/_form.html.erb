@@ -27,10 +27,14 @@
       </div>
       <div class="span3">
         <%= f.label :sex, "Sex*" %><br />
-        <%= f.select "sex", ["Male", "Female"], class:"required" %>
+        <%= f.select "sex", ["Male Intact", "Male Neutered", "Female Intact", "Female Spayed"], class:"required" %>
       </div>
     </div>
   </div>
+  <div class="field upload_spayed" style="display:none;">
+    <%= f.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
+    <%= f.file_field :spayed_neutered_attachment %>
+  </div>  
   <div class="field">
     <%= f.label :born_on, "Birth day (estimated)*" %><br />
     <%= f.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy" %>
@@ -54,13 +58,8 @@
     <%= f.file_field :rabies_attachment %>
   </div>
   <div class="field rabies_tag">
-    <%= f.label :rabies_expiration %><br />
-    <%= f.text_field :rabies_expiration, placeholder:"mm/dd/yyyy" %>
-  </div>
-  <h4>Spayed Neutered</h4>
-  <div class="field upload_spayed">
-    <%= f.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
-    <%= f.file_field :spayed_neutered_attachment %>
+    <%= f.label :rabies_expiration, "Rabies Expiration (dd/mm/yyyy)" %><br />
+    <%= f.text_field :rabies_expiration, placeholder:"dd/mm/yyyy" %>
   </div>
   <h4>Microchip</h4>
   <div class="field show_micro">

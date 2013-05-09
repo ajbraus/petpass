@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
                   :phone,
                   :zip,
                   :admin,
+                  :county,
                   :pets_attributes
 
   has_many :pets, dependent: :destroy

@@ -1,43 +1,47 @@
+county is fucked up in production
+
 Admin dashboard 
   tab park and municiple licenses 
   make checkboxes work
   make mass printing work
   make park license form look like city's
 
-when mess up login go back to home (not sessions#new)
-
 reset password bug - Missing host to link to! Please provide the :host parameter
-
-setup support@petpass.net
-
-setup SQL access to DB (for Niko)
 
 DONE write emails
  DONE welcome
  DONE confirm pet license submitted
   reminder - you need to get proof of rabies vaccination before you can license (sends every two weeks)
-    create heroku scheduler task
+    use whenever to set cron job
   reminder - you signed up but haven't licensed
-    create heroku scheduler task
+    use whenever to set cron job
   test all
 
-Check if sex is spayed or not and present proof file input
+add cats
+  DONE Add species
+  License changes?
 
-Add county to user - 
+DONE Add county to user - 
   validate that match with zip code
 
-spayed neuter price reduction
 add late fee
 
 during pet create check ip address, if from humane society then mark spayed_or_neutered as true
-late fee
 
 When paying for a license
   Check if another license exists in the same county
 
+-----------------------------------------------------
+
 multiple year license
 
 add existing city license numbers
+
+setup support@petpass.net
+
+create renew license button
+
+setup SQL access to DB (for Niko)
 
 -----------------------------------------------------
 
@@ -64,4 +68,6 @@ Disabled $ 15.00
 Additional Dog (ea.) $ 14.00
 Replacement $ 14.00
 
-DONE add cats
+DONE spayed neuter price reduction
+
+DONE Check if sex is spayed or not and present proof file input

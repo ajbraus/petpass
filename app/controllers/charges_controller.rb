@@ -4,15 +4,15 @@ before_filter :authenticate_user!
     @pet = Pet.find(params[:id])
     if @pet.age < 5.months && Date.today < Date.parse("July")
       if @pet.spayed_or_neutered?
-        @intial_fee = 7.50
+        @initial_fee = 7.50
       else 
-        @intial_fee = 10
+        @initial_fee = 10
       end
     else 
       if @pet.spayed_or_neutered?
-        @intial_fee = 20 
+        @initial_fee = 20 
       else
-        @intial_fee = 20 
+        @initial_fee = 20 
       end
     end
   end
@@ -44,7 +44,8 @@ before_filter :authenticate_user!
       park_license = @pet.licenses.build( #CREATE PARK LICENSE IN PETPASS
         kind: "park",
         amount_paid: @park_fee,
-        municipality: current_user.city
+        municipality: current_user.city,
+        county: current_user.county
         )
       park_license.save
     end
@@ -52,12 +53,13 @@ before_filter :authenticate_user!
     city_license = @pet.licenses.build( #CREATE MUNICIPLE LICENSE IN PETPASS
       kind: "municiple",
       amount_paid: @city_fee,
-      municipality: current_user.city
+      municipality: current_user.city,
+      county: current_user.county
       )
-    if city_license.save?
-      Notifier.delay.confirmation_of_submission(@user, @pet, @city_fee, @park_fee)
-      redirect_to root_path, notice:"Successfully submited your license for #{@pet.name}. Confirmation email sent to #{current_user.email}"
-    end
+    city_license.save
+
+    Notifier.delay.confirmation_of_submission(@user, @pet, @city_fee, @park_fee)
+    redirect_to root_path, notice:"Successfully submited your license for #{@pet.name}. Confirmation email sent to #{current_user.email}"
 
     return
 
