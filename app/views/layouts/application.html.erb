@@ -13,7 +13,9 @@
   <header>
     <div id="blue_ribbon"/>
     <div id="ribbon">
-      <a href="/"><div id="logo"><%= image_tag "round_tag.png", height:"60%" %>PetPass</div></a>
+      <%= link_to root_path do %>
+        <div id="logo"><%= image_tag "round_tag.png", height:"60%" %>PetPass</div>
+      <% end %>
       <div class="signin_signup">
         <% if !user_signed_in? %>
           <%= form_for("user", :url => user_session_path) do |f| %>

@@ -1,5 +1,5 @@
 class License < ActiveRecord::Base
-  attr_accessible :amount_paid, :county, :municipality, :kind
+  attr_accessible :amount_paid, :county, :municipality, :kind, :printed, :expired
   validates :amount_paid, :municipality, :county, :kind, presence: true
   belongs_to :pet
 

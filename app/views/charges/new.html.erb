@@ -15,7 +15,7 @@
         <tr>
           <td><input type="radio" name="group2" checked="true" class="pet-row" /></td>
           <td>Municipal Fee*</td>
-            <td>$<span class="mfee"><%= @initial_fee %></span>.00</td>
+            <td>$<span class="mfee"><%= @initial_fee %></span></td>
         </tr>
       </table>
     </div>
@@ -60,7 +60,7 @@
       Petpass Service Fee: $5.00
     </div>
     <div>
-        Total: <strong>$<span id="total"></span>.00</strong>
+        Total: <strong>$<span id="total"></span></strong>
     </div>
   </div>
   <div id="customButton" class="btn btn-primary custom_button">
@@ -68,8 +68,8 @@
   </div>
   <script>
     $('#customButton').click(function(){
-      var municiple_price = parseInt($(".mfee").text())
-      var total = parseInt($("#total").text())
+      var municiple_price = parseFloat($(".mfee").text())
+      var total = parseFloat($("#total").text())
       var park_price = total - municiple_price
       // var checkedRadios = $('#parkFeeSchedule').find('input:radio:checked');
       // if (checkedRadios.length > 0) {

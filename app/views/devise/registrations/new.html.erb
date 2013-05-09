@@ -76,7 +76,7 @@
   <%= f.fields_for :pets, resource.pets.build do |p| %>  
     <div class="field">
       <%= p.label :name, "Pet Name*" %><br />
-      <%= p.text_field :name, class:"required" %>
+      <%= p.text_field :name, class:"required", autocomplete: "off"  %>
     </div>  
     <div class="field">
       <div><label>Species</label></div>
@@ -100,7 +100,7 @@
     </div>
     <div class="field show_micro" style="display:none;">
       <%= p.label :microchip_code, "Microchip Code*" %><br />
-      <%= p.text_field :microchip_code %>
+      <%= p.text_field :microchip_code, autocomplete: "off"  %>
     </div>
     <br />       
     <div class="field">
@@ -121,20 +121,20 @@
     </div>
     <div class="field age">
       <%= p.label :born_on, "Birth day (dd/mm/yyyy)*" %><br />
-      <%= p.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy" %>
+      <%= p.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy", autocomplete: "off"  %>
     </div>     
     <div class="field">
       <%= p.label :color, "Color*" %><br />
-      <%= p.text_field :color, class:"required", autocomplete: false %>
+      <%= p.text_field :color, class:"required", autocomplete: "off" %>
     </div>  
     <div class="field clear-both">
       <%= p.label :markings, "Markings*" %><br />
-      <%= p.text_field :markings, class:"required", autocomplete: false %>
+      <%= p.text_field :markings, class:"required", autocomplete: "off" %>
     </div>
     <h3>Rabies Vaccination</h3>
     <div class="field rabies_tag">
       <%= p.label :rabies_tag_number, "Rabies Tag Number" %><br />
-      <%= p.text_field :rabies_tag_number %>
+      <%= p.text_field :rabies_tag_number, autocomplete: "off"  %>
     </div>
     <div class="field rabies_tag">
       <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
@@ -142,7 +142,7 @@
     </div>
     <div class="field rabies_tag">
       <%= p.label :rabies_expiration, "Rabies Expiration* (dd/mm/yyyy)" %><br />
-      <%= p.text_field :rabies_expiration, placeholder:"dd/mm/yyyy" %>
+      <%= p.text_field :rabies_expiration, placeholder:"dd/mm/yyyy", autocomplete: "off"  %>
     </div> 
   <% end %>
 

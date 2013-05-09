@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20130503212218) do
     t.string   "county"
     t.string   "municipality"
     t.integer  "pet_id"
+    t.boolean  "expired"
+    t.boolean  "printed"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end

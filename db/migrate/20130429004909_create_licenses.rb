@@ -6,6 +6,8 @@ class CreateLicenses < ActiveRecord::Migration
       t.string :county
       t.string :municipality
       t.references :pet
+      t.boolean :expired, default: false
+      t.boolean :printed, default: false
 
       t.timestamps
     end

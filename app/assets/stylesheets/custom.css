@@ -89,6 +89,11 @@ background-color: transparent;
 	font-size: 14px;
 	width:120px;
 	margin:0;
+	z-index: 10;
+}
+
+.signin_signup {
+	float:right;
 }
 
 .hero {
@@ -1112,5 +1117,5 @@ p {
 }
 
 .btn {
-	margin: 10px;
+	margin: 5px;
 }

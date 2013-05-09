@@ -1,3 +1,24 @@
+<ul class="nav nav-tabs">
+  <% if params[:kind] == "municiple" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+    <%= link_to licenses_path(kind: "municiple") do %>
+      Municiple Licenses (<%= @municiple_licenses.count %>)
+    <% end %>
+  </li>
+  <% if params[:kind] == "park" %>
+    <li class="active">
+  <% else %>
+    <li>
+  <% end %>
+    <%= link_to licenses_path(kind: "park") do %>
+      Park Licenses (<%= @park_licenses.count %>)
+    <% end %>
+  </li>
+</ul>
+<% if params[:kind] == "municiple" %>
 <h2>Municiple Licenses</h2>
 <h5>total: <%= @municiple_licenses.count %></h5>
 <h5>total owed: $<%= @total_municiple_charge %></h5>
@@ -29,9 +50,8 @@
   <% end %>
 </table>
 <%= link_to "Print Selected", print_license_path, class:"btn" %>
-
-<hr>
-
+<% end %>
+<% if params[:kind] == "park" %>
 <h2>Park Licenses</h2>
 <h5>total: <%= @park_licenses.count %></h5>
 <h5>total owed: $<%= @total_park_charge %></h5>
@@ -63,3 +83,4 @@
   <% end %>
 </table>
 <%= link_to "Print Selected", print_license_path, class:"btn" %>
+<% end %>

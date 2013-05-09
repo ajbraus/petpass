@@ -4,15 +4,15 @@ before_filter :authenticate_user!
     @pet = Pet.find(params[:id])
     if @pet.age < 5.months && Date.today < Date.parse("July")
       if @pet.spayed_or_neutered?
-        @initial_fee = 7.50
+        @initial_fee = "7.50"
       else 
-        @initial_fee = 10
+        @initial_fee = 10.00
       end
     else 
       if @pet.spayed_or_neutered?
-        @initial_fee = 20 
+        @initial_fee = 20.00 
       else
-        @initial_fee = 20 
+        @initial_fee = 20.00 
       end
     end
   end
@@ -41,6 +41,14 @@ before_filter :authenticate_user!
     )
 
     if params[:park_price].present?
+      @park_licenses = @pet.licenses.where("kind = ? AND expired = ? AND county = ?", "park", false, current_user.county)    
+      if @park_licenses.any?
+        @park_licenses.each do |pl|
+          pl.expired = true
+          pl.save
+        end
+      end
+
       park_license = @pet.licenses.build( #CREATE PARK LICENSE IN PETPASS
         kind: "park",
         amount_paid: @park_fee,
@@ -48,6 +56,14 @@ before_filter :authenticate_user!
         county: current_user.county
         )
       park_license.save
+    end
+
+    @municiple_licenses = @pet.licenses.where("kind = ? AND expired = ? AND county = ?", "municiple", false, current_user.county)    
+    if @municiple_licenses.any?
+      @municiple_licenses.each do |ml|
+        ml.expired = true
+        ml.save
+      end
     end
 
     city_license = @pet.licenses.build( #CREATE MUNICIPLE LICENSE IN PETPASS
