@@ -1,11 +1,11 @@
 Petpass::Application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' }
 
-  root :to => redirect("/users/sign_up")
-
   authenticated :user do
     root :to => 'pets#index'
   end
+  
+  root :to => redirect("/users/sign_up")
 
   resources :pets
 
