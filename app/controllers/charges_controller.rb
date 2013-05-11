@@ -91,7 +91,7 @@ before_filter :authenticate_user!
     city_license.save
 
     Notifier.delay.confirmation_of_submission(@user, @pet, @city_fee, @park_fee)
-    Notifier.delay.email_correll(@pet)
+    Notifier.delay.email_team(@pet)
     redirect_to root_path, notice:"Successfully submited your license for #{@pet.name}. Confirmation email sent to #{current_user.email}"
 
     return
