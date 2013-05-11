@@ -1,3 +1,5 @@
+add that we are at the Dane County Humane Society
+
 Admin dashboard 
   DONE tab park and municiple licenses 
   DONE make checkboxes work
@@ -8,32 +10,16 @@ Admin dashboard
 
 footer
 
-add that we are at the Dane County Humane Society
-
 terms and conditions
 
 test all emails
 
-saturday user testing
-
-June 1st and 2nd cats and dogs are free
-
 primary_breed and secondary_breed
-
-add cats
-  DONE Add species
-  License changes
-    if municipality requires it
-    price
-
-DONE Add county to user - 
-  validate that match with zip code
-
 add existing city license numbers
 
 -----------------------------------------------------
 
-during pet create check ip address, if from humane society then mark spayed_or_neutered as true
+save credit card data
 
 multiple year license
 
@@ -45,7 +31,7 @@ setup SQL access to DB (for Niko)
 
 reminder to add license ID
 
-reminder if information is missing - pictures
+reminder if information is missing - picture
 
 humane society pet lookup by license
 
@@ -88,6 +74,15 @@ Bring this to my county link
   - verify how they recieve license information and payment
 
 How would you like to recieve payment and license information?
+
+
+
+-----------------------------------------------------
+
+
+referal gets you a coupon code
+
+share with facebook to wave petpass fee
 
 
 -----------------------------------------------------
@@ -133,3 +128,5 @@ DONE Check if another license exists in the same county
 DONE Add airbreak to see errors
 
 DONE google analytics
+
+DONE Add species
