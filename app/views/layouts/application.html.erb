@@ -3,7 +3,7 @@
 <head>
   <title>Petpass</title>
   <link href='http://fonts.googleapis.com/css?family=Oldenburg' rel='stylesheet' type='text/css'>
-   <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+  <script src="https://checkout.stripe.com/v2/checkout.js"></script>
   <link rel="icon" type="image/png" href="http://petpass.net/assets/favulous.ico">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -56,9 +56,9 @@
   <footer class="footer">
   </footer>
     <script type="text/javascript">
-  // This identifies your website in the createToken call below
-    Stripe.setPublishableKey("<%= ENV['PUBLISHABLE_KEY'] %>");
-  // ...
+    // This identifies your website in the createToken call below
+      Stripe.setPublishableKey("<%= ENV['PUBLISHABLE_KEY'] %>");
+    // ...
   </script>
 </body>
 </html>

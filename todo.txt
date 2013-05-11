@@ -21,6 +21,8 @@ test all emails
 primary_breed and secondary_breed
 add existing city license numbers
 
+opt_out of email reminders
+
 -----------------------------------------------------
 
 save credit card data

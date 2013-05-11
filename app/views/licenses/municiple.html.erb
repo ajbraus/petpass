@@ -77,28 +77,28 @@ td { height: 70px; vertical-align: top; }
   <TD COLSPAN=1>Neutered Male
     <br />
     <br />
-    <% if @pet.sex == "Male" && @pet.spayed_or_neutered? %>
+    <% if @pet.sex == "Male Neutered" && @pet.spayed_or_neutered? %>
       <strong>X</strong>
     <% end %>
   </TD>
   <TD COLSPAN=1>Unneutered Male
     <br />
     <br />
-    <% if @pet.sex == "Male" && !@pet.spayed_or_neutered? %>
+    <% if @pet.sex == "Male Intact" && !@pet.spayed_or_neutered? %>
       <strong>X</strong>
     <% end %>
   </TD>
   <TD COLSPAN=1>Spayed Female
     <br />
     <br />
-    <% if @pet.sex == "Female" && @pet.spayed_or_neutered? %>
+    <% if @pet.sex == "Female Spayed" && @pet.spayed_or_neutered? %>
       <strong>X</strong>
     <% end %>
   </TD>
   <TD COLSPAN=1>Unspayed Female
     <br />
     <br />
-    <% if @pet.sex == "Female" && !@pet.spayed_or_neutered? %>
+    <% if @pet.sex == "Female Intact" && !@pet.spayed_or_neutered? %>
       <strong>X</strong>
     <% end %>
   </TD>
