@@ -17,6 +17,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'daemons'
 gem 'delayed_job_active_record'
 
+gem 'airbrake'
+
 gem 'whenever', require: false
 
 gem "twitter-bootstrap-rails"

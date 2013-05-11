@@ -41,19 +41,19 @@
             <% end %>
           </li>                
 
-        </ul>        
-        <% if pet.has_park_license? %>
-          <div class="green"><strong>PARK LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "park").first.time_until_expires %> days</div>
-        <% else %>
-          <%= link_to "Park License", new_charge_path(id: pet.id), class:"btn btn-success" %>
-        <% end %>
+        </ul>    
         <% if !pet.vaccinated? %>
           <%= link_to "Add or Update Rabies Info", edit_pet_path(pet), class:"btn-disabled" %>
         <% elsif !pet.has_municiple_license? %>
-          <%= link_to "Municipal License", new_charge_path(id: pet.id), class:"btn btn-primary" %>
+          <%= link_to "Get Municipal License", new_charge_path(id: pet.id), class:"btn btn-primary" %><br />
         <% else %> 
           <div class="licensed"><strong>CITY LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "municiple").first.time_until_expires %> days</div>
-        <% end %>        
+        <% end %>              
+        <% if pet.has_park_license? %>
+          <div class="green"><strong>PARK LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "park").first.time_until_expires %> days</div>
+        <% else %>
+          <%= link_to "Get Park License", new_charge_path(id: pet.id), class:"btn btn-success" %>
+        <% end %>      
     </li>
   <% end %>
 </ul>

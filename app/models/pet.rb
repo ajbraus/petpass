@@ -105,6 +105,14 @@ class Pet < ActiveRecord::Base
     return (diff/365.25).to_i
   end
 
+  def dog?
+    return self.species.downcase == "dog"
+  end
+
+  def cat?
+    return self.species.downcase == "cat"
+  end
+
   def self.need_information
     Pet.all.each do |p|
       unless p.vaccinated? && p.spayed_or_neutered? && p.rabies_expiration.present? && p.rabies_tag_number.present?

@@ -2,22 +2,36 @@ Admin dashboard
   DONE tab park and municiple licenses 
   DONE make checkboxes work
   make mass printing work
+  mark as 'printed'
   make park license form look like city's
   if spayed/neutered or rabies proof is pdf does not show/print
 
+footer
+
+add that we are at the Dane County Humane Society
+
+terms and conditions
+
 test all emails
+
+saturday user testing
+
+June 1st and 2nd cats and dogs are free
+
+primary_breed and secondary_breed
 
 add cats
   DONE Add species
-  License changes?
+  License changes
+    if municipality requires it
+    price
 
 DONE Add county to user - 
   validate that match with zip code
 
 add late fee
 
-When paying for a license
-  Check if another license exists in the same county
+add existing city license numbers
 
 -----------------------------------------------------
 
@@ -25,13 +39,51 @@ during pet create check ip address, if from humane society then mark spayed_or_n
 
 multiple year license
 
-add existing city license numbers
-
 setup support@petpass.net
 
 create renew license button
 
 setup SQL access to DB (for Niko)
+
+reminder to add license ID
+
+reminder if information is missing - pictures
+
+humane society pet lookup by license
+
+humane society pet lookup by rabies tag number
+
+humane society sees user data
+
+-----------------------------------------------------
+
+National roll out strategy
+
+State has_many :counties
+County has_many :municipalities
+
+Municipalities 
+  has_late_fee
+  late_fee
+  spayed_neutered_fee
+  intact_fee
+  age_of_animal (less than 5 months old cheaper fee with no proof of rabies vaccine)
+  cat_discount
+  recently_aquired_discount (30 days)
+  cat_intact_fee
+  cat_sp_fee
+
+  validate presence of all or municipality is not live
+
+Today only see Wisconsin, Dane, Madison
+
+Bring this to my county link
+  - verify identity
+  - make them county admin
+  - verify how they recieve license information and payment
+
+How would you like to recieve payment and license information?
+
 
 -----------------------------------------------------
 
@@ -70,3 +122,9 @@ DONE write emails
 
 DONE add expired to licenses
 DONE add printed to licenses
+
+DONE Check if another license exists in the same county
+
+DONE Add airbreak to see errors
+
+DONE google analytics

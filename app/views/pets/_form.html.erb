@@ -12,6 +12,13 @@
   <% end %>
 
   <div class="field">
+    <div><label>Species</label></div>
+    <% Pet::SPECIES.each do |s| %>
+      <%= f.radio_button :species, "#{s}", id:"radio#{(Pet::SPECIES.index(s) + 1)}", class:"required" %>
+      <%= f.label "radio#{(Pet::SPECIES.index(s) + 1)}", "#{s.humanize}" %>
+    <% end %>
+  </div>
+  <div class="field">
     <%= f.label :name, "Name*" %><br />
     <%= f.text_field :name %>
   </div>
@@ -23,7 +30,7 @@
     <div class="row">
       <div class="span3">
         <%= f.label :breed, "Breed*" %><br />
-        <%= f.select :breed, breeds, class:"required" %>
+        <%= f.select :breed, primary_breed, class:"required" %>
       </div>
       <div class="span3">
         <%= f.label :sex, "Sex*" %><br />
@@ -31,12 +38,12 @@
       </div>
     </div>
   </div>
-  <div class="field upload_spayed">
+  <div class="field upload_spayed" style="display:none;">
     <%= f.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
     <%= f.file_field :spayed_neutered_attachment %>
   </div>  
   <div class="field">
-    <%= f.label :born_on, "Birth day (estimated)*" %><br />
+    <%= f.label :born_on, "Birth day (dd/mm/yyyy)*" %><br />
     <%= f.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy" %>
   </div> 
   <div class="field">
@@ -63,7 +70,7 @@
   </div>
   <h4>Microchip</h4>
   <div class="field show_micro">
-    <%= f.label :microchip_code, "Microchip Code*" %><br />
+    <%= f.label :microchip_code, "Microchip Code" %><br />
     <%= f.text_field :microchip_code %>
   </div>   
   <div class="actions">

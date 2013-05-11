@@ -4,15 +4,31 @@ before_filter :authenticate_user!
     @pet = Pet.find(params[:id])
     if @pet.age < 5.months && Date.today < Date.parse("July")
       if @pet.spayed_or_neutered?
-        @initial_fee = "7.50"
+        if @pet.dog?
+          @initial_fee = "15.00"
+        elsif @pet.cat?
+          @initial_fee = "15.00"        
+        end        
       else 
-        @initial_fee = 10.00
+        if @pet.dog?
+          @initial_fee = "20.00"
+        elsif @pet.cat?
+          @initial_fee = "20.00"
+        end         
       end
     else 
       if @pet.spayed_or_neutered?
-        @initial_fee = 20.00 
+        if @pet.dog?
+          @initial_fee = "15.00"
+        elsif @pet.cat?
+          @initial_fee = "15.00"
+        end          
       else
-        @initial_fee = 20.00 
+        if @pet.dog?
+          @initial_fee = "15.00"
+        elsif @pet.cat?
+          @initial_fee = "15.00"
+        end        
       end
     end
   end
