@@ -29,8 +29,6 @@ add cats
 DONE Add county to user - 
   validate that match with zip code
 
-add late fee
-
 add existing city license numbers
 
 -----------------------------------------------------
@@ -63,13 +61,20 @@ State has_many :counties
 County has_many :municipalities
 
 Municipalities 
-  has_late_fee
+  name
+  email
+  address_one
+  address_two
+  city
+  state
+  zip
+  phone
+  bank_routing_number
+  bank_account_number
   late_fee
-  spayed_neutered_fee
-  intact_fee
-  age_of_animal (less than 5 months old cheaper fee with no proof of rabies vaccine)
-  cat_discount
-  recently_aquired_discount (30 days)
+  dog_intact_fee
+  dog_sp_fee
+  requires_cat_license  
   cat_intact_fee
   cat_sp_fee
 

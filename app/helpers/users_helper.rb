@@ -1,5 +1,9 @@
 module UsersHelper
 
+def wisco_counties
+  ["Dane"]
+end
+
 def wisconsin
   [     
     ['Wisconsin', 'WI']
