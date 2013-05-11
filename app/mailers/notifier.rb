@@ -32,4 +32,10 @@ class Notifier < ActionMailer::Base
 
     mail to: @user.email, subject: "License #{@pet.name} through Petpass"
   end
+
+  def email_team(pet)
+    @pet = pet
+    @user = pet.user
+    mail to: "correlllashbrook@gmail.com, ajbraus@gmail.com, nikolaiskievaski@gmail.com", subject: "BING! New Pet - #{@pet.name} - Licensed Through Petpass"
+  end
 end
