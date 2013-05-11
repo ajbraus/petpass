@@ -1,4 +1,8 @@
+bug - switch days and months in date throws error
+
 add that we are at the Dane County Humane Society
+
+request.remote_ip
 
 Admin dashboard 
   DONE tab park and municiple licenses 

@@ -84,6 +84,7 @@
         var $municiplePrice = $('<input type=hidden name=municiple_price />').val(municiple_price);
         var $parkPrice = $('<input type=hidden name=park_price />').val(park_price);
         $('form').append($input, $petId, $parkPrice, $municiplePrice).submit();
+        //post_to_url('http://petpass.net/charges', { 'input':$input, 'pet_id':$petId, 'park_price':$parkPrice, 'municiple_price':$municiplePrice } )
       };
 
       StripeCheckout.open({
