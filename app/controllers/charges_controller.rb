@@ -41,8 +41,12 @@ before_filter :authenticate_user!
     if params[:park_price].to_i > 0
       @park_fee = params[:park_price].to_i*100
     end
-
-    @total = @city_fee + @park_fee + 5
+    
+    if @part_fee.present?
+      @total = @city_fee + @park_fee + 5
+    else
+      @total = @city_fee + 5
+    end
 
     customer = Stripe::Customer.create(
       :email => "#{current_user.email}",

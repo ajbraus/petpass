@@ -1,9 +1,5 @@
 bug - switch days and months in date throws error
 
-add that we are at the Dane County Humane Society
-
-request.remote_ip
-
 Admin dashboard 
   DONE tab park and municiple licenses 
   DONE make checkboxes work
@@ -11,6 +7,9 @@ Admin dashboard
   mark as 'printed'
   make park license form look like city's
   if spayed/neutered or rabies proof is pdf does not show/print
+  add that we are at the Dane County Humane Society
+  request.remote_ip
+  more fields - late?, spayed/neutered?, aquired in last 30 days?
 
 footer
 
