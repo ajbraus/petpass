@@ -43,8 +43,8 @@
     <%= f.file_field :spayed_neutered_attachment %>
   </div>  
   <div class="field">
-    <%= f.label :born_on, "Birth day (dd/mm/yyyy)*" %><br />
-    <%= f.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy" %>
+    <%= f.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
+    <%= f.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy" %>
   </div> 
   <div class="field">
     <%= f.label :color, "Color*" %><br />
@@ -65,8 +65,8 @@
     <%= f.file_field :rabies_attachment %>
   </div>
   <div class="field rabies_tag">
-    <%= f.label :rabies_expiration, "Rabies Expiration (dd/mm/yyyy)" %><br />
-    <%= f.text_field :rabies_expiration, placeholder:"dd/mm/yyyy" %>
+    <%= f.label :rabies_expiration, "Rabies Expiration (mm/dd/yyyy)" %><br />
+    <%= f.text_field :rabies_expiration, placeholder:"mm/dd/yyyy" %>
   </div>
   <h4>Microchip</h4>
   <div class="field show_micro">

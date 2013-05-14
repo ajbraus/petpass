@@ -4,23 +4,23 @@ class License < ActiveRecord::Base
   belongs_to :pet
 
   def expired?
-    return Date.today > self.created_at.to_date + 1.year
+    return Date.today > Date.parse("December 31")
   end
   
   def expires_on
-    self.created_at + 1.year
+    Date.parse("December 31")
   end
 
   def has_city_license?
-    return self.city_license.created_at < Time.now - 1.year
+    return self.city_license.created_at < Date.parse("December 31")
   end
 
   def has_park_license?
-    return self.park_license.created_at < Time.now - 1.year
+    return self.park_license.created_at < Date.parse("December 31")
   end
 
   def time_until_expires
-    (self.expires_on.to_date - Date.today).to_i
+    (Date.parse("December 31") - Date.today).to_i
   end
 
   def self.check_license_expiration

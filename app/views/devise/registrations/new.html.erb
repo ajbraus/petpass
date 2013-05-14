@@ -3,7 +3,7 @@
     <%= image_tag 'hero/hero.png' %>
   </div>
   <div class="span5 pitch">
-    <h2>Manage your pet's licenses and medical information</h2>
+    <h2>Manage your pet's license and medical information</h2>
     <div class="lead whachaget">
       Petpass . . . 
         <p>puts local pet services at your fingertips</p>
@@ -118,12 +118,12 @@
       </div>
     </div>
     <div class="field upload_spayed" style="display:none;">
-      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered*" %><br />
+      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
     </div>
     <div class="field">
-      <%= p.label :born_on, "Birth day (dd/mm/yyyy)*" %><br />
-      <%= p.text_field :born_on, class:"age-input required", placeholder:"dd/mm/yyyy", autocomplete: "off"  %>
+      <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
+      <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
     </div>     
     <div class="field">
       <%= p.label :color, "Color*" %><br />
@@ -143,8 +143,8 @@
       <%= p.file_field :rabies_attachment %>
     </div>
     <div class="field rabies_tag">
-      <%= p.label :rabies_expiration, "Rabies Expiration* (dd/mm/yyyy)" %><br />
-      <%= p.text_field :rabies_expiration, placeholder:"dd/mm/yyyy", autocomplete: "off"  %>
+      <%= p.label :rabies_expiration, "Rabies Expiration* (mm/dd/yyyy)" %><br />
+      <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
     </div> 
   <% end %>
 

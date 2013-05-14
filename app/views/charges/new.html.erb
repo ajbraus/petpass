@@ -13,7 +13,7 @@
       <h5>Dog License</h5>
       <table class="table table-striped">
         <tr>
-          <td><input type="radio" name="group2" checked="true" class="pet-row" /></td>
+          <td><input type="radio" name="group2" checked="true" class="pet-row" id="municipleFeeCheckbox" /></td>
           <td>Municipal Fee*</td>
             <td>$<span class="mfee"><%= @initial_fee %></span></td>
         </tr>
@@ -51,7 +51,7 @@
       </div>
   </div>
   <div class="row total">
-    <% if Date.today < Date.parse("April") && @pet.age > 5.months && !@pet.recent? %>    
+    <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? %>    
       <div>
         Late Fee: $<span id="lateFee">5</span>.00
       </div>

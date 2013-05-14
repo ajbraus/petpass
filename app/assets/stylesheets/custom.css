@@ -164,19 +164,6 @@ background-image: url(/assets/kitten_pulse.jpg);
 background-image: url(/assets/hugging.jpg);
 }
 
-#signupFooter {
-	float: left;
-	margin-top: 20px;
-	height: 50px;
-	width: 500px;
-	text-align: center;
-}
-
-#signupFooter a {
-	text-decoration: none;
-}
-
-
 #nav {
 color: white;
 font-size: 17px;
@@ -254,38 +241,6 @@ float:right;
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#82e32d');
 	background-color:#5cb811;
 }	
-
-
-#footer {
-background: #1e5799; /* Old browsers */
-background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 0%, #207cca 31%, #7db9e8 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(0%,#2989d8), color-stop(31%,#207cca), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* IE10+ */
-background: linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
-height:60px;
-width: 1000px;
-text-align:center;
-line-height:60px;
-font-size:16px;
-font-style:bold;
-color:white;
-margin: 20px auto 0px auto;
-}
-
-#footer a {
-text-decoration: none;
-color:white;
-background-color: transparent;
-}
-
-#footer a:hover {
-text-decoration: underline;
-color:white;
-}
-
 
 
 /*signup.html*/
@@ -774,44 +729,6 @@ font-size: 20px;
 	margin: auto auto;
 	width: 200px;
 }
-
-/* Footer  */
-
-#app_footer {
-background: #1e5799; /* Old browsers */
-background: -moz-linear-gradient(top,  #1e5799 0%, #2989d8 0%, #207cca 31%, #7db9e8 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(0%,#2989d8), color-stop(31%,#207cca), color-stop(100%,#7db9e8)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* IE10+ */
-background: linear-gradient(top,  #1e5799 0%,#2989d8 0%,#207cca 31%,#7db9e8 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
-height: 60px;
-width: 100%;
-clear: both;
-text-align: center;
-line-height: 30px;
-font-size: 16px;
-color: white;
-}
-
-#app_footer a {
-text-decoration: none;
-color:white;
-background-color: transparent;
-}
-
-#app_footer a:hover {
-text-decoration: underline;
-color:white;
-}
-
-#app_footer span {
-	font-size: 30px;
-	float: left;
-	margin-left: 20px;
-	margin-top:10px;
-}
 .red {
 	color:red;
 }
@@ -1118,4 +1035,9 @@ p {
 
 .btn {
 	margin: 5px;
+}
+
+footer {
+	text-align: center;
+	padding-bottom:40px;
 }

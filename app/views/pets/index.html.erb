@@ -3,41 +3,52 @@
     <li class="span4">
       <div class="thumbnail">
         <%= image_tag pet.avatar.url(:original) %>        
-        <h3><%= pet.name.capitalize %></h3> <span class="small grey">(<%= pet.species %>)</span>
+        <h3><%= pet.name %></h3>
         <%= link_to 'Edit', edit_pet_path(pet), class:"pull-right" %>
         <ul>
           <li>
-            <strong>Age</strong> <%= pet.age %>
+            <strong>Age</strong>
+            <%= pet.age %> 
           </li>
           <li>
-            <strong>Color</strong> <%= pet.color %>
-          </li>
-          <li>
-            <strong>Breed</strong> <%= pet.breed %>
+            <strong>Breed</strong> <%= pet.breed %> (<%= pet.species %>)
           </li>
           <li>
             <strong>Sex</strong> <%= pet.sex %>
           </li>
           <li>
+            <strong>Color</strong> <%= pet.color %>
+          </li>          
+          <li>
             <strong>Markings</strong> <%= pet.markings %>
           </li>
           <li>
             <strong>Spayed/Neutered</strong> 
+            <br/>
               <% if pet.spayed_or_neutered? %>
                 <span class="green">True</span> (<%= link_to "View Proof", pet.spayed_neutered_attachment.url(:original) %>)
               <% else %>
-                <span class="not_licensed">False</span> (<%= link_to "Change", edit_pet_path(pet) %>)
+                <span class="not_licensed">No Proof</span> (<%= link_to "Change", edit_pet_path(pet) %>)
               <% end %>
           </li>
           <li>
             <strong>Rabies Vaccination</strong> 
-            <% if pet.vaccinated? %>
+            <br />
+            <% if pet.rabies_attachment_file_size.present? %>
               <span class="green">True</span> (<%= link_to "View Proof", pet.rabies_attachment.url(:original) %>)
+            <% else %>
+              <span class="not_licensed">No Proof</span> (<%= link_to "Add Proof", edit_pet_path(pet) %>)
+            <% end %>
+            <% if pet.rabies_expiration.present? %>
               <div>
                 <strong>Rabies Vaccination expires on</strong> <%= pet.nice_rabies_expiration %>
               </div>
             <% else %>
-              <span class="not_licensed">False</span> (<%= link_to "Add Info", edit_pet_path(pet) %>)
+              <div>
+                <strong>Expires On</strong>
+                <br />
+                <span class="not_licensed">No Expiration</span> (<%= link_to "Add Info", edit_pet_path(pet) %>)
+              </div>            
             <% end %>
           </li>                
 

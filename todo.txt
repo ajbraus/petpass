@@ -1,4 +1,13 @@
-bug - switch days and months in date throws error
+allow only park license
+
+pet's birthdate
+add jquery validation
+add placeholder.js for ie
+
+prevent age to be in the future
+prevent spayed/neuter expiration to be in the past
+
+include link to fee schedule
 
 Admin dashboard 
   DONE tab park and municiple licenses 
@@ -12,13 +21,14 @@ Admin dashboard
   request.remote_ip
   more fields - late?, spayed/neutered?, aquired in last 30 days?
 
-footer
-
 terms and conditions
+
+link to view license 
 
 test all emails
 
 primary_breed and secondary_breed
+
 add existing city license numbers
 
 opt_out of email reminders
@@ -44,6 +54,8 @@ humane society pet lookup by license
 humane society pet lookup by rabies tag number
 
 humane society sees user data
+
+format phone number
 
 -----------------------------------------------------
 
@@ -136,3 +148,16 @@ DONE Add airbreak to see errors
 DONE google analytics
 
 DONE Add species
+
+
+DONE remove requirement on spayed proof
+DONE  add modernizer
+DONE feedback email in footer
+
+DONE purchase park license only - make munciiple license a check box
+DONE dates - mm/dd/yyyy
+DONE capitalize first and last name
+
+DONE bug - switch days and months in date throws error
+
+DONE late fee

@@ -36,8 +36,18 @@ $ ->
   municipalFee = parseFloat($('.mfee').text())
   lateFee = parseFloat($("#lateFee").text())
   total = $('#total')
-  total.text(municipalFee + 5)
+  if isNaN(lateFee)
+    total.text(municipalFee + 5)      
+  else
+    total.text(municipalFee + 5 + lateFee)
   
+  # if $('#municipleFeeCheckbox').is(':checked')
+  #   $('#municipleFeeCheckbox').click ->
+  #     if isNaN(lateFee)
+  #       total.html(municipalFee + 5)      
+  #     else
+  #       total.html(municipalFee + 5 + lateFee)   
+
   $('#annualInput').click ->
     parkFee = parseFloat($("#annualFee").text())
     if isNaN(lateFee)

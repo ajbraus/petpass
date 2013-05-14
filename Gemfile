@@ -23,6 +23,8 @@ gem 'whenever', require: false
 
 gem "twitter-bootstrap-rails"
 
+gem 'american_date'
+
 gem 'pg'
 gem 'paperclip'
 gem "sendgrid", "~> 1.0.1"

@@ -56,6 +56,11 @@ class Pet < ActiveRecord::Base
 
   SPECIES = ["Dog", "Cat"]
 
+  def name=(s)
+    write_attribute(:name, s.to_s.titleize) # The to_s is in case you get nil/non-string
+  end
+
+
   def nice_rabies_expiration
     self.rabies_expiration.strftime "%b %e %Y"
   end
@@ -65,7 +70,7 @@ class Pet < ActiveRecord::Base
   end
 
   def vaccinated?
-    return rabies_attachment_file_size.present? && rabies_expiration + 1.year > Date.today && rabies_tag_number.present?
+    return rabies_attachment_file_size.present? && rabies_tag_number.present? && rabies_expiration.present? && rabies_expiration + 1.year > Date.today
   end
 
   def until_vaccination_expires
