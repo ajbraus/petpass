@@ -9,8 +9,9 @@
     </div>
   </h4>
   <div class="row">
+    <% unless @pet.has_municiple_license? %>
     <div class="city-license span6">
-      <h5>Dog License</h5>
+      <h5>Municiple Dog License</h5>
       <table class="table table-striped">
         <tr>
           <td><input type="radio" name="group2" checked="true" class="pet-row" id="municipleFeeCheckbox" /></td>
@@ -19,6 +20,8 @@
         </tr>
       </table>
     </div>
+    <% end %>
+    <% unless @pet.has_park_license? %>   
     <div class="park-license span6">
       <h5>Park License</h5>
         <table class="table table-striped" id="parkFeeSchedule">
@@ -50,6 +53,7 @@
         </table>
       </div>
   </div>
+  <% end %>
   <div class="row total">
     <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? %>    
       <div>
