@@ -5,7 +5,10 @@
       Pet: <%= @pet.name.upcase %>
     </div>
     <div>
-      City: <%= current_user.city.upcase + " " + current_user.state.upcase %>
+      Municipality: <%= current_user.city.upcase + " " + current_user.state.upcase %>
+    </div>
+    <div>
+      County: <%= current_user.county.upcase %>
     </div>
   </h4>
   <div class="row">
@@ -23,50 +26,65 @@
     <% end %>
     <% unless @pet.has_park_license? %>   
     <div class="park-license span6">
-      <h5>Park License</h5>
-        <table class="table table-striped" id="parkFeeSchedule">
-          <tr>
-            <td><input type="radio" name="group1" class="pet-row" id="annualInput" /></td>
-            <td>Annual</td>
-            <td>$<span class="pfee" id="annualFee">30</span>.00</td>
-          </tr>
-          <tr>
-            <td><input type="radio" name="group1" class="pet-row" id="seniorInput" /></td>
-            <td>Senior</td>
-            <td>$<span class="pfee" id="seniorFee">15</span>.00</td>
-          </tr>
-          <tr>
-            <td><input type="radio" name="group1" class="pet-row" id="disabledInput" /></td>
-            <td>Disabled</td>
-            <td>$<span class="pfee" id="disabledFee">15</span>.00</td>
-          </tr>
-          <tr>
-            <td><input type="radio" name="group1" class="pet-row" id="addInput" /></td>
-            <td>Additional Dog (ea.)</td>
-            <td>$<span class="pfee" id="addFee">14</span>.00</td>
-          </tr>
-          <tr>
-            <td><input type="radio" name="group1" class="pet-row" id="replacementInput" /></td>
-            <td>Replacement</td>
-            <td>$<span class="pfee" id="replacementFee">14</span>.00</td>
-          </tr>          
-        </table>
-      </div>
+    <h5>Park License</h5>
+      <table class="table table-striped" id="parkFeeSchedule">
+        <tr>
+          <td><input type="radio" name="group1" class="pet-row" id="annualInput" /></td>
+          <td>Annual</td>
+          <td>$<span class="pfee" id="annualFee">30</span>.00</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="group1" class="pet-row" id="seniorInput" /></td>
+          <td>Senior</td>
+          <td>$<span class="pfee" id="seniorFee">15</span>.00</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="group1" class="pet-row" id="disabledInput" /></td>
+          <td>Disabled</td>
+          <td>$<span class="pfee" id="disabledFee">15</span>.00</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="group1" class="pet-row" id="addInput" /></td>
+          <td>Additional Dog (ea.)</td>
+          <td>$<span class="pfee" id="addFee">14</span>.00</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="group1" class="pet-row" id="replacementInput" /></td>
+          <td>Replacement</td>
+          <td>$<span class="pfee" id="replacementFee">14</span>.00</td>
+        </tr>          
+      </table>
+    </div>
   </div>
   <% end %>
-  <div class="row total">
-    <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? && !current_user.recent? %>    
-      <div>
-        Late Fee: $<span id="lateFee">5</span>.00
-      </div>
-    <% end %>
-    <div>
-      Service Fee: $5.00
-    </div>
-    <div>
-        Total: <strong>$<span id="total"></span></strong> 
-        <br />
-        (according to your municipality's <%= link_to "fee schedule", "http://www.cityofmadison.com/treasurer/documents/feeSchedule20100823.pdf", target:"_blank" %>)
+  <div class="row">
+    <div class="span6">
+      <h5>Fees</h5>
+      <table class="table table-striped">
+        <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? && !current_user.recent? %>    
+        <tr>
+          <td>Municiple Late Fee:</td>
+          <td></td>
+          <td>$<span id="lateFee">5</span>.00</td>
+        </tr>         
+        <% end %>          
+        <tr>
+          <td>Petpass Service Fee:</td>
+          <td></td>
+          <td>$5.00</td>
+        </tr>             
+      </table>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="span6">
+      <table class="table table-striped">
+        <tr>
+          <td>Total: <strong>$<span id="total"></span>.00</strong></td>
+          <td></td>
+          <td></td>
+        </tr>                 
+      </table>
     </div>
   </div>
   <div id="customButton" class="btn btn-primary custom_button">
