@@ -1,12 +1,9 @@
-
 pet's birthdate
 add jquery validation
 add placeholder.js for ie
 
 prevent age to be in the future
 prevent spayed/neuter expiration to be in the past
-
-include link to fee schedule
 
 Admin dashboard 
   DONE tab park and municiple licenses 
@@ -83,7 +80,7 @@ Municipalities
 
   validate presence of all or municipality is not live
 
-Today only see Wisconsin, Dane, Madison
+link to show fee schedule (municipalities#show) from charges#new
 
 Bring this to my county link
   - verify identity
@@ -91,7 +88,6 @@ Bring this to my county link
   - verify how they recieve license information and payment
 
 How would you like to recieve payment and license information?
-
 
 
 -----------------------------------------------------
@@ -164,3 +160,4 @@ DONE late fee
 DONE Add cat breeds
 DONE allow only park license
 DONE 30 days since you moved to the region boolean
+DONE include link to fee schedule
