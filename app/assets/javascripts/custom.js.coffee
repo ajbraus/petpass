@@ -80,3 +80,11 @@ $ ->
     else
       total.html(municipalFee + parkFee + 5 + lateFee)
 
+
+  $('#radio1').click ->
+    $('.cat').hide();
+    $('.dog').show();
+
+  $('#radio2').click ->    
+    $('.cat').show();
+    $('.dog').hide();

@@ -87,6 +87,15 @@
         <%= p.label "radio#{(Pet::SPECIES.index(s) + 1)}", "#{s.humanize}" %>
       <% end %>
     </div>
+    <div class="margin-left">
+      <%= p.label :breed, "Breed*" %><br />
+      <div class="dog" style="display:none;">
+        <%= p.select :breed, primary_breed, class:"required" %>
+      </div>
+      <div class="cat" style="display:none;">
+        <%= p.select :breed, cat_breeds, class:"required" %>
+      </div>
+    </div>       
     <br />
     <div class="field">
       <%= p.check_box :recent %> 
@@ -106,25 +115,21 @@
     </div>
     <br />       
     <div class="field">
-      <div class="row">
-        <div class="pull-left margin-left">
-          <%= p.label :breed, "Breed*" %><br />
-          <%= p.select :breed, primary_breed, class:"required" %>
-        </div>        
+      <div class="row">     
         <div class="pull-left margin-left">
           <%= p.label :sex, "Sex*" %><br />
           <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
-        </div>      
+        </div>   
+        <div class="pull-left margin-left">
+          <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
+          <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
+        </div>    
       </div>
     </div>
     <div class="field upload_spayed" style="display:none;">
       <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
-    </div>
-    <div class="field">
-      <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
-      <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
-    </div>     
+    </div>    
     <div class="field">
       <%= p.label :color, "Color*" %><br />
       <%= p.text_field :color, class:"required", autocomplete: "off" %>
