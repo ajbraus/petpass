@@ -34,31 +34,31 @@
     <%= f.label :address_two, "Address line two" %><br />
     <%= f.text_field :address_two %>
   </div>
-  <div class="field">
-    <%= f.label :city, "Municipality*" %><br />
-    <%= f.text_field :city, class:"city required" %>
-  </div>
-  <div class="field">
-    <%= f.label :county, "County*" %><br />
-    <%= f.text_field :county %>
-  </div>
-  <div class="field">
-    <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
-    <%= f.text_field :phone, placeholder: "(555) 555-5555" %>
-  </div>
   <div class="field pull-left">
     <div class="pull-left">
       <%= f.label :state, "State*" %><br />
       <%= f.select :state, wisconsin, class:"state required" %><br>
     </div>
-    <div class="field pull-left">
-      <%= f.label :zip, "Zip*" %><br />
-      <%= f.text_field :zip, class:"zip required" %>
-    </div>
-  </div>  
+    <div class="pull-left margin-left">
+      <%= f.label :county, "County*" %><br />
+      <%= f.select :county, wisco_counties, class:"required" %>
+    </div>     
+  </div>
   <div class="clear-both">
-    Can't find your State? <%= link_to "request us in your city", "mailto:petpassteam@gmail.com?subject=Come to my city Petpass!" %> <br />
-  </div> 
+    Can't find your State or County? <%= link_to "request Petpass near you", "mailto:petpassteam@gmail.com?subject=Come to my county Petpass!" %> <br />
+  </div>
+  <div class="field clear-both">
+    <%= f.label :city, "Municipality*" %><br />
+    <%= f.text_field :city, class:"city required" %>
+  </div>
+  <div class="field">
+    <%= f.label :zip, "Zip*" %><br />
+    <%= f.text_field :zip, class:"zip required" %>
+  </div>  
+  <div class="field">
+    <%= f.check_box :recent %> 
+    <%= f.label :recent, "Moved to Above Address in Last 30 Days?" %>
+  </div>   
   <br />
   <br />
   <div class="field">
@@ -69,6 +69,6 @@
   <div class="actions"><%= f.submit "Update My Info", class:"btn btn-large" %></div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h5>Cancel my account</h5>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>

@@ -1,4 +1,3 @@
-allow only park license
 
 pet's birthdate
 add jquery validation
@@ -163,3 +162,5 @@ DONE bug - switch days and months in date throws error
 DONE late fee
 
 DONE Add cat breeds
+DONE allow only park license
+DONE 30 days since you moved to the region boolean

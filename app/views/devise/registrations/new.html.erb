@@ -38,7 +38,7 @@
 
   <h3>Your Personal Information</h3>
   <span class="red small">We only share your information with your permission</span><br />
-  <br />
+  <br />  
   <div class="field">
     <%= f.label :address_one, "Address*" %><br />
     <%= f.text_field :address_one, class:"required" %>
@@ -52,7 +52,7 @@
       <%= f.label :state, "State*" %><br />
       <%= f.select :state, wisconsin, class:"state required" %><br>
     </div>
-    <div class="pull-left">
+    <div class="pull-left margin-left">
       <%= f.label :county, "County*" %><br />
       <%= f.select :county, wisco_counties, class:"required" %>
     </div>     
@@ -65,14 +65,17 @@
     <%= f.text_field :city, class:"city required" %>
   </div>
   <div class="field">
+    <%= f.label :zip, "Zip*" %><br />
+    <%= f.text_field :zip, class:"zip required" %>
+  </div>  
+  <div class="field">
+    <%= f.check_box :recent %> 
+    <%= f.label :recent, "Moved to Above Address in Last 30 Days?" %>
+  </div>   
+  <br />
+  <div class="field">
     <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
     <%= f.text_field :phone, placeholder: "(555) 555-5555" %>
-  </div>
-  <div class="field pull-left">
-    <div class="field pull-left">
-      <%= f.label :zip, "Zip*" %><br />
-      <%= f.text_field :zip, class:"zip required" %>
-    </div>
   </div>  
   <h3>Pet Information</h3>  
   <%= f.fields_for :pets, resource.pets.build do |p| %>  
@@ -87,7 +90,7 @@
         <%= p.label "radio#{(Pet::SPECIES.index(s) + 1)}", "#{s.humanize}" %>
       <% end %>
     </div>
-    <div class="margin-left">
+    <div class="margin-left margin-top">
       <%= p.label :breed, "Breed*" %><br />
       <div class="dog" style="display:none;">
         <%= p.select :breed, primary_breed, class:"required" %>

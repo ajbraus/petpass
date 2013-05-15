@@ -55,7 +55,7 @@
   </div>
   <% end %>
   <div class="row total">
-    <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? %>    
+    <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? && !current_user.recent? %>    
       <div>
         Late Fee: $<span id="lateFee">5</span>.00
       </div>
