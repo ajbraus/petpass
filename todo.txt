@@ -1,6 +1,9 @@
+fix totalling
+
 Admin dashboard 
-  DONE tab park and municiple licenses 
+  DONE tab park and municipal licenses 
   DONE make checkboxes work
+  fix expired not defaulting to false
   make mass printing work
   mark as 'printed'
   make park license form look like city's
@@ -92,11 +95,9 @@ How would you like to recieve payment and license information?
 
 -----------------------------------------------------
 
-
 referal gets you a coupon code
 
 share with facebook to wave petpass fee
-
 
 -----------------------------------------------------
 
@@ -116,12 +117,7 @@ DONE
   If on or after July 1
   Pet is younger than five months old
 
-park fee schedule
-Annual $ 30.00
-Senior (65+) $ 15.00
-Disabled $ 15.00
-Additional Dog (ea.) $ 14.00
-Replacement $ 14.00
+DONE park fee schedule 
 
 DONE spayed neuter price reduction
 

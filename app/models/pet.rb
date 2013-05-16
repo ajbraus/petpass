@@ -77,8 +77,8 @@ class Pet < ActiveRecord::Base
     Date.today - rabies_expiration + 1.year
   end
 
-  def has_municiple_license?
-    self.licenses.where(kind: "municiple").each do |l|
+  def has_municipal_license?
+    self.licenses.where(kind: "municipal").each do |l|
       unless l.expired?
         return true
       end

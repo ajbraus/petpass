@@ -1,11 +1,11 @@
 <ul class="nav nav-tabs">
-  <% if params[:kind] == "municiple" %>
+  <% if params[:kind] == "municipal" %>
     <li class="active">
   <% else %>
     <li>
   <% end %>
-    <%= link_to licenses_path(kind: "municiple") do %>
-      Municiple Licenses (<%= @municiple_licenses.count %>)
+    <%= link_to licenses_path(kind: "municipal") do %>
+      municipal Licenses (<%= @municipal_licenses.count %>)
     <% end %>
   </li>
   <% if params[:kind] == "park" %>
@@ -18,10 +18,10 @@
     <% end %>
   </li>
 </ul>
-<% if params[:kind] == "municiple" %>
-<h2>Municiple Licenses</h2>
-<h5>total: <%= @municiple_licenses.count %></h5>
-<h5>total owed: $<%= @total_municiple_charge %></h5>
+<% if params[:kind] == "municipal" %>
+<h2>Municipal Licenses</h2>
+<h5>total: <%= @municipal_licenses.count %></h5>
+<h5>total owed: $<%= @total_municipal_charge %></h5>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -29,13 +29,13 @@
       <th>#</th>
       <th>Name</th>
       <th>Age</th>
-      <th>City</th>
+      <th>Municipality</th>
       <th>Zip</th>
       <th>Vaccinated?</th>
       <th>License</th>
     </tr>
   </thead>
-  <% @municiple_licenses.each do |ml| %>
+  <% @municipal_licenses.each do |ml| %>
   <% pet = ml.pet %>
   <tr>
     <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
@@ -45,7 +45,7 @@
     <td><%= pet.user.city %></td>
     <td><%= pet.user.zip %></td>
     <td><%= pet.vaccinated? %></td>
-    <td><%= link_to "view license", license_municiple_path(id:pet.id) %></td>
+    <td><%= link_to "view license", license_municipal_path(id:pet.id) %></td>
   </tr>
   <% end %>
 </table>
@@ -62,7 +62,7 @@
       <th>#</th>
       <th>Name</th>
       <th>Age</th>
-      <th>City</th>
+      <th>Municipality</th>
       <th>Zip</th>
       <th>Vaccinated?</th>
       <th>License</th>

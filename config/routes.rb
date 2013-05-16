@@ -15,7 +15,7 @@ Petpass::Application.routes.draw do
   match '/print_license', to: "pets#print_license", as:"print_license"
 
   match 'license/park' => 'licenses#park'
-  match 'license/municiple' => 'licenses#municiple'
+  match 'license/municipal' => 'licenses#municipal'
   resources :licenses, only: [:index]
 
   resources :charges

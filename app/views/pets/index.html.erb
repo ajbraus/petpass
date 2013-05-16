@@ -53,19 +53,19 @@
           </li>                
 
         </ul>    
-        <% if !pet.vaccinated? %>
-          <%= link_to "Add or Update Rabies Info", edit_pet_path(pet), class:"btn-disabled" %>
-        <% elsif !pet.has_municiple_license? %>
-          <%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-large btn-primary" %><br />
-        <% elsif pet.has_municiple_license? && !pet.has_park_license? %>
-            <%= link_to "Add Park License", new_charge_path(id: pet.id), class:"btn btn-large btn-success" %><br/ >
-        <% end %>         
-        <% if pet.has_municiple_license? %>
-          <div class="licensed"><strong>CITY LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "municiple").first.time_until_expires %> days</div>
+        <% if pet.has_municipal_license? %>
+          <div class="licensed"><strong>CITY LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "municipal").first.time_until_expires %> days</div>
         <% end %>
         <% if pet.has_park_license? %>
           <div class="green"><strong>PARK LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "park").first.time_until_expires %> days</div>
-        <% end %>              
+        <% end %>          
+        <% if !pet.vaccinated? %>
+          <%= link_to "Add or Update Rabies Info", edit_pet_path(pet), class:"btn-disabled" %>
+        <% elsif !pet.has_municipal_license? %>
+          <%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-large btn-primary" %><br />
+        <% elsif pet.has_municipal_license? && !pet.has_park_license? %>
+            <%= link_to "Add Park License", new_charge_path(id: pet.id), class:"btn btn-large btn-success" %><br/ >
+        <% end %>                     
     </li>
   <% end %>
 </ul>

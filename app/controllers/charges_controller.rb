@@ -36,7 +36,7 @@ before_filter :authenticate_user!
   def create
     # Amount in cents
     @pet = Pet.find(params[:pet_id])
-    @city_fee = params[:municiple_price].to_i*100
+    @city_fee = params[:municipal_price].to_i*100
 
     if params[:park_price].to_i > 0
       @park_fee = params[:park_price].to_i*100
@@ -78,16 +78,16 @@ before_filter :authenticate_user!
       park_license.save
     end
 
-    @municiple_licenses = @pet.licenses.where("kind = ? AND expired = ? AND county = ?", "municiple", false, current_user.county)    
-    if @municiple_licenses.any?
-      @municiple_licenses.each do |ml|
+    @municipal_licenses = @pet.licenses.where("kind = ? AND expired = ? AND county = ?", "municipal", false, current_user.county)    
+    if @municipal_licenses.any?
+      @municipal_licenses.each do |ml|
         ml.expired = true
         ml.save
       end
     end
 
-    city_license = @pet.licenses.build( #CREATE MUNICIPLE LICENSE IN PETPASS
-      kind: "municiple",
+    city_license = @pet.licenses.build( #CREATE municipal LICENSE IN PETPASS
+      kind: "municipal",
       amount_paid: @city_fee,
       municipality: current_user.city,
       county: current_user.county

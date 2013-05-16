@@ -34,6 +34,8 @@ $ ->
 
   #PAYMENT GATEWAY
   municipalFee = parseFloat($('.mfee').text())
+  if typeof municipalFee == 'undefined'
+    muncipalFee = 0
   lateFee = parseFloat($("#lateFee").text())
   total = $('#total')
   if isNaN(lateFee)
@@ -41,8 +43,8 @@ $ ->
   else
     total.text(municipalFee + 5 + lateFee)
   
-  # if $('#municipleFeeCheckbox').is(':checked')
-  #   $('#municipleFeeCheckbox').click ->
+  # if $('#municipalFeeCheckbox').is(':checked')
+  #   $('#municipalFeeCheckbox').click ->
   #     if isNaN(lateFee)
   #       total.html(municipalFee + 5)      
   #     else

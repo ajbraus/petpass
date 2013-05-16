@@ -12,12 +12,12 @@
     </div>
   </h4>
   <div class="row">
-    <% unless @pet.has_municiple_license? %>
+    <% unless @pet.has_municipal_license? %>
     <div class="city-license span6">
-      <h5>Municiple Dog License</h5>
+      <h5>municipal Dog License</h5>
       <table class="table table-striped">
         <tr>
-          <td><input type="radio" name="group2" checked="true" class="pet-row" id="municipleFeeCheckbox" /></td>
+          <td><input type="radio" name="group2" checked="true" class="pet-row" id="municipalFeeCheckbox" /></td>
           <td>Municipal Fee*</td>
             <td>$<span class="mfee"><%= @initial_fee %></span></td>
         </tr>
@@ -63,7 +63,7 @@
       <table class="table table-striped">
         <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? && !current_user.recent? %>    
         <tr>
-          <td>Municiple Late Fee:</td>
+          <td>Municipal Late Fee:</td>
           <td></td>
           <td>$<span id="lateFee">5</span>.00</td>
         </tr>         
@@ -92,9 +92,9 @@
   </div>
   <script>
     $('#customButton').click(function(){
-      var municiple_price = parseFloat($(".mfee").text())
+      var municipal_price = parseFloat($(".mfee").text())
       var total = parseFloat($("#total").text())
-      var park_price = total - municiple_price - 5
+      var park_price = total - municipal_price - 5
       // var checkedRadios = $('#parkFeeSchedule').find('input:radio:checked');
       // if (checkedRadios.length > 0) {
       //   var petLicense = true
@@ -105,10 +105,10 @@
       var token = function(res){
         var $input = $('<input type=hidden name=stripeToken />').val(res.id);
         var $petId = $('<input type=hidden name=pet_id />').val(<%= @pet.id %>);
-        var $municiplePrice = $('<input type=hidden name=municiple_price />').val(municiple_price);
+        var $municipalPrice = $('<input type=hidden name=municipal_price />').val(municipal_price);
         var $parkPrice = $('<input type=hidden name=park_price />').val(park_price);
-        $('form').append($input, $petId, $parkPrice, $municiplePrice).submit();
-        //post_to_url('http://petpass.net/charges', { 'input':$input, 'pet_id':$petId, 'park_price':$parkPrice, 'municiple_price':$municiplePrice } )
+        $('form').append($input, $petId, $parkPrice, $municipalPrice).submit();
+        //post_to_url('http://petpass.net/charges', { 'input':$input, 'pet_id':$petId, 'park_price':$parkPrice, 'municipal_price':$municipalPrice } )
       };
 
       StripeCheckout.open({

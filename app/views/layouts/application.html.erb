@@ -40,7 +40,7 @@
           <% end %>
         <% else %>
           <% if current_user.admin? %>
-            <%= link_to "Administrator Dashboard", licenses_path(kind: "municiple") %> |
+            <%= link_to "Administrator Dashboard", licenses_path(kind: "municipal") %> |
           <% end %>
           <%= link_to "Welcome, #{current_user.full_name}", edit_user_registration_path %> | 
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
