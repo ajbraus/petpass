@@ -14,12 +14,12 @@
   <div class="row">
     <% unless @pet.has_municipal_license? %>
     <div class="city-license span6">
-      <h5>municipal Dog License</h5>
+      <h5>Municipal Dog License</h5>
       <table class="table table-striped">
         <tr>
           <td><input type="radio" name="group2" checked="true" class="pet-row" id="municipalFeeCheckbox" /></td>
           <td>Municipal Fee*</td>
-            <td>$<span class="mfee"><%= @initial_fee %></span></td>
+            <td>$<span class="mfee"><%= @municipal_fee %></span></td>
         </tr>
       </table>
     </div>
@@ -29,7 +29,7 @@
     <h5>Park License</h5>
       <table class="table table-striped" id="parkFeeSchedule">
         <tr>
-          <td><input type="radio" name="group1" class="pet-row" id="annualInput" /></td>
+          <td><input type="radio" name="group1" class="pet-row" id="annualInput" <%= @pet.has_municipal_license? ? "checked='true'" : '' %> /></td>
           <td>Annual</td>
           <td>$<span class="pfee" id="annualFee">30</span>.00</td>
         </tr>
@@ -61,7 +61,7 @@
     <div class="span6">
       <h5>Fees</h5>
       <table class="table table-striped">
-        <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? && !current_user.recent? %>    
+        <% if Date.today > Date.parse("April") && @pet.age > 0.4 && !@pet.recent? && !current_user.recent? && !@pet.has_municipal_license? %>    
         <tr>
           <td>Municipal Late Fee:</td>
           <td></td>
@@ -92,22 +92,27 @@
   </div>
   <script>
     $('#customButton').click(function(){
+      var late_fee = parseFloat($('#lateFee').text())
+      late_fee = late_fee || 0      
       var municipal_price = parseFloat($(".mfee").text())
+      municipal_price = municipal_price || 0
       var total = parseFloat($("#total").text())
-      var park_price = total - municipal_price - 5
+      total = total || 0      
+      var park_price = total - municipal_price - late_fee - 5
       // var checkedRadios = $('#parkFeeSchedule').find('input:radio:checked');
       // if (checkedRadios.length > 0) {
       //   var petLicense = true
       // } else {
       //   var petLicense = false
-      // }   
+      // }
 
       var token = function(res){
         var $input = $('<input type=hidden name=stripeToken />').val(res.id);
         var $petId = $('<input type=hidden name=pet_id />').val(<%= @pet.id %>);
         var $municipalPrice = $('<input type=hidden name=municipal_price />').val(municipal_price);
         var $parkPrice = $('<input type=hidden name=park_price />').val(park_price);
-        $('form').append($input, $petId, $parkPrice, $municipalPrice).submit();
+        var $lateFee = $('<input type=hidden name=late_fee />').val(late_fee)
+        $('form').append($input, $petId, $parkPrice, $municipalPrice, $lateFee).submit();
         //post_to_url('http://petpass.net/charges', { 'input':$input, 'pet_id':$petId, 'park_price':$parkPrice, 'municipal_price':$municipalPrice } )
       };
 

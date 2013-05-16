@@ -34,52 +34,33 @@ $ ->
 
   #PAYMENT GATEWAY
   municipalFee = parseFloat($('.mfee').text())
-  if typeof municipalFee == 'undefined'
-    muncipalFee = 0
+  if isNaN(municipalFee)
+    municipalFee = 0
   lateFee = parseFloat($("#lateFee").text())
-  total = $('#total')
   if isNaN(lateFee)
-    total.text(municipalFee + 5)      
-  else
-    total.text(municipalFee + 5 + lateFee)
-  
-  # if $('#municipalFeeCheckbox').is(':checked')
-  #   $('#municipalFeeCheckbox').click ->
-  #     if isNaN(lateFee)
-  #       total.html(municipalFee + 5)      
-  #     else
-  #       total.html(municipalFee + 5 + lateFee)   
+    lateFee = 0
+  parkFee = parseFloat($('#annualFee').text())
+  if isNaN(parkFee)
+    parkFee = 0
 
+  total = $('#total')
+  
+  total.text(municipalFee + 5 + lateFee + parkFee)
+  
   $('#annualInput').click ->
     parkFee = parseFloat($("#annualFee").text())
-    if isNaN(lateFee)
-      total.html(municipalFee + parkFee + 5)      
-    else
-      total.html(municipalFee + parkFee + 5 + lateFee)
+    total.html(municipalFee + parkFee + 5 + lateFee)
 
   $('#seniorInput').click ->
     parkFee = parseFloat($("#seniorFee").text())
-    if isNaN(lateFee)
-      total.html(municipalFee + parkFee + 5)      
-    else
-      total.html(municipalFee + parkFee + 5 + lateFee)
+    total.html(municipalFee + parkFee + 5 + lateFee)
   $('#disabledInput').click ->
     parkFee = parseFloat($("#disabledFee").text())
-    if isNaN(lateFee)
-      total.html(municipalFee + parkFee + 5)      
-    else
-      total.html(municipalFee + parkFee + 5 + lateFee)
+    total.html(municipalFee + parkFee + 5 + lateFee)
   $('#addInput').click ->
     parkFee = parseFloat($("#addFee").text())
-    if isNaN(lateFee)
-      total.html(municipalFee + parkFee + 5)      
-    else
-      total.html(municipalFee + parkFee + 5 + lateFee)
+    total.html(municipalFee + parkFee + 5 + lateFee)
   $('#replacementInput').click ->
-    parkFee = parseFloat($("#replacementFee").text())
-    if isNaN(lateFee)
-      total.html(municipalFee + parkFee + 5)      
-    else
       total.html(municipalFee + parkFee + 5 + lateFee)
 
 
