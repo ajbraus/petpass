@@ -71,7 +71,7 @@ before_filter :authenticate_user!
         )
       park_license.save
     end
-binding.pry
+
     if @city_fee > 0
       @municipal_licenses = @pet.licenses.where("kind = ? AND expired = ? AND county = ?", "municipal", false, current_user.county)    
       if @municipal_licenses.any?
