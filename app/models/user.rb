@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
                   :zip,
                   :admin,
                   :county,
+                  :recent,
                   :pets_attributes
 
   has_many :pets, dependent: :destroy

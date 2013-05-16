@@ -1,5 +1,3 @@
-fix totalling
-
 Admin dashboard 
   DONE tab park and municipal licenses 
   DONE make checkboxes work
@@ -157,3 +155,4 @@ DONE Add cat breeds
 DONE allow only park license
 DONE 30 days since you moved to the region boolean
 DONE include link to fee schedule
+DONE fix totalling

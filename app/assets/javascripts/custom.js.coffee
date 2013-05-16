@@ -39,8 +39,11 @@ $ ->
   lateFee = parseFloat($("#lateFee").text())
   if isNaN(lateFee)
     lateFee = 0
-  parkFee = parseFloat($('#annualFee').text())
-  if isNaN(parkFee)
+  if $('#annualInput:checked').length == 1
+    parkFee = parseFloat($('#annualFee').text())
+    if isNaN(parkFee)
+      parkFee = 0
+  else
     parkFee = 0
 
   total = $('#total')

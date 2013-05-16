@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(:version => 20130515155218) do
     t.string   "county"
     t.string   "municipality"
     t.integer  "pet_id"
-    t.boolean  "expired"
-    t.boolean  "printed"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "expired",      :default => false
+    t.boolean  "printed",      :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "pets", :force => true do |t|

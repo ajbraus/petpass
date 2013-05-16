@@ -117,22 +117,19 @@
       <%= p.text_field :microchip_code, autocomplete: "off"  %>
     </div>
     <br />       
+
     <div class="field">
-      <div class="row">     
-        <div class="pull-left margin-left">
-          <%= p.label :sex, "Sex*" %><br />
-          <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
-        </div>   
-        <div class="pull-left margin-left">
-          <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
-          <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
-        </div>    
-      </div>
-    </div>
+      <%= p.label :sex, "Sex*" %><br />
+      <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
+    </div>     
     <div class="field upload_spayed" style="display:none;">
       <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
       <%= p.file_field :spayed_neutered_attachment %>
-    </div>    
+    </div>        
+    <div class="field">
+      <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
+      <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
+    </div>        
     <div class="field">
       <%= p.label :color, "Color*" %><br />
       <%= p.text_field :color, class:"required", autocomplete: "off" %>
