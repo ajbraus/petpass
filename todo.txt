@@ -1,5 +1,4 @@
 exisitng license ids
-IP address of humane society
 
 Admin dashboard 
   DONE tab park and municipal licenses 
@@ -159,3 +158,5 @@ DONE allow only park license
 DONE 30 days since you moved to the region boolean
 DONE include link to fee schedule
 DONE fix totalling
+
+DONE IP address of humane society

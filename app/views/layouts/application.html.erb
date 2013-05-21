@@ -53,8 +53,9 @@
     <%= bootstrap_flash %>
     <%= yield %>
 	</div>
+  <hr>
     <footer class="footer">
-      <a href="mailto:petpassteam@gmail.com?subject=Support or Suggestion for you Petpass Team">Contact</a>
+      <a href="mailto:petpassteam@gmail.com?subject=Support or Suggestion for you Petpass Team">Contact</a> | <%= link_to "Terms", terms_path %> | <%= link_to "Privacy", privacy_path %>
     </footer>  
     <script type="text/javascript">
     // This identifies your website in the createToken call below

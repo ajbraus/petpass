@@ -18,6 +18,9 @@ Petpass::Application.routes.draw do
   match 'license/municipal' => 'licenses#municipal'
   resources :licenses, only: [:index]
 
+  match '/terms', to: "static_pages#terms", as: "terms"
+  match '/privacy', to: "static_pages#privacy", as: "privacy"
+
   resources :charges
 
   # The priority is based upon order of creation:
