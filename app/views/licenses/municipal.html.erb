@@ -54,7 +54,7 @@ td { height: 70px; vertical-align: top; }
   <TD COLSPAN=4>Rabies Shot Expir. Date
     <br />
     <br />
-    <strong><%= @pet.rabies_expiration %></strong> 
+    <strong><%= @pet.nice_rabies_expiration %></strong> 
   </TD>
  </TR>
  <TR >
@@ -123,7 +123,12 @@ td { height: 70px; vertical-align: top; }
 <% if @pet.vaccinated? %>
   <div class="page-break"></div>
   <h3>Proof of Rabies Vaccination</h3>
-  <%= image_tag @pet.rabies_attachment.url(:original) %>
+  <% url = @pet.rabies_attachment.url(:original) %>
+  <% if doc_types.include?(url.split('?')[0].last(3).downcase) %>
+      <iframe title="Rabies Proof" src="http://docs.google.com/viewer?url=<%= u(url) %>&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>
+  <% else %>
+      <%= image_tag url %>
+  <% end %>
 <% else %>
   <h5 class="not_licensed">No Proof of Rabies Vaccination</h5>
   <%= link_to "Add Proof of Rabies Vaccination", edit_pet_path(@pet) %>
@@ -131,7 +136,12 @@ td { height: 70px; vertical-align: top; }
 <% if @pet.spayed_or_neutered? %>
   <div class="page-break"></div>
   <h3>Proof of Spayed / Neutered</h3>
-  <%= image_tag @pet.spayed_neutered_attachment.url(:original) %>
+  <% url = @pet.spayed_neutered_attachment.url(:original) %>
+  <% if doc_types.include?(url.split('?')[0].last(3).downcase) %>
+      <iframe title="Rabies Proof" src="http://docs.google.com/viewer?url=<%= u(url) %>&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>
+  <% else %>
+      <%= image_tag url %>
+  <% end %>  
 <% else %>
   <h5 class="not_licensed">No Proof of Spayed/Neutered</h5> 
   <%= link_to "Add Proof of Spayed/Neutered", edit_pet_path(@pet) %>

@@ -10,4 +10,18 @@ module PetsHelper
   def cat_breeds
     ["Mixed Breed", "Abyssinian", "Aegean cat", "Australian Mist", "American is a Curl", "American Bobtail", "American Polydactyl", "American Shorthair", "American Wirehair", "Arabian Mau", "Asian (cat)", "Asian Semi-longhair", "Balinese", "Bambino", "Bengal", "Birman", "Bombay", "Brazilian Shorthair", "British Shorthair", "British Longhair", "Burmese", "Burmilla", "California Spangled Cat", "Chantilly/Tiffany", "Chartreux", "Chausie", "Cheetoh", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Cyprus Aphrodite", "Devon Rex", "Donskoy or Don Sphynx", "Dragon Li", "Dwelf", "Egyptian Mau", "European Shorthair", "Exotic Shorthair", "German Rex", "Havana Brown", "Highlander", "Himalayan/Colorpoint Persian", "Japanese Bobtail", "Javanese", "Korat", "Kurilian Bobtail", "LaPerm", "Maine Coon", "Manx", "Mekong bobtail", "Minskin", "Munchkin", "Nebelung", "Napoleon", "Norwegian Forest Cat", "Ocicat", "Ojos Azules", "Oregon Rex", "Oriental Bicolor", "Oriental Shorthair", "Oriental Longhair", "Persian", "Peterbald", "Pixie-bob", "Ragamuffin", "Ragdoll", "Russian Blue", "Russian Black, White or Tabby", "Savannah", "Scottish Fold", "Selkirk Rex", "Serengeti cat", "Siamese", "Siberian", "Singapura", "Snowshoe", "Sokoke", "Somali", "Sphynx", "Thai", "Tonkinese", "Toyger", "Turkish Angora", "Turkish Van", "Ukrainian Levkoy", "Ussuri", "York Chocolate Cat"]
   end
+
+  def doc_types
+    ["pdf", "doc", "docx", "ppt"]
+  end
+
+  def rabies_proof(pet)
+    url = pet.rabies_attachment.url(:original)
+    if url.split('?')[0].last(3).downcase == "pdf"
+      url = u(url)
+      %Q{<iframe title="Rabies Proof" src="http://docs.google.com/viewer?url="#{url}&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>}
+    else
+      image_tag url
+    end
+  end  
 end
