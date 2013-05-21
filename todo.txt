@@ -1,9 +1,6 @@
-exisitng license ids
-
 Admin dashboard 
   DONE tab park and municipal licenses 
   DONE make checkboxes work
-  fix expired not defaulting to false
   make mass printing work
   mark as 'printed'
   make park license form look like city's
@@ -18,9 +15,7 @@ add jquery validation
 add placeholder.js for ie
 
 prevent age to be in the future
-prevent spayed/neuter expiration to be in the past
-
-terms and conditions
+prevent spayed/neuter expiration to be in the pass
 
 link to view license 
 
@@ -160,3 +155,6 @@ DONE include link to fee schedule
 DONE fix totalling
 
 DONE IP address of humane society
+
+
+DONE terms and conditions
