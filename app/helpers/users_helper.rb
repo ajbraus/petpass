@@ -65,6 +65,13 @@ def us_states
       ['Wisconsin', 'WI'],
       ['Wyoming', 'WY']
     ]
-end
+  end
+
+  def humane_society_ips
+    [
+      "50.50.23.70" #Dane County HS
+    ]
+  end
+
 
 end
