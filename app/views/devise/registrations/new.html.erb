@@ -122,10 +122,14 @@
       <%= p.label :sex, "Sex*" %><br />
       <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
     </div>     
-    <div class="field upload_spayed" style="display:none;">
-      <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
-      <%= p.file_field :spayed_neutered_attachment %>
-    </div>        
+    <% if humane_society_ips.include?(request.remote_ip) %>
+      <%= p.hidden_field :at_humane_society, value: true %>
+    <% else %>
+      <div class="field upload_spayed" style="display:none;">
+        <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
+        <%= p.file_field :spayed_neutered_attachment %>
+      </div>        
+    <% end %>
     <div class="field">
       <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
       <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
@@ -138,19 +142,21 @@
       <%= p.label :markings, "Markings*" %><br />
       <%= p.text_field :markings, class:"required", autocomplete: "off" %>
     </div>
-    <h3>Rabies Vaccination</h3>
-    <div class="field rabies_tag">
-      <%= p.label :rabies_tag_number, "Rabies Tag Number" %><br />
-      <%= p.text_field :rabies_tag_number, autocomplete: "off"  %>
-    </div>
-    <div class="field rabies_tag">
-      <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
-      <%= p.file_field :rabies_attachment %>
-    </div>
-    <div class="field rabies_tag">
-      <%= p.label :rabies_expiration, "Rabies Expiration* (mm/dd/yyyy)" %><br />
-      <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
-    </div> 
+    <% unless humane_society_ips.include?(request.remote_ip) %>
+      <h3>Rabies Vaccination</h3>
+      <div class="field rabies_tag">
+        <%= p.label :rabies_tag_number, "Rabies Tag Number" %><br />
+        <%= p.text_field :rabies_tag_number, autocomplete: "off"  %>
+      </div>
+      <div class="field rabies_tag">
+        <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
+        <%= p.file_field :rabies_attachment %>
+      </div>
+      <div class="field rabies_tag">
+        <%= p.label :rabies_expiration, "Rabies Expiration* (mm/dd/yyyy)" %><br />
+        <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
+      </div> 
+    <% end %>
   <% end %>
 
   <div class="actions">

@@ -18,10 +18,12 @@ class PetsController < ApplicationController
     end    
   end
 
-  def print_license
-
+  def print_all
+    ids = params[:ids]
+    ids.each do |id|
+      id.print_license
+    end
   end
-
   
   # GET /pets
   # GET /pets.json

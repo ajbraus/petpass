@@ -138,6 +138,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    pdfkit (0.5.3)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.9.12)
@@ -230,6 +231,7 @@ GEM
     whenever (0.8.2)
       activesupport (>= 2.3.4)
       chronic (>= 0.6.3)
+    wkhtmltopdf-binary (0.9.9.1)
     xpath (0.1.4)
       nokogiri (~> 1.3)
 
@@ -253,6 +255,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   jquery-rails
   paperclip
+  pdfkit
   pg
   pry
   pry-debugger
@@ -265,3 +268,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   whenever
+  wkhtmltopdf-binary

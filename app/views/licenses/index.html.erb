@@ -33,6 +33,7 @@
       <th>Zip</th>
       <th>Vaccinated?</th>
       <th>License</th>
+      <th>Print</th>
     </tr>
   </thead>
   <% @municipal_licenses.each do |ml| %>
@@ -46,6 +47,7 @@
     <td><%= pet.user.zip %></td>
     <td><%= pet.vaccinated? %></td>
     <td><%= link_to "view license", license_municipal_path(id:pet.id) %></td>
+    <td><%= link_to "Print", license_municipal_path(id: ml, format: "pdf"), class:"btn" %></td>
   </tr>
   <% end %>
 </table>
@@ -66,6 +68,7 @@
       <th>Zip</th>
       <th>Vaccinated?</th>
       <th>License</th>
+      <th>Print</th>
     </tr>
   </thead>
   <% @park_licenses.each do |pl| %>
@@ -79,8 +82,9 @@
     <td><%= pet.user.zip %></td>
     <td><%= pet.vaccinated? %></td>
     <td><%= link_to "view license", license_park_path(id:pet.id) %></td>
+    <td><%= link_to "Print", license_park_path(id: pl.id, format: "pdf"), class:"btn" %></td>
   </tr>
   <% end %>
 </table>
-<%= link_to "Print Selected", print_license_path, class:"btn" %>
+<%= link_to "Print Selected", municipal_license_path(ml, format: "pdf"), class:"btn" %>
 <% end %>

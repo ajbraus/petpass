@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515155218) do
+ActiveRecord::Schema.define(:version => 20130528161851) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130515155218) do
     t.string   "rabies_tag_number"
     t.integer  "user_id"
     t.string   "species"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
     t.string   "rabies_attachment_file_name"
     t.string   "rabies_attachment_content_type"
     t.integer  "rabies_attachment_file_size"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20130515155218) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "liscense_id"
+    t.boolean  "at_humane_society",                       :default => false
   end
 
   add_index "pets", ["liscense_id"], :name => "index_pets_on_liscense_id"

@@ -1,3 +1,20 @@
+1. Need to specify password criteria so
+2. If password is wrong criteria don’t have it wipes out pets info which it does currently
+3. Have date auto format so you don’t have to type forward slashed
+4. Helpful if required fields were offset or bold or a different color because they won’t have images at this point
+5. Be able to upload license number to pet record
+6. Be able to upload microchip number on pet record
+7. Make markings a drop down
+8. Have Zip mapping
+9. Have a helptext or explanation beside the upload image boxes - there confusion because they don't have access to images. If you can do an if statement are remove these fields all together at the humane society that would be great! 
+We should only show them fields that they have to fill out while here to complete the transaction and then in the email we send them we should tell them to complete the account. 
+10. Cat Breeds:
+Add - "Domestic long hair" "Domestic short hair" "Domestic medium hair"
+11. If at DCHS have the "acquired pet in the last 30 days" auto checked
+12. Create a flyer to include in the adoption packet at the humane society.
+
+
+
 Admin dashboard 
   DONE tab park and municipal licenses 
   DONE make checkboxes work
@@ -26,6 +43,7 @@ primary_breed and secondary_breed
 add existing city license numbers
 
 opt_out of email reminders
+
 
 -----------------------------------------------------
 

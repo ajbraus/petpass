@@ -25,6 +25,9 @@ gem "twitter-bootstrap-rails"
 
 gem 'american_date'
 
+gem 'pdfkit'
+gem 'wkhtmltopdf-binary'
+
 gem 'pg'
 gem 'paperclip'
 gem "sendgrid", "~> 1.0.1"
