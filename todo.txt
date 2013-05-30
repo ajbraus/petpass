@@ -1,6 +1,3 @@
-if pet adopted at_humane_society . . . 
-  add text instead of proof for spayed and neutered and rabies
-  set expiration of rabies to x years
 
 only let export button work if one is checked
 mark the licenses as "printed" once exported to spreadsheet. Dump them into 'already printed' screen
@@ -182,3 +179,7 @@ DONE 6. Be able to upload microchip number on pet record
 DONE 10. Cat Breeds: Add - "Domestic long hair" "Domestic short hair" "Domestic medium hair"
 DONE 11. If at DCHS have the "acquired pet in the last 30 days" auto checked
 DONE (NIKO) 12. Create a flyer to include in the adoption packet at the humane society.
+
+DONE if pet adopted at_humane_society . . . 
+  add text instead of proof for spayed and neutered and rabies
+  set expiration of rabies to x years

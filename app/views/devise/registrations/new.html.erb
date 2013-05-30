@@ -130,6 +130,7 @@
     <% if humane_society_ips.include?(request.remote_ip) %>
       <%= p.hidden_field :at_humane_society, value: true %>
     <% else %>
+    <%= p.hidden_field :at_humane_society, value: false %>
       <div class="field upload_spayed" style="display:none;">
         <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered (Optional)" %><br />
         <%= p.file_field :spayed_neutered_attachment %>
