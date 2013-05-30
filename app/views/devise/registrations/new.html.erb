@@ -84,7 +84,7 @@
       <%= p.text_field :name, class:"required", autocomplete: "off"  %>
     </div>  
     <div class="field">
-      <div><label>Species</label></div>
+      <div><label>Species*</label></div>
       <% Pet::SPECIES.each do |s| %>
         <%= p.radio_button :species, "#{s}", id:"radio#{(Pet::SPECIES.index(s) + 1)}", class:"required" %>
         <%= p.label "radio#{(Pet::SPECIES.index(s) + 1)}", "#{s.humanize}" %>
@@ -110,12 +110,12 @@
       <% end %>
     </div>     
     <div class="field">
-      <%= p.label :avatar, "Pet Picture (helps with lost pet recovery)" %><br />
+      <%= p.label :avatar, "Pet Picture (Optional)" %><br />
       <%= p.file_field :avatar %>
     </div>
     <br />
     <div class="field">
-      <%= check_box_tag :has_microchip %> <%= label_tag :has_microchip, "Microchipped? (helps with lost pet recovery)" %>
+      <%= check_box_tag :has_microchip %> <%= label_tag :has_microchip, "Microchipped? (Optional)" %>
     </div>
     <div class="field show_micro" style="display:none;">
       <%= p.label :microchip_code, "Microchip Code*" %><br />
