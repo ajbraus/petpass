@@ -28,12 +28,13 @@
       <th><input type="checkbox" id="selectAll" /></th>
       <th>#</th>
       <th>Name</th>
+      <th>Species</th>
       <th>Age</th>
+      <th>County</th>
       <th>Municipality</th>
       <th>Zip</th>
       <th>Vaccinated?</th>
       <th>License</th>
-      <th>Print</th>
     </tr>
   </thead>
   <% @municipal_licenses.each do |ml| %>
@@ -42,17 +43,20 @@
     <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
     <td><%= ml.id %></td>
     <td><%= pet.name %></td>
+    <td><%= pet.species %></td>
     <td><%= pet.age %></td>
+    <td><%= pet.user.county %></td>
     <td><%= pet.user.city %></td>
     <td><%= pet.user.zip %></td>
     <td><%= pet.vaccinated? %></td>
-    <td><%= link_to "view license", license_municipal_path(id:pet.id) %></td>
-    <td><%= link_to "Print", license_municipal_path(id: ml, format: "pdf"), class:"btn" %></td>
+    <td><%= link_to "view", license_municipal_path(id:pet.id), class:"btn" %></td>
   </tr>
   <% end %>
 </table>
-<%= link_to "Print Selected", print_license_path, class:"btn" %>
+<%= link_to "Export", licenses_path(kind: "municipal", format: "xls"), class:"btn" %>
 <% end %>
+
+
 <% if params[:kind] == "park" %>
 <h2>Park Licenses</h2>
 <h5>total: <%= @park_licenses.count %></h5>
@@ -63,12 +67,13 @@
       <th><input type="checkbox" id="selectAll" /></th>
       <th>#</th>
       <th>Name</th>
+      <th>Species</th>
       <th>Age</th>
+      <th>County</th>
       <th>Municipality</th>
       <th>Zip</th>
       <th>Vaccinated?</th>
       <th>License</th>
-      <th>Print</th>
     </tr>
   </thead>
   <% @park_licenses.each do |pl| %>
@@ -77,14 +82,15 @@
     <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
     <td><%= pl.id %></td>
     <td><%= pet.name %></td>
+    <td><%= pet.species %></td>
     <td><%= pet.age %></td>
+    <td><%= pet.user.county %></td>
     <td><%= pet.user.city %></td>
     <td><%= pet.user.zip %></td>
     <td><%= pet.vaccinated? %></td>
-    <td><%= link_to "view license", license_park_path(id:pet.id) %></td>
-    <td><%= link_to "Print", license_park_path(id: pl.id, format: "pdf"), class:"btn" %></td>
+    <td><%= link_to "View", license_park_path(id:pet.id), class:'btn' %></td>
   </tr>
   <% end %>
 </table>
-<%= link_to "Print Selected", municipal_license_path(ml, format: "pdf"), class:"btn" %>
+<%= link_to "Export", licenses_path(kind: "park", format: "xls"), class:'btn' %>
 <% end %>

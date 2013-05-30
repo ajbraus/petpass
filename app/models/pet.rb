@@ -62,19 +62,51 @@ class Pet < ActiveRecord::Base
 
 
   def nice_rabies_expiration
-    self.rabies_expiration.strftime "%b %e %Y"
+    if self.at_humane_society? && self.created_at + 1.year > Date.today
+      (Date.today - self.created_at + 1.year).strftime "%b %e %Y"
+    else
+      self.rabies_expiration.strftime "%b %e %Y"
+    end
+  end
+
+  def rabies_proof
+    if self.at_humane_society? && self.created_at + 1.year > Date.today
+      return "Pet Adopted from Local Humane Society"
+    else
+      return license.pet.rabies_attachment.url(:original)
+    end
+  end
+
+  def spayed_or_neutered_proof
+    if self.at_humane_society?
+      return "Pet Adopted from Local Humane Society"
+    else
+      return license.pet.spayed_neutered_attachment.url(:original)
+    end
   end
 
   def spayed_or_neutered?
-    return spayed_neutered_attachment_file_size.present?
+    if self.at_humane_society?
+      return true
+    else
+      return spayed_neutered_attachment_file_size.present?
+    end
   end
 
   def vaccinated?
-    return rabies_attachment_file_size.present? && rabies_tag_number.present? && rabies_expiration.present? && rabies_expiration + 1.year > Date.today
+    if self.at_humane_society? && self.created_at + 1.year > Date.today
+      return true
+    else
+      return rabies_attachment_file_size.present? && rabies_tag_number.present? && rabies_expiration.present? && rabies_expiration + 1.year > Date.today
+    end
   end
 
   def until_vaccination_expires
-    Date.today - rabies_expiration + 1.year
+    if self.at_humane_society?
+      Date.today - self.created_at + 1.year
+    else
+      Date.today - self.rabies_expiration + 1.year
+    end
   end
 
   def has_municipal_license?

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Owner Full Name</Data></Cell>
+        <Cell><Data ss:Type="String">Address 1</Data></Cell>
+        <Cell><Data ss:Type="String">Address 2</Data></Cell>
+        <Cell><Data ss:Type="String">Zip</Data></Cell>
+        <Cell><Data ss:Type="String">Pet Name</Data></Cell>
+        <Cell><Data ss:Type="String">Breed</Data></Cell>
+        <Cell><Data ss:Type="String">Sex</Data></Cell>          
+        <Cell><Data ss:Type="String">Age</Data></Cell>
+        <Cell><Data ss:Type="String">Color</Data></Cell>
+        <Cell><Data ss:Type="String">Markings</Data></Cell>          
+        <Cell><Data ss:Type="String">Rabies Vac. Expiration</Data></Cell>
+        <Cell><Data ss:Type="String">Rabies Tag Number</Data></Cell>   
+        <Cell><Data ss:Type="String">Link to Rabies Proof</Data></Cell>   
+        <Cell><Data ss:Type="String">Link to Spay/Neuter Proof</Data></Cell>   
+      </Row>
+    <% @municipal_licenses.each do |license| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= license.pet.user.full_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.user.address_one %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.user.address_two %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= license.pet.user.zip %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.breed %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.sex %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= license.pet.age %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.color %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.markings %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.nice_rabies_expiration %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= license.pet.rabies_tag_number.upcase %></Data></Cell>
+        <Cell ss:HRef="<%= license.pet.rabies_attachment.url(:original) %>"><Data ss:Type="String">Rabies Proof</Data></Cell>
+        <Cell ss:HRef="<%= license.pet.spayed_neutered_attachment.url(:original) %>"><Data ss:Type="String">Spay/Neuter Proof</Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

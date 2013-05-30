@@ -54,7 +54,7 @@
 
         </ul>    
         <% if pet.has_municipal_license? %>
-          <div class="licensed"><strong>CITY LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "municipal").first.time_until_expires %> days</div>
+          <div class="licensed"><strong>CITY LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "municipal").first.time_until_expires %> days <%= link_to "View", license_municipal_path(id:pet.id)%></div>
         <% end %>
         <% if pet.has_park_license? %>
           <div class="green"><strong>PARK LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "park").first.time_until_expires %> days</div>

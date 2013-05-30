@@ -28,11 +28,11 @@
     <%= f.text_field :email, class:"required email" %>
   </div>
   <div class="field">
-    <%= f.label :password, "Password*" %><br />
+    <%= f.label :password, "Password* (min 6 characters)" %><br />
     <%= f.password_field :password, class:"required" %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Password Confirmation*" %><br />
     <%= f.password_field :password_confirmation, class:"required" %>
   </div>
 
@@ -91,18 +91,23 @@
       <% end %>
     </div>
     <div class="margin-left margin-top">
-      <%= p.label :breed, "Breed*" %><br />
       <div class="dog" style="display:none;">
+        <%= p.label :breed, "Breed*" %><br />
         <%= p.select :breed, primary_breed, class:"required" %>
       </div>
       <div class="cat" style="display:none;">
+        <%= p.label :breed, "Breed*" %><br />
         <%= p.select :breed, cat_breeds, class:"required" %>
       </div>
     </div>       
     <br />
     <div class="field">
       <%= p.check_box :recent %> 
-      <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>
+      <% if humane_society_ips.include?(request.remote_ip) %>  
+        <%= p.label :recent, "Aquired Pet Within Last 30 Days?", checked: true %>
+      <% else %> 
+        <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>      
+      <% end %>
     </div>     
     <div class="field">
       <%= p.label :avatar, "Pet Picture (helps with lost pet recovery)" %><br />
@@ -126,12 +131,12 @@
       <%= p.hidden_field :at_humane_society, value: true %>
     <% else %>
       <div class="field upload_spayed" style="display:none;">
-        <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered" %><br />
+        <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered (Optional)" %><br />
         <%= p.file_field :spayed_neutered_attachment %>
       </div>        
     <% end %>
     <div class="field">
-      <%= p.label :born_on, "Birth day (mm/dd/yyyy)*" %><br />
+      <%= p.label :born_on, "Birth date (mm/dd/yyyy) (estimated)*" %><br />
       <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
     </div>        
     <div class="field">
@@ -145,15 +150,15 @@
     <% unless humane_society_ips.include?(request.remote_ip) %>
       <h3>Rabies Vaccination</h3>
       <div class="field rabies_tag">
-        <%= p.label :rabies_tag_number, "Rabies Tag Number" %><br />
+        <%= p.label :rabies_tag_number, "Rabies Tag Number (optional)" %><br />
         <%= p.text_field :rabies_tag_number, autocomplete: "off"  %>
       </div>
       <div class="field rabies_tag">
-        <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination" %><br />
+        <%= p.label :rabies_attachment, "Upload Proof of Rabies Vaccination (optional)" %><br />
         <%= p.file_field :rabies_attachment %>
       </div>
       <div class="field rabies_tag">
-        <%= p.label :rabies_expiration, "Rabies Expiration* (mm/dd/yyyy)" %><br />
+        <%= p.label :rabies_expiration, "Rabies Expiration* (mm/dd/yyyy) (optional)" %><br />
         <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
       </div> 
     <% end %>

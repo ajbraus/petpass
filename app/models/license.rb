@@ -33,4 +33,13 @@ class License < ActiveRecord::Base
     # if expired 4 weeks ago tell them
     # if expired 6 weeks . . .
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << self.column_names
+      all.each do |license|
+        csv << license.attributes.values_at(*column_names)
+      end
+    end
+  end  
 end

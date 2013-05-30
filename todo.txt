@@ -1,18 +1,9 @@
-1. Need to specify password criteria so
-2. If password is wrong criteria don’t have it wipes out pets info which it does currently
-3. Have date auto format so you don’t have to type forward slashed
-4. Helpful if required fields were offset or bold or a different color because they won’t have images at this point
-5. Be able to upload license number to pet record
-6. Be able to upload microchip number on pet record
-7. Make markings a drop down
-8. Have Zip mapping
-9. Have a helptext or explanation beside the upload image boxes - there confusion because they don't have access to images. If you can do an if statement are remove these fields all together at the humane society that would be great! 
-We should only show them fields that they have to fill out while here to complete the transaction and then in the email we send them we should tell them to complete the account. 
-10. Cat Breeds:
-Add - "Domestic long hair" "Domestic short hair" "Domestic medium hair"
-11. If at DCHS have the "acquired pet in the last 30 days" auto checked
-12. Create a flyer to include in the adoption packet at the humane society.
+if pet adopted at_humane_society . . . 
+  add text instead of proof for spayed and neutered and rabies
+  set expiration of rabies to x years
 
+only let export button work if one is checked
+mark the licenses as "printed" once exported to spreadsheet. Dump them into 'already printed' screen
 
 
 Admin dashboard 
@@ -44,6 +35,7 @@ add existing city license numbers
 
 opt_out of email reminders
 
+progressive registration - move more to after login
 
 -----------------------------------------------------
 
@@ -115,6 +107,16 @@ share with facebook to wave petpass fee
 -----------------------------------------------------
 
 
+3. Have date auto format so you don’t have to type forward slashed
+4. Helpful if required fields were offset or bold or a different color because they won’t have images at this point
+5. Be able to upload license number to pet record - this requires asking for license expiration date
+7. Make markings a drop down - need the markings spreadsheet
+8. Have Zip mapping - ?
+9. update email to complete the accounts
+
+-----------------------------------------------------
+
+
 DONE create reminder email
 
 DONE
@@ -172,7 +174,11 @@ DONE 30 days since you moved to the region boolean
 DONE include link to fee schedule
 DONE fix totalling
 
+
 DONE IP address of humane society
-
-
 DONE terms and conditions
+DONE 1. Need to specify password criteria so if password is wrong criteria don’t have it wipes out pets info which it does currently
+DONE 6. Be able to upload microchip number on pet record
+DONE 10. Cat Breeds: Add - "Domestic long hair" "Domestic short hair" "Domestic medium hair"
+DONE 11. If at DCHS have the "acquired pet in the last 30 days" auto checked
+DONE (NIKO) 12. Create a flyer to include in the adoption packet at the humane society.
