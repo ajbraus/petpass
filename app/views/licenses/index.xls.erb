@@ -38,8 +38,13 @@
         <Cell><Data ss:Type="String"><%= license.pet.markings %></Data></Cell>
         <Cell><Data ss:Type="String"><%= license.pet.nice_rabies_expiration %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= license.pet.rabies_tag_number.upcase %></Data></Cell>
-        <Cell ss:HRef="<%= license.pet.rabies_attachment.url(:original) %>"><Data ss:Type="String">Rabies Proof</Data></Cell>
-        <Cell ss:HRef="<%= license.pet.spayed_neutered_attachment.url(:original) %>"><Data ss:Type="String">Spay/Neuter Proof</Data></Cell>
+        <% if license.pet.at_humane_society? %>
+          <Cell><Data ss:Type="String">Pet Licensed at Humane Society</Data></Cell>
+          <Cell><Data ss:Type="String">Pet Licensed at Humane Society</Data></Cell>
+        <% else %>
+          <Cell ss:HRef="<%= license.pet.rabies_attachment.url(:original) %>"><Data ss:Type="String">Rabies Proof</Data></Cell>
+          <Cell ss:HRef="<%= license.pet.spayed_neutered_attachment.url(:original) %>"><Data ss:Type="String">Spay/Neuter Proof</Data></Cell>
+        <% end %>
       </Row>
     <% end %>
     </Table>
