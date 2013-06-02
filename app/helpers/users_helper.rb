@@ -70,6 +70,7 @@ def us_states
   def humane_society_ips
     [
       "50.50.23.70" #Dane County HS
+      #"127.0.0.1" #localhost at adam's house for testing
     ]
   end
 

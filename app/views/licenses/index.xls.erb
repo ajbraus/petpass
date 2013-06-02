@@ -25,7 +25,7 @@
       </Row>
     <% @municipal_licenses.each do |license| %>
       <Row>
-        <Cell><Data ss:Type="String"><%= license.pet.user.full_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= license.pet.user.full_name.titleize %></Data></Cell>
         <Cell><Data ss:Type="String"><%= license.pet.user.address_one %></Data></Cell>
         <Cell><Data ss:Type="String"><%= license.pet.user.address_two %></Data></Cell>
         <Cell><Data ss:Type="Number"><%= license.pet.user.zip %></Data></Cell>
