@@ -5,7 +5,7 @@
   <div class="span5 pitch">
     <h2>Manage your pet's license and medical information</h2>
     <div class="lead whachaget">
-      Petpass . . . 
+      PetPass . . . 
         <p>puts local pet services at your fingertips</p>
         <p>lets you access your pet's data from anywhere</p>
         <p>helps to recover your pet</p>
@@ -58,7 +58,7 @@
     </div>     
   </div>
   <div class="clear-both">
-    Can't find your State or County? <%= link_to "request Petpass near you", "mailto:petpassteam@gmail.com?subject=Come to my county Petpass!" %> <br />
+    Can't find your State or County? <%= link_to "request PetPass near you", "mailto:petpassteam@gmail.com?subject=Come to my county PetPass!" %> <br />
   </div>
   <div class="field clear-both">
     <%= f.label :city, "Municipality*" %><br />
@@ -109,11 +109,13 @@
         <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>      
       <% end %>
     </div>     
+    <% unless humane_society_ips.include?(request.remote_ip) %>  
     <div class="field">
       <%= p.label :avatar, "Pet Picture (Optional)" %><br />
       <%= p.file_field :avatar %>
     </div>
     <br />
+    <% end %>
     <div class="field">
       <%= check_box_tag :has_microchip %> <%= label_tag :has_microchip, "Microchipped? (Optional)" %>
     </div>
@@ -137,7 +139,7 @@
       </div>        
     <% end %>
     <div class="field">
-      <%= p.label :born_on, "Birth date (mm/dd/yyyy) (estimated)*" %><br />
+      <%= p.label :born_on, "Pet's Birth date (mm/dd/yyyy) (estimated)*" %><br />
       <%= p.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
     </div>        
     <div class="field">

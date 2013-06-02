@@ -15,7 +15,8 @@ class Pet < ActiveRecord::Base
   								:spayed_neutered_attachment,
                   :microchip_code,
                   :species,
-                  :recent
+                  :recent,
+                  :at_humane_society
 
   validates :born_on,
   					:breed,
