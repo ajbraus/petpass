@@ -1,6 +1,6 @@
 class Pet < ActiveRecord::Base
   belongs_to :user
-  has_many :licenses
+  has_many :licenses, dependent: :destroy
   attr_accessible :name,
                   :avatar,
                   :breed, 

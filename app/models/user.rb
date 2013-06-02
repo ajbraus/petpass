@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     full_name.split.count == 3 ? full_name.split(' ')[1] : nil
   end
 
+  def full_name=(s)
+    write_attribute(:full_name, s.to_s.titleize) # The to_s is in case you get nil/non-string
+  end
+
   def send_welcome
     Notifier.delay.welcome(self, self.pets.first)
   end

@@ -1,4 +1,7 @@
 $ ->
+  #PLACHOLER IE
+  $.Placeholder.init();
+  
   #HEADER
   $('#logo img').wiggle();
   $('#logo').hover -> 

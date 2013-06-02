@@ -40,11 +40,17 @@
           <% end %>
         <% else %>
           <% if current_user.admin? %>
+            <% form_tag pets_path, :method => 'get' do %>
+              <p>
+                <%= text_field_tag :search, params[:search] %>
+                <%= submit_tag "Search", :name => nil %>
+              </p>
+            <% end %>
             <%= link_to "Administrator Dashboard", licenses_path(kind: "municipal") %> |
           <% end %>
-          <%= link_to "Welcome, #{current_user.full_name}", edit_user_registration_path %> | 
+          <%= link_to "#{current_user.full_name.titleize}", edit_user_registration_path %> | 
           <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-          <%= link_to 'New Pet', new_pet_path, class:'btn btn-success' %>
+          <%= link_to 'New Pet', new_pet_path, class:'btn btn-success btn-large' %>
         <% end %>   
       </div>
     </div>

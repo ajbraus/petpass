@@ -2,13 +2,14 @@ Admin dashboard
   only let export button work if one is checked
   mark the licenses as "printed" once exported to spreadsheet. Dump them into 'already printed' screen
   make park license form look like city's
+  add pagination
   show if from humane society
 
 humane society user can see all pets -- has to be lookup by license and rabies ID
 
 pet's birthdate
-add jquery validation
-add placeholder.js for ie
+
+
 
 prevent age to be in the future
 prevent spayed/neuter expiration to be in the pass
@@ -175,3 +176,5 @@ DONE (NIKO) 12. Create a flyer to include in the adoption packet at the humane s
 DONE if pet adopted at_humane_society . . . 
   add text instead of proof for spayed and neutered and rabies
   set expiration of rabies to x years
+
+DONE add placeholder.js for ie

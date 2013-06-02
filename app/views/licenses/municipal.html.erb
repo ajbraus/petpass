@@ -54,7 +54,7 @@ td { height: 70px; vertical-align: top; }
   <TD COLSPAN=4>Rabies Shot Expir. Date
     <br />
     <br />
-    <strong><%= @pet.nice_rabies_expiration %></strong> 
+    <strong><%= @pet.nice_rabies_expiration unless @pet.at_humane_society? %></strong> 
   </TD>
  </TR>
  <TR >

@@ -108,7 +108,7 @@
     <% end %>          
     <div class="field">
       <%= p.label :sex, "Sex*" %><br />
-      <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
+      <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required", prompt: "Select Sex" %>
     </div>     
     <% if humane_society_ips.include?(request.remote_ip) %>
       <%= p.hidden_field :at_humane_society, value: true %>
