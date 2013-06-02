@@ -47,12 +47,12 @@
     <%= f.text_field :born_on, class:"age-input required", placeholder:"mm/dd/yyyy" %>
   </div> 
   <div class="field">
-    <%= f.label :color, "Color*" %><br />
-    <%= f.text_field :color %>
-  </div>
+    <%= p.label :color, "Color*" %><br />
+    <%= p.select :color, coat_colors, class:"required", autocomplete: "off", prompt: 'Please Select Color' %>
+  </div>  
   <div class="field clear-both">
-    <%= f.label :markings, "Markings*" %><br />
-    <%= f.text_field :markings %>
+    <%= p.label :markings, "Markings (Optional)" %><br />
+    <%= p.select :markings, markings_list, class:"required", autocomplete: "off", prompt: 'Please Select Markings' %>
   </div>
   <h3>Vaccinations & Microchip Code</h3>
   <h4>Rabies Vaccination</h4>
