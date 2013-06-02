@@ -123,11 +123,15 @@ td { height: 70px; vertical-align: top; }
 <% if @pet.vaccinated? %>
   <div class="page-break"></div>
   <h3>Proof of Rabies Vaccination</h3>
-  <% url = @pet.rabies_attachment.url(:original) %>
-  <% if doc_types.include?(url.split('?')[0].last(3).downcase) %>
-      <iframe title="Rabies Proof" src="http://docs.google.com/viewer?url=<%= u(url) %>&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>
-  <% else %>
-      <%= image_tag url %>
+   <% if @pet.at_humane_society? %>
+     <h2>Pet Licensed at Humane Society</h2>
+   <% else %> 
+    <% url = @pet.rabies_attachment.url(:original) %>
+    <% if doc_types.include?(url.split('?')[0].last(3).downcase) %>
+        <iframe title="Rabies Proof" src="http://docs.google.com/viewer?url=<%= u(url) %>&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>
+    <% else %>
+        <%= image_tag url %>
+    <% end %>
   <% end %>
 <% else %>
   <h5 class="not_licensed">No Proof of Rabies Vaccination</h5>
@@ -136,12 +140,16 @@ td { height: 70px; vertical-align: top; }
 <% if @pet.spayed_or_neutered? %>
   <div class="page-break"></div>
   <h3>Proof of Spayed / Neutered</h3>
-  <% url = @pet.spayed_neutered_attachment.url(:original) %>
-  <% if doc_types.include?(url.split('?')[0].last(3).downcase) %>
-      <iframe title="Rabies Proof" src="http://docs.google.com/viewer?url=<%= u(url) %>&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>
+  <% if @pet.at_humane_society? %>
+    <h2>Pet Licensed at Humane Society</h2>
   <% else %>
-      <%= image_tag url %>
-  <% end %>  
+    <% url = @pet.spayed_neutered_attachment.url(:original) %>
+    <% if doc_types.include?(url.split('?')[0].last(3).downcase) %>
+        <iframe title="Rabies Proof" src="http://docs.google.com/viewer?url=<%= u(url) %>&embedded=true" width="100%" height="300" style="border: none;" frameborder="0"></iframe>
+    <% else %>
+        <%= image_tag url %>
+    <% end %>  
+  <% end %>
 <% else %>
   <h5 class="not_licensed">No Proof of Spayed/Neutered</h5> 
   <%= link_to "Add Proof of Spayed/Neutered", edit_pet_path(@pet) %>
