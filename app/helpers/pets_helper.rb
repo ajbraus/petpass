@@ -15,6 +15,14 @@ module PetsHelper
     ["pdf", "doc", "docx", "ppt"]
   end
 
+  def coat_colors
+    ["Black", "Dark Chocolate", "Brown", "Red", "Apricot", "Golden", "Dark Golden", "Off White (Cream)", "White", "Silver Grey", "Salt and Pepper", "Blue"]
+  end
+
+  def markings_list
+    ["Liver and Tan", "Black and Tan", "Black and White", "Red-brown and White", "Tri-color", "Tuxedo", "Spotted", "Harlequin", "Red Speckled", "Liver-ticked", "Blue Speckled", "Light Brindle", "Dark Brindle", "Dark Brindle and White", "Dark Sable", "Light Sable"]
+  end
+
   def rabies_proof(pet)
     url = pet.rabies_attachment.url(:original)
     if url.split('?')[0].last(3).downcase == "pdf"

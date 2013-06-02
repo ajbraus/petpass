@@ -3,29 +3,25 @@
     <%= image_tag 'hero/hero.png' %>
   </div>
   <div class="span5 pitch">
-    <h2>Manage your pet's license and medical information</h2>
-    <div class="lead whachaget">
-      PetPass . . . 
-        <p>puts local pet services at your fingertips</p>
-        <p>lets you access your pet's data from anywhere</p>
-        <p>helps to recover your pet</p>
-    </div>
+    <h2>The Easiest way to Manage your Pet's License and Medical Information</h2>
   </div>
 </div>
+
+<hr>
 
 <%= devise_error_messages! %>
 
 <div class="row">
-<div class="span6">
-  <h3>Get Started</h3>
+<div class="span7">
+  <h4>Get Started</h4>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :full_name, "Full Name*" %><br />
-    <%= f.text_field :full_name, :autofocus => true, class:"required" %>
+    <%= f.text_field :full_name, :autofocus => true, class:"required", autocomplete: :off %>
   </div>
   <div class="field">
     <%= f.label :email, "Email*" %><br />
-    <%= f.text_field :email, class:"required email" %>
+    <%= f.text_field :email, class:"required email", autocomplete: :off %>
   </div>
   <div class="field">
     <%= f.label :password, "Password* (min 6 characters)" %><br />
@@ -36,52 +32,54 @@
     <%= f.password_field :password_confirmation, class:"required" %>
   </div>
 
-  <h3>Your Personal Information</h3>
+  <h4>Personal Information</h4>
   <span class="red small">We only share your information with your permission</span><br />
   <br />  
   <div class="field">
     <%= f.label :address_one, "Address*" %><br />
-    <%= f.text_field :address_one, class:"required" %>
+    <%= f.text_field :address_one, class:"required", autocomplete: :off %>
   </div>
   <div class="field">
     <%= f.label :address_two, "Address line two" %><br />
     <%= f.text_field :address_two %>
   </div>
-  <div class="field pull-left">
-    <div class="pull-left">
+  <div class="field clear-both">
+    <%= f.label :city, "Municipality*" %><br />
+    <%= f.text_field :city, class:"city required", autocomplete: :off %>
+  </div>  
+  <div class="field row">
+    <div class="field span2">
+      <%= f.label :zip, "Zip*" %><br />
+      <%= f.text_field :zip, class:"zip required", autocomplete: :off %>
+    </div>     
+    <div class="span2">
       <%= f.label :state, "State*" %><br />
       <%= f.select :state, wisconsin, class:"state required" %><br>
     </div>
-    <div class="pull-left margin-left">
+    <div class="span2">
       <%= f.label :county, "County*" %><br />
       <%= f.select :county, wisco_counties, class:"required" %>
     </div>     
   </div>
+  <br>
   <div class="clear-both">
     Can't find your State or County? <%= link_to "request PetPass near you", "mailto:petpassteam@gmail.com?subject=Come to my county PetPass!" %> <br />
-  </div>
-  <div class="field clear-both">
-    <%= f.label :city, "Municipality*" %><br />
-    <%= f.text_field :city, class:"city required" %>
-  </div>
+  </div> 
+  <br>
   <div class="field">
-    <%= f.label :zip, "Zip*" %><br />
-    <%= f.text_field :zip, class:"zip required" %>
+    <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
+    <%= f.text_field :phone, placeholder: "(555) 555-5555", autocomplete: :off %>
   </div>  
   <div class="field">
     <%= f.check_box :recent %> 
     <%= f.label :recent, "Moved to Above Address in Last 30 Days?" %>
   </div>   
-  <br />
-  <div class="field">
-    <%= f.label :phone, "Phone number (helps with lost pet recovery)" %><br />
-    <%= f.text_field :phone, placeholder: "(555) 555-5555" %>
-  </div>  
-  <h3>Pet Information</h3>  
+
+  <h4>Pet Information</h4>  
   <%= f.fields_for :pets, resource.pets.build do |p| %>  
     <div class="field">
       <%= p.label :name, "Pet Name*" %><br />
-      <%= p.text_field :name, class:"required", autocomplete: "off"  %>
+      <%= p.text_field :name, class:"required", autocomplete: :off  %>
     </div>  
     <div class="field">
       <div><label>Species*</label></div>
@@ -101,30 +99,13 @@
       </div>
     </div>       
     <br />
-    <div class="field">
-      <%= p.check_box :recent %> 
-      <% if humane_society_ips.include?(request.remote_ip) %>  
-        <%= p.label :recent, "Aquired Pet Within Last 30 Days?", checked: true %>
-      <% else %> 
-        <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>      
-      <% end %>
-    </div>     
     <% unless humane_society_ips.include?(request.remote_ip) %>  
     <div class="field">
       <%= p.label :avatar, "Pet Picture (Optional)" %><br />
       <%= p.file_field :avatar %>
     </div>
     <br />
-    <% end %>
-    <div class="field">
-      <%= check_box_tag :has_microchip %> <%= label_tag :has_microchip, "Microchipped? (Optional)" %>
-    </div>
-    <div class="field show_micro" style="display:none;">
-      <%= p.label :microchip_code, "Microchip Code*" %><br />
-      <%= p.text_field :microchip_code, autocomplete: "off"  %>
-    </div>
-    <br />       
-
+    <% end %>          
     <div class="field">
       <%= p.label :sex, "Sex*" %><br />
       <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required" %>
@@ -144,14 +125,22 @@
     </div>        
     <div class="field">
       <%= p.label :color, "Color*" %><br />
-      <%= p.text_field :color, class:"required", autocomplete: "off" %>
+      <%= p.select :color, coat_colors, class:"required", autocomplete: "off", prompt: 'Please Select Color' %>
     </div>  
     <div class="field clear-both">
-      <%= p.label :markings, "Markings*" %><br />
-      <%= p.text_field :markings, class:"required", autocomplete: "off" %>
+      <%= p.label :markings, "Markings (Optional)" %><br />
+      <%= p.select :markings, markings_list, class:"required", autocomplete: "off", prompt: 'Please Select Markings' %>
     </div>
+    <div class="field">
+      <%= p.check_box :recent %> 
+      <% if humane_society_ips.include?(request.remote_ip) %>  
+        <%= p.label :recent, "Aquired Pet Within Last 30 Days?", checked: true %>
+      <% else %> 
+        <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>      
+      <% end %>
+    </div>     
     <% unless humane_society_ips.include?(request.remote_ip) %>
-      <h3>Rabies Vaccination</h3>
+      <h4>Rabies Vaccination (optional)</h4>
       <div class="field rabies_tag">
         <%= p.label :rabies_tag_number, "Rabies Tag Number (optional)" %><br />
         <%= p.text_field :rabies_tag_number, autocomplete: "off"  %>
@@ -165,6 +154,11 @@
         <%= p.text_field :rabies_expiration, placeholder:"mm/dd/yyyy", autocomplete: "off"  %>
       </div> 
     <% end %>
+    <h4>Microchip (optional)</h4>
+    <div class="field show_micro">
+      <%= p.label :microchip_code, "Microchip Code (Optional)" %><br />
+      <%= p.text_field :microchip_code %>
+    </div>     
   <% end %>
 
   <div class="actions">
@@ -173,18 +167,18 @@
 <% end %>
 </div>
 
-<div class="span6">
+<div class="span5">
   <div class="win">
     <%= image_tag "hugging.jpg", class:"img" %>
     <div>
-      <h3>Safe Pets Make Safe Neighborhoods</h3>
+      <h4>Safe Pets Make Safe Neighborhoods</h4>
       <div class="lead">Owners can manage their pet's account and post information about their pet for review by vet clinics and government officials.</div>       
     </div>
 
   <div class="win">
     <%= image_tag "kitten_pulse.jpg", class:"img" %>
     <div>
-      <h3>Pet Services at Your Fingertips</h3>
+      <h4>Pet Services at Your Fingertips</h4>
       <div class="lead">In the event of a lost, sick, or found pet, the PetPass online and mobile network can respond more quickly than traditional fliers and faxes.</div>  
     </div>
   </div>
@@ -192,7 +186,7 @@
   <div class="win">
     <%= image_tag "husky.jpg", class:"img" %>
     <div>
-      <h3>Connecting People Who Care</h3>
+      <h4>Connecting People Who Care</h4>
       <div class="lead">PetPass helps pet owners ensure their pet's health and wellness by connecting them with people and professionals who can help.</div>   
     </div>
   </div>

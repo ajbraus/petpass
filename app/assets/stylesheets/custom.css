@@ -10,6 +10,9 @@ margin: 0px;
 h3 {
   clear: both;
 }
+h4 {
+	margin-left:-15px;
+}
 
 /*a { color: #000; }*/
 /*a:visited { color: #666; }*/
@@ -298,7 +301,7 @@ list-style-type: disc;
 }
 
 #user_zip {
-	width: 80px;
+	width: 100px;
 }
 
 #signup input[type=checkbox] {
@@ -318,10 +321,6 @@ list-style-type: disc;
 
 .city {
 
-}
-
-.state {
-  width:50px;
 }
 
 .county {
@@ -763,8 +762,9 @@ text-align: center;
 	margin-left: 10px;
 }
 .field {
-  margin-left:15px;
+  margin-left:0;
 }
+
 
 .field input {
 -moz-border-radius: 8px;
@@ -788,6 +788,7 @@ transition: all 0.15s ease-in;
 -webkit-transition: all 0.15s ease-in 0;
 vertical-align: middle;
 border-radius:7px;
+margin-bottom:5px;
   }
 
 input {
@@ -823,7 +824,7 @@ label {
 select {
 display: inline-block;
 padding: 4px 3px 5px 5px;
-width: 130px;
+width:inherit;
 font-size: 14px;
 outline: none;
 color: #74646e;
@@ -832,6 +833,10 @@ border-radius: 4px;
 box-shadow: inset 1px 1px 2px #ddd8dc;
 background-color: #fff;
 margin-top: 5px;      
+}
+
+select .state {
+	width: 55px;
 }
 
 .age {
