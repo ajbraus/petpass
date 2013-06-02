@@ -4,6 +4,8 @@ Admin dashboard
   make park license form look like city's
   show if from humane society
 
+humane society user can see all pets -- has to be lookup by license and rabies ID
+
 pet's birthdate
 add jquery validation
 add placeholder.js for ie
@@ -15,8 +17,6 @@ link to view license
 
 test all emails
 
-primary_breed and secondary_breed
-
 add existing city license numbers
 
 opt_out of email reminders
@@ -24,6 +24,9 @@ opt_out of email reminders
 progressive registration - move more to after login
 
 -----------------------------------------------------
+
+
+primary_breed and secondary_breed
 
 save credit card data
 

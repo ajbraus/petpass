@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528161851) do
+ActiveRecord::Schema.define(:version => 20130602161332) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -68,11 +68,11 @@ ActiveRecord::Schema.define(:version => 20130528161851) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "liscense_id"
     t.boolean  "at_humane_society",                       :default => false
+    t.string   "license_id"
   end
 
-  add_index "pets", ["liscense_id"], :name => "index_pets_on_liscense_id"
+  add_index "pets", ["license_id"], :name => "index_pets_on_license_id"
   add_index "pets", ["microchip_code"], :name => "index_pets_on_microchip_code"
   add_index "pets", ["user_id"], :name => "index_pets_on_user_id"
 
