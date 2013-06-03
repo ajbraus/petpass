@@ -60,7 +60,7 @@
           <div class="green"><strong>PARK LICENSE</strong> expires in <%= pet.licenses.where('kind = ?', "park").first.time_until_expires %> days</div>
         <% end %>          
         <% if !pet.vaccinated? %>
-          <% if humane_society_ips.include?(request.remote_ip) && !pet.has_municipal_license? %>
+          <% if humane_society_ips.include?(request.ip) && !pet.has_municipal_license? %>
             <%= link_to "License #{pet.name}", new_charge_path(id: pet.id), class:"btn btn-large btn-primary" %><br />
           <% else %>
             <%= link_to "Add or Update Rabies Info", edit_pet_path(pet), class:"btn-disabled" %>

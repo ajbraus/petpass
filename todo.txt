@@ -1,6 +1,10 @@
 Get accurate external IP address of humane society
 Produce PDFs
 
+Remap the sex, update the pet records, and then upload the admin dashboard with the correct payout amount.
+
+Add type of park pass to admin screen
+
 Admin dashboard 
   only let export button work if one is checked
   mark the licenses as "printed" once exported to spreadsheet. Dump them into 'already printed' screen
@@ -11,7 +15,6 @@ Admin dashboard
 humane society user can see all pets -- has to be lookup by license and rabies ID
 
 pet's birthdate
-
 
 
 prevent age to be in the future

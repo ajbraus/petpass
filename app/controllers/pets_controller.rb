@@ -76,6 +76,10 @@ class PetsController < ApplicationController
     @user = current_user
     @pet = @user.pets.new(params[:pet])
 
+    if humane_society_ips.include?(request.remote_ip)
+      @pet.at_humane_society = true 
+    end
+
     respond_to do |format|
       if @pet.save
         format.html { redirect_to root_path, notice: 'Pet was successfully created.' }

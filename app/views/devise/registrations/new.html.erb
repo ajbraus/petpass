@@ -99,7 +99,7 @@
       </div>
     </div>       
     <br />
-    <% unless humane_society_ips.include?(request.remote_ip) %>  
+    <% unless humane_society_ips.include?(request.ip) %>  
     <div class="field">
       <%= p.label :avatar, "Pet Picture (Optional)" %><br />
       <%= p.file_field :avatar %>
@@ -110,10 +110,7 @@
       <%= p.label :sex, "Sex*" %><br />
       <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required", prompt: "Select Sex" %>
     </div>     
-    <% if humane_society_ips.include?(request.remote_ip) %>
-      <%= p.hidden_field :at_humane_society, value: true %>
-    <% else %>
-    <%= p.hidden_field :at_humane_society, value: false %>
+    <% unless humane_society_ips.include?(request.ip) %>
       <div class="field upload_spayed" style="display:none;">
         <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered (Optional)" %><br />
         <%= p.file_field :spayed_neutered_attachment %>
@@ -133,13 +130,13 @@
     </div>
     <div class="field">
       <%= p.check_box :recent %> 
-      <% if humane_society_ips.include?(request.remote_ip) %>  
+      <% if humane_society_ips.include?(request.ip) %>  
         <%= p.label :recent, "Aquired Pet Within Last 30 Days?", checked: true %>
       <% else %> 
         <%= p.label :recent, "Aquired Pet Within Last 30 Days?" %>      
       <% end %>
     </div>     
-    <% unless humane_society_ips.include?(request.remote_ip) %>
+    <% unless humane_society_ips.include?(request.ip) %>
       <h4>Rabies Vaccination (optional)</h4>
       <div class="field rabies_tag">
         <%= p.label :rabies_tag_number, "Rabies Tag Number (optional)" %><br />
