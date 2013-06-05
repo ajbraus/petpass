@@ -1,4 +1,12 @@
 $ ->
+
+  #EXPORT BUTTONS
+  $(':checkbox').click ->
+    if $(":checked").length > 0
+      $('.admin-btn').removeClass("btn-disabled")
+    else
+      $('.admin-btn').addClass("btn-disabled")
+
   #PLACHOLER IE
   $.Placeholder.init();
   

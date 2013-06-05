@@ -23,7 +23,7 @@
         <Cell><Data ss:Type="String">Link to Rabies Proof</Data></Cell>   
         <Cell><Data ss:Type="String">Link to Spay/Neuter Proof</Data></Cell>   
       </Row>
-    <% @municipal_licenses.each do |license| %>
+    <% @licenses.each do |license| %>
       <Row>
         <Cell><Data ss:Type="String"><%= license.pet.user.full_name.titleize %></Data></Cell>
         <Cell><Data ss:Type="String"><%= license.pet.user.address_one %></Data></Cell>

@@ -1,7 +1,9 @@
-Get accurate external IP address of humane society
-Produce PDFs
-
 Remap the sex, update the pet records, and then upload the admin dashboard with the correct payout amount.
+Mark as printed
+  on click, grab all checked boxes and suck out ids,
+  submit all ids as variable to /licenses path
+
+Produce PDFs
 
 Add type of park pass to admin screen
 
@@ -184,3 +186,7 @@ DONE if pet adopted at_humane_society . . .
   set expiration of rabies to x years
 
 DONE add placeholder.js for ie
+
+
+
+DONE Get accurate external IP address of humane society

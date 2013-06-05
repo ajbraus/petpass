@@ -16,8 +16,12 @@ Petpass::Application.routes.draw do
 
   match 'license/park' => 'licenses#park'
   match 'license/municipal' => 'licenses#municipal'
-  resources :licenses, only: [:index]
-  match 'licenses.xls' => 'licenses#excel', as: 'excel'
+  resources :licenses, only: [:index] do
+    collection do
+      post 'export'
+    end
+  end
+
 
   match '/terms', to: "static_pages#terms", as: "terms"
   match '/privacy', to: "static_pages#privacy", as: "privacy"

@@ -5,7 +5,7 @@
     <li>
   <% end %>
     <%= link_to licenses_path(kind: "municipal") do %>
-      municipal Licenses (<%= @municipal_licenses.count %>)
+      Municipal Licenses (<%= @municipal_licenses.count %>)
     <% end %>
   </li>
   <% if params[:kind] == "park" %>
@@ -17,84 +17,179 @@
       Park Licenses (<%= @park_licenses.count %>)
     <% end %>
   </li>
-</ul>
-<% if params[:kind] == "municipal" %>
-<h2>Municipal Licenses</h2>
-<h5>total: <%= @municipal_licenses.count %></h5>
-<h5>total owed: $<%= @total_municipal_charge %></h5>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><input type="checkbox" id="selectAll" /></th>
-      <th>#</th>
-      <th>Name</th>
-      <th>Species</th>
-      <th>Age</th>
-      <th>County</th>
-      <th>Municipality</th>
-      <th>Zip</th>
-      <th>Vaccinated?</th>
-      <th>Spay/Neutered?</th>
-      <th>Humane Society</th>
-      <th>License</th>
-    </tr>
-  </thead>
-  <% @municipal_licenses.each do |ml| %>
-  <% pet = ml.pet %>
-  <tr>
-    <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
-    <td><%= ml.id %></td>
-    <td><%= pet.name %></td>
-    <td><%= pet.species %></td>
-    <td><%= pet.age %></td>
-    <td><%= pet.user.county %></td>
-    <td><%= pet.user.city %></td>
-    <td><%= pet.user.zip %></td>
-    <td><%= pet.vaccinated? %></td>
-    <td><%= pet.spayed_or_neutered? %></td>
-    <td><%= pet.at_humane_society? %></td>
-    <td><%= link_to "view", license_municipal_path(id:pet.id), class:"btn" %></td>
-  </tr>
+  <% if params[:kind] == "printed" %>
+    <li class="active">
+  <% else %>
+    <li>
   <% end %>
-</table>
-<%= link_to "Export", licenses_path(kind: "municipal", format: "xls"), class:"btn" %>
+    <%= link_to licenses_path(kind: "printed") do %>
+      Printed Licenses (<%= @printed_licenses_count %>)
+    <% end %>
+  </li>
+</ul>
+<%= form_tag export_licenses_path do %>
+  <% if params[:kind] == "municipal" %>
+    <h2>Municipal Licenses</h2>
+    <h5>total: <%= @municipal_licenses.count %></h5>
+    <h5>total owed: $<%= @total_municipal_charge %></h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll" /></th>
+          <th>#</th>
+          <th>Name</th>
+          <th>Species</th>
+          <th>Age</th>
+          <th>County</th>
+          <th>Municipality</th>
+          <th>Zip</th>
+          <th>Vaccinated?</th>
+          <th>Spay/Neutered?</th>
+          <th>Humane Society</th>
+          <th>License</th>
+        </tr>
+      </thead>
+      <% @municipal_licenses.each do |ml| %>
+      <% pet = ml.pet %>
+      <tr>
+        <td><%= check_box_tag "ids[]", pet.id %></td>
+        <td><%= ml.id %></td>
+        <td><%= pet.name %></td>
+        <td><%= pet.species %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.user.county %></td>
+        <td><%= pet.user.city %></td>
+        <td><%= pet.user.zip %></td>
+        <td><%= pet.vaccinated? %></td>
+        <td><%= pet.spayed_or_neutered? %></td>
+        <td><%= pet.at_humane_society? %></td>
+        <td><%= link_to "view", license_municipal_path(id:pet.id), class:"btn" %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+
+  <% if params[:kind] == "park" %>
+    <h2>Park Licenses</h2>
+    <h5>total: <%= @park_licenses.count %></h5>
+    <h5>total owed: $<%= @total_park_charge %></h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll" /></th>
+          <th>#</th>
+          <th>Name</th>
+          <th>Species</th>
+          <th>Age</th>
+          <th>County</th>
+          <th>Municipality</th>
+          <th>Zip</th>
+          <th>Vaccinated?</th>
+          <th>License</th>
+        </tr>
+      </thead>
+      <% @park_licenses.each do |pl| %>
+      <% pet = pl.pet %>
+      <tr>
+        <td><%= check_box_tag "ids[]", pet.id %></td>
+        <td><%= pl.id %></td>
+        <td><%= pet.name %></td>
+        <td><%= pet.species %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.user.county %></td>
+        <td><%= pet.user.city %></td>
+        <td><%= pet.user.zip %></td>
+        <td><%= pet.vaccinated? %></td>
+        <td><%= link_to "View", license_park_path(id:pet.id), class:'btn' %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+  <% if params[:kind] == "printed" %>
+    <h2>Printed Licenses</h2>
+    <h5>total: <%= @printed_licenses_count %></h5>
+    <h5>total owed: $<%= @total_printed_charge %></h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="selectAll" /></th>
+          <th>#</th>
+          <th>Name</th>
+          <th>Species</th>
+          <th>Age</th>
+          <th>County</th>
+          <th>Municipality</th>
+          <th>Zip</th>
+          <th>Vaccinated?</th>
+          <th>Spay/Neutered?</th>
+          <th>Humane Society</th>
+          <th>License</th>
+        </tr>
+      </thead>
+      <% @printed_licenses.each do |ml| %>
+      <% pet = ml.pet %>
+      <tr>
+        <td><%= check_box_tag "ids[]", pet.id %></td>
+        <td><%= ml.id %></td>
+        <td><%= pet.name %></td>
+        <td><%= pet.species %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.user.county %></td>
+        <td><%= pet.user.city %></td>
+        <td><%= pet.user.zip %></td>
+        <td><%= pet.vaccinated? %></td>
+        <td><%= pet.spayed_or_neutered? %></td>
+        <td><%= pet.at_humane_society? %></td>
+        <td><%= link_to "view", license_municipal_path(id:pet.id), class:"btn" %></td>
+      </tr>
+      <% end %>
+    </table>
+  <% end %>
+  <div id="exportPDF" class="btn btn-primary" data-format="pdf">
+    Export to PDF
+  </div>
+  <div id="exportXLS" class="btn btn-warning" data-format="xls">
+    Export to Excel
+  </div>
+  <div id="exportSubmit" class="btn btn-warning" data-format="submit">
+    Mark as Submitted!
+  </div>
 <% end %>
 
+<script>
+  $('.btn').click(function(){
+    var type = $(this).data("format");
+    var format = $("<input>").attr("type", "hidden").val(type);
+    var ids = $(":checked").data("pet-id");
 
-<% if params[:kind] == "park" %>
-<h2>Park Licenses</h2>
-<h5>total: <%= @park_licenses.count %></h5>
-<h5>total owed: $<%= @total_park_charge %></h5>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><input type="checkbox" id="selectAll" /></th>
-      <th>#</th>
-      <th>Name</th>
-      <th>Species</th>
-      <th>Age</th>
-      <th>County</th>
-      <th>Municipality</th>
-      <th>Zip</th>
-      <th>Vaccinated?</th>
-      <th>License</th>
-    </tr>
-  </thead>
-  <% @park_licenses.each do |pl| %>
-  <% pet = pl.pet %>
-  <tr>
-    <td><input type="checkbox" class="pet-row" data-pet-id="<%= pet.id %>" /></td>
-    <td><%= pl.id %></td>
-    <td><%= pet.name %></td>
-    <td><%= pet.species %></td>
-    <td><%= pet.age %></td>
-    <td><%= pet.user.county %></td>
-    <td><%= pet.user.city %></td>
-    <td><%= pet.user.zip %></td>
-    <td><%= pet.vaccinated? %></td>
-    <td><%= link_to "View", license_park_path(id:pet.id), class:'btn' %></td>
-  </tr>
-  <% end %>
-</table>
-<%= link_to "Export", licenses_path(kind: "park", format: "xls"), class:'btn' %>
+    $('form').append(ids, format).submit();
+  });
+</script>
+
+
+<!-- <div class="btn btn-disabled admin-btn" data-format="xls">
+  Export to .xls
+</div>
+<div class="btn btn-disabled admin-btn" data-format="pdf">
+  Export to .pdf
+</div>
+<div class="btn btn-disabled btn-warning admin-btn" data-format="submit">
+  Mark as Submitted
+</div>
+ -->
+
+<% if false %>
+<script>
+  $('.btn').click(function(){
+    var format = $(this).data("format")
+    var ids = $(":checked").data("pet-id")
+
+    $.get('/licenses', { format: format, "ids[]": ids }, format);
+
+    return false;
+  });
+</script>
+
 <% end %>

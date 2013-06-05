@@ -25,8 +25,7 @@ gem "twitter-bootstrap-rails"
 
 gem 'american_date'
 
-gem 'pdfkit'
-gem 'wkhtmltopdf-binary'
+gem 'prawn'
 
 gem 'pg'
 gem 'paperclip'

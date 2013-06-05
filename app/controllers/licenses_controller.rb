@@ -1,18 +1,58 @@
 class LicensesController < ApplicationController
   def index    
-    @licenses = License.where("id IN ?", params[:ids]) if params[:id]
-
     @municipal_licenses = License.where("kind = ? AND expired != ? AND printed != ?", "municipal", true, true)
     @park_licenses = License.where("kind = ? AND expired != ? AND printed != ?", "park", true, true)
     @total_park_charge = @park_licenses.inject(0) {|sum, ml| sum += ml.amount_paid.to_i }/100
     @total_municipal_charge = @municipal_licenses.inject(0) {|sum, ml| sum += ml.amount_paid.to_i }/100
+    
+    @printed_licenses_count = License.where("printed = ?", true).count
+    @printed_licenses = License.where("printed = ?", true)
+    @total_printed_charge = @printed_licenses.inject(0) {|sum, ml| sum += ml.amount_paid.to_i }/100
 
     respond_to do |format|
       format.html # license.html.erb
-      format.json { render json: @pet }
-      #format.csv { render text: License.to_csv(@muncipal_licenses) }
-      format.xls #{ send_data @municipal_licenses.to_csv(col_sep: "\t") }
+      format.js
+      format.json { render json: @licenses }
     end     
+  end
+
+  def export
+    ids = params[:ids].map { |i| i.to_i }
+    @licenses = License.find(ids)
+    if params[:format] == "submit"
+      @licenses.each do |l|
+        l.printed = true
+        l.save
+      end
+    end
+    
+    filename = "licenses_#{Date.today}"
+
+    if params[:format] == "pdf"
+      render :file => filename, :content_type => 'application/pdf'
+    end
+    if params[:format] == "xls"
+      render :file => filename, :content_type => 'application/xls'
+    end
+
+    # respond_to do |format|
+    #   format.html # license.html.erb
+    #   format.csv { render text: License.to_csv(@licenses) }
+    #   # format.xls do
+    #   # end
+    #   format.pdf do
+    #     pdf = Prawn::Document.new
+    #     pdf.text "Hello World"
+    #     send_data pdf.render, type: 'application/pdf', disposition: 'inline', filename: 'blah.pdf'
+    #   end
+    #   # format.pdf do
+    #   #   pdf = LicensePdf.new(@licenses, view_context)
+    #   #   send_data pdf.render, filename: "licenses_#{Date.today}.pdf",
+    #   #                         type: "application/pdf",
+    #   #                         disposition: "inline"
+    #   # end
+    #   format.json { render json: @licenses }
+    # end 
   end
 
   def show
