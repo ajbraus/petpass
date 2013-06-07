@@ -106,11 +106,16 @@
     </div>
     <br />
     <% end %>          
-    <div class="field">
-      <%= p.label :sex, "Sex*" %><br />
-      <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required", prompt: "Select Sex" %>
-    </div>     
-    <% unless humane_society_ips.include?(request.ip) %>
+    <% if humane_society_ips.include?(request.ip) %>
+      <div class="field">
+        <%= p.label :sex, "Sex*" %><br />
+        <%= p.select "sex", ["Male Neutered", "Female Spayed"], class:"required", prompt: "Select Sex" %>
+      </div>     
+    <% else %>
+      <div class="field">
+        <%= p.label :sex, "Sex*" %><br />
+        <%= p.select "sex", ["Male Intact", "Male Neutered", "Female Intact",  "Female Spayed"], class:"required", prompt: "Select Sex" %>
+      </div> 
       <div class="field upload_spayed" style="display:none;">
         <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered (Optional)" %><br />
         <%= p.file_field :spayed_neutered_attachment %>

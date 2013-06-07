@@ -48,7 +48,7 @@ td { height: 70px; vertical-align: top; }
     <br />
     <strong><%= @pet.name %></strong> 
   </TD>
-  <TD COLSPAN=4>Breed
+  <TD COLSPAN=5>Breed
     <br />
     <br />
     <strong><%= @pet.breed %></strong> 
@@ -59,55 +59,31 @@ td { height: 70px; vertical-align: top; }
     <strong><%= @pet.nice_rabies_expiration %></strong> 
   </TD>
  </TR>
- <TR >
-  <TD class="short align-center" COLSPAN=3>Color</TD>
-  <TD class="short align-center" COLSPAN=1>Age</TD>
-  <TH class="short align-center" COLSPAN=4>Choose one</TH>
-  <TD class="short" COLSPAN=4>Rabies Tag No.<br /><strong><%= @pet.rabies_tag_number.upcase %></strong></TD>
- </TR>
  <TR>
-  <TD COLSPAN=3>
+  <TD COLSPAN=3>Color
     <br />
     <br />
     <strong><%= @pet.color %></strong> 
   </TD>
-  <TD COLSPAN=1>
+  <TD COLSPAN=1>Age
     <br />
     <br />
     <strong><%= @pet.age %></strong> 
   </TD>
-  <TD COLSPAN=1>Neutered Male
+  <TD COLSPAN=2>Sex
     <br />
     <br />
-    <% if @pet.sex.downcase == "male neutered" && @pet.spayed_or_neutered? %>
-      <strong>X</strong>
-    <% end %>
+    <strong><%= @pet.sex %></strong>
   </TD>
-  <TD COLSPAN=1>Unneutered Male
-    <br />
-    <br />
-    <% if @pet.sex.downcase == "male intact" && !@pet.spayed_or_neutered? %>
-      <strong>X</strong>
-    <% end %>
-  </TD>
-  <TD COLSPAN=1>Spayed Female
-    <br />
-    <br />
-    <% if @pet.sex.downcase == "female spayed" && @pet.spayed_or_neutered? %>
-      <strong>X</strong>
-    <% end %>
-  </TD>
-  <TD COLSPAN=1>Unspayed Female
-    <br />
-    <br />
-    <% if @pet.sex.downcase == "female intact" && !@pet.spayed_or_neutered? %>
-      <strong>X</strong>
-    <% end %>
-  </TD>
-  <TD COLSPAN=4>Markings
+  <TD COLSPAN=3>Markings
     <br />
     <br />
     <strong><%= @pet.markings %></strong>
+  </TD>
+  <TD COLSPAN=3>Rabies Tag No.
+    <br />
+    <br />
+    <strong><%= @pet.rabies_tag_number.upcase %></strong>
   </TD>
  </TR>
  <TR>
