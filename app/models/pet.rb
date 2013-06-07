@@ -16,7 +16,8 @@ class Pet < ActiveRecord::Base
                   :microchip_code,
                   :species,
                   :recent,
-                  :at_humane_society
+                  :at_humane_society,
+                  :license_id
 
   validates :born_on,
   					:breed,

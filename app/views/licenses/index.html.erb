@@ -147,19 +147,28 @@
       <% end %>
     </table>
   <% end %>
-  <div id="exportPDF" class="btn btn-primary" data-format="pdf">
-    Export to PDF
-  </div>
-  <div id="exportXLS" class="btn btn-warning" data-format="xls">
-    Export to Excel
-  </div>
-  <div id="exportSubmit" class="btn btn-warning" data-format="submit">
-    Mark as Submitted!
-  </div>
+
+<% if false %>
+<%= select_tag :format, options_for_select([["PDF", "pdf"], ["XLS", "xls"], ["CSV", "csv"]], "pdf") %>
+<% end %>
+<%= select_tag :format, options_for_select([["PDF", "pdf"]], "pdf") %>
+<%= submit_tag "export", class:'btn btn-primary btn-disabled admin-btn' %>
 <% end %>
 
+<!-- <div class="btn btn-disabled admin-btn" data-format="pdf">
+  Export to .pdf
+</div>
+<div class="btn btn-disabled admin-btn" data-format="xls">
+  Export to .xls
+</div>
+ -->
+<div class="btn btn-disabled btn-warning admin-btn" id="markAsPrinted" data-format="submit">
+  Mark as Submitted
+</div>
+
+
 <script>
-  $('.btn').click(function(){
+  $('#markAsPrinted').click(function(){
     var type = $(this).data("format");
     var format = $("<input>").attr("type", "hidden").val(type);
     var ids = $(":checked").data("pet-id");
@@ -167,29 +176,3 @@
     $('form').append(ids, format).submit();
   });
 </script>
-
-
-<!-- <div class="btn btn-disabled admin-btn" data-format="xls">
-  Export to .xls
-</div>
-<div class="btn btn-disabled admin-btn" data-format="pdf">
-  Export to .pdf
-</div>
-<div class="btn btn-disabled btn-warning admin-btn" data-format="submit">
-  Mark as Submitted
-</div>
- -->
-
-<% if false %>
-<script>
-  $('.btn').click(function(){
-    var format = $(this).data("format")
-    var ids = $(":checked").data("pet-id")
-
-    $.get('/licenses', { format: format, "ids[]": ids }, format);
-
-    return false;
-  });
-</script>
-
-<% end %>

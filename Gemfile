@@ -25,7 +25,12 @@ gem "twitter-bootstrap-rails"
 
 gem 'american_date'
 
-gem 'prawn'
+gem 'prawn', git: 'https://github.com/prawnpdf/prawn.git'
+#gem 'pdf-merger' used :template => open('url') inside of pdf template
+#gem 'prawnto' used pure ruby inside of its own muncipal.pdf.rb class
+
+#gem 'pdfkit' html not feasible
+#gem 'wkhtmltopdf-binary'
 
 gem 'pg'
 gem 'paperclip'

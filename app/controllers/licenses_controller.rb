@@ -24,35 +24,30 @@ class LicensesController < ApplicationController
         l.printed = true
         l.save
       end
+      params[:format] == "js"
     end
     
-    filename = "licenses_#{Date.today}"
+    filename = "petpass_licenses_#{Date.today}"
 
-    if params[:format] == "pdf"
-      render :file => filename, :content_type => 'application/pdf'
-    end
-    if params[:format] == "xls"
-      render :file => filename, :content_type => 'application/xls'
-    end
-
-    # respond_to do |format|
-    #   format.html # license.html.erb
-    #   format.csv { render text: License.to_csv(@licenses) }
-    #   # format.xls do
-    #   # end
-    #   format.pdf do
-    #     pdf = Prawn::Document.new
-    #     pdf.text "Hello World"
-    #     send_data pdf.render, type: 'application/pdf', disposition: 'inline', filename: 'blah.pdf'
-    #   end
-    #   # format.pdf do
-    #   #   pdf = LicensePdf.new(@licenses, view_context)
-    #   #   send_data pdf.render, filename: "licenses_#{Date.today}.pdf",
-    #   #                         type: "application/pdf",
-    #   #                         disposition: "inline"
-    #   # end
-    #   format.json { render json: @licenses }
-    # end 
+    respond_to do |format|
+      format.html # license.html.erb
+      format.csv { render text: License.to_csv(@licenses) }
+      format.xls
+      format.pdf do
+        pdf = LicensesPdf.new(@licenses)
+        send_data pdf.render, type: 'application/pdf', 
+                              disposition: 'attachment', 
+                              filename: filename + ".pdf"
+      end
+      #format.js
+      # format.pdf do
+      #   pdf = LicensePdf.new(@licenses, view_context)
+      #   send_data pdf.render, filename: "licenses_#{Date.today}.pdf",
+      #                         type: "application/pdf",
+      #                         disposition: "inline"
+      # end
+      format.json { render json: @licenses }
+    end 
   end
 
   def show
@@ -79,9 +74,17 @@ class LicensesController < ApplicationController
     @pet = Pet.find(params[:id])
     @licenses = @pet.licenses.where('kind = ?', "municipal")
 
+    filename = @pet.name
+
     respond_to do |format|
       format.html # license.html.erb
       format.json { render json: @pet }
+      format.pdf do
+        pdf = MunicipalPdf.new(@pet)
+        send_data pdf.render, type: 'application/pdf', 
+                              disposition: 'attachment', 
+                              filename: filename + ".pdf"
+      end
     end  
   end
 

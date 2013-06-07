@@ -1,11 +1,11 @@
-Remap the sex, update the pet records, and then upload the admin dashboard with the correct payout amount.
-Mark as printed
-  on click, grab all checked boxes and suck out ids,
-  submit all ids as variable to /licenses path
+itemized reciept on confirmation email
+add rabies expiration if from DCHS
+Add type of park pass to admin screen
+
+produce park licenses HTML and PDF
 
 Produce PDFs
-
-Add type of park pass to admin screen
+  pass correct ids to LicensesPdf
 
 Admin dashboard 
   only let export button work if one is checked
@@ -190,3 +190,7 @@ DONE add placeholder.js for ie
 
 
 DONE Get accurate external IP address of humane society
+
+
+DONE  Remap the sex, update the pet records, and then upload the admin dashboard with the correct payout amount.
+DONE Mark as printed button
