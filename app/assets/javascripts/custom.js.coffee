@@ -20,7 +20,7 @@ $ ->
     $('#logo img').wiggle();
 
   #FORM
-  $('#user_pets_attributes_0_sex').change ->
+  $('#user_pets_attributes_0_sex, #pet_sex').change ->
     option = $('#user_pets_attributes_0_sex option:selected').text();
     if option == "Male Neutered" || option == "Female Spayed"
       $('.upload_spayed').show();
