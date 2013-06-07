@@ -1,23 +1,16 @@
 itemized reciept on confirmation email
 add rabies expiration if from DCHS
-Add type of park pass to admin screen
+Add type of park pass to admin screen and park license screen
 
 produce park licenses HTML and PDF
 
-Produce PDFs
-  pass correct ids to LicensesPdf
-
 Admin dashboard 
   only let export button work if one is checked
-  mark the licenses as "printed" once exported to spreadsheet. Dump them into 'already printed' screen
   make park license form look like city's
   add pagination
   show if from humane society
 
-humane society user can see all pets -- has to be lookup by license and rabies ID
-
-pet's birthdate
-
+lookup pets by license and rabies ID
 
 prevent age to be in the future
 prevent spayed/neuter expiration to be in the pass
