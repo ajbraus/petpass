@@ -17,23 +17,33 @@ class MunicipalPdf < Prawn::Document
       [{ content: "Date\n\n", colspan:2 }, { content: "License No.\n\n", colspan:3 }, "Amount\n\n", "Remarks\n\n"]
     ], :width => 500, :position => :center)
 
-    require 'open-uri'
-    
-    rabies_proof_format = @pet.rabies_attachment.url(:original).split('?')[0].last(3).downcase
-    spay_neutered_proof_format = @pet.spayed_neutered_attachment.url(:original).split('?')[0].last(3).downcase
-
-    if rabies_proof_format == "pdf" && spay_neutered_proof_format == "pdf"
-      start_new_page(:template => open(@pet.rabies_attachment.url(:original)))
-      start_new_page(:template => open(@pet.spayed_neutered_attachment.url(:original)))
-    elsif rabies_proof_format != "pdf" && spay_neutered_proof_format == "pdf"  
-      start_new_page(image open(@pet.rabies_attachment.url(:original)))
-      start_new_page(:template => open(@pet.spayed_neutered_attachment.url(:original)))
-    elsif rabies_proof_format == "pdf" && spay_neutered_proof_format != "pdf"
-      start_new_page(:template => open(@pet.rabies_attachment.url(:original)))
-      start_new_page(image open(@pet.spayed_neutered_attachment.url(:original)))
+    if @pet.at_humane_society?
+      move_down 20
+      text "Rabies Proof"
+      text "Pet Licensed at Humane Society"
+      move_down 20
+      text "Spayed and Neutered Proof"
+      text "Pet Licensed at Humane Society"
     else
-      start_new_page(image open(@pet.rabies_attachment.url(:original)))
-      start_new_page(image open(@pet.spayed_neutered_attachment.url(:original)))
+
+      require 'open-uri'
+
+      rabies_proof_format = @pet.rabies_attachment.url(:original).split('?')[0].last(3).downcase
+      spay_neutered_proof_format = @pet.spayed_neutered_attachment.url(:original).split('?')[0].last(3).downcase
+
+      if rabies_proof_format == "pdf" && spay_neutered_proof_format == "pdf"
+        start_new_page(:template => open(@pet.rabies_attachment.url(:original)))
+        start_new_page(:template => open(@pet.spayed_neutered_attachment.url(:original)))
+      elsif rabies_proof_format != "pdf" && spay_neutered_proof_format == "pdf"  
+        start_new_page(image open(@pet.rabies_attachment.url(:original)))
+        start_new_page(:template => open(@pet.spayed_neutered_attachment.url(:original)))
+      elsif rabies_proof_format == "pdf" && spay_neutered_proof_format != "pdf"
+        start_new_page(:template => open(@pet.rabies_attachment.url(:original)))
+        start_new_page(image open(@pet.spayed_neutered_attachment.url(:original)))
+      else
+        start_new_page(image open(@pet.rabies_attachment.url(:original)))
+        start_new_page(image open(@pet.spayed_neutered_attachment.url(:original)))
+      end
     end
   end
 end
