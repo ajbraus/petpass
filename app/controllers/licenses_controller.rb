@@ -24,13 +24,12 @@ class LicensesController < ApplicationController
         l.printed = true
         l.save
       end
-      params[:format] == "js"
     end
     
     filename = "petpass_licenses_#{Date.today}"
 
     respond_to do |format|
-      format.html # license.html.erb
+      format.html
       format.csv { render text: License.to_csv(@licenses) }
       format.xls
       format.pdf do

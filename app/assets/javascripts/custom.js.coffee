@@ -1,8 +1,12 @@
 $ ->
 
+  #ADMIN DASHBOARD  
+  $('#selectAll').click ->
+    $("input:checkbox").click()
+
   #EXPORT BUTTONS
   $(':checkbox').click ->
-    if $(":checked").length > 0
+    if $("input:checkbox:checked").length > 0
       $('.admin-btn').removeClass("btn-disabled")
     else
       $('.admin-btn').addClass("btn-disabled")
@@ -35,11 +39,7 @@ $ ->
 
   $('#add_pet').click ->
     $('#addPet').toggle();
-    
 
-  #ADMIN DASHBOARD  
-  $('#selectAll').click ->
-    $('.pet-row').click()
 
   $("#new_user").validate();
 

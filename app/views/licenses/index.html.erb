@@ -35,7 +35,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th><input type="checkbox" id="selectAll" /></th>
+          <th><span class="btn" id="selectAll">all</span></th>
           <th>#</th>
           <th>Name</th>
           <th>Species</th>
@@ -169,10 +169,11 @@
 
 <script>
   $('#markAsPrinted').click(function(){
-    var type = $(this).data("format");
-    var format = $("<input>").attr("type", "hidden").val(type);
+    var get_type = $(this).data("format");
+    var type = $("<input>").attr("type", "hidden").val(get_type);
     var ids = $(":checked").data("pet-id");
 
-    $('form').append(ids, format).submit();
+    $('form').append(type).submit();
+    return false
   });
 </script>
