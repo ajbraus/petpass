@@ -65,7 +65,7 @@ class Pet < ActiveRecord::Base
 
   def nice_rabies_expiration
     if self.at_humane_society? && self.created_at + 1.year > Date.today
-      (Date.today - self.created_at + 1.year).strftime "%b %e %Y"
+      (self.created_at + 1.year).strftime "%b %e %Y"
     elsif self.rabies_expiration.present?
       self.rabies_expiration.strftime "%b %e %Y"
     else 
