@@ -6,7 +6,7 @@ td { height: 70px; vertical-align: top; }
 .align-center { text-align: center; }
 </style>
 
-<p><%= link_to "Export to PDF", license_municipal_path(id: @pet.id, format: "pdf"), class:"btn btn-primary btn-large" %></p>
+<p><%= link_to "Export to PDF", license_municipal_path(id: @pet.id, license_id: @license.id, format: "pdf"), class:"btn btn-primary btn-large" %></p>
 
 <TABLE BORDER>
     <col width="40px" />
@@ -94,7 +94,10 @@ td { height: 70px; vertical-align: top; }
  <TR>
   <TD class="align-center" COLSPAN=2>Date<hr></TD>
   <TD class="align-center" COLSPAN=5>License No.<hr></TD>
-  <TD class="align-center" COLSPAN=2>Amount<hr></TD>
+  <TD class="align-center" COLSPAN=2>Amount
+    <br/>
+    <br/>
+    <%= @license.nice_amount_paid %><hr></TD>
   <TD class="align-center" COLSPAN=5>Remarks<hr></TD>
  </TR>
 </TABLE>

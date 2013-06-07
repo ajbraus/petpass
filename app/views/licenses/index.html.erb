@@ -45,7 +45,8 @@
           <th>Zip</th>
           <th>Vaccinated?</th>
           <th>Spay/Neutered?</th>
-          <th>Humane Society</th>
+          <th>Humane Society?</th>
+          <th>Amount Paid</th>
           <th>License</th>
         </tr>
       </thead>
@@ -63,7 +64,8 @@
         <td><%= pet.vaccinated? %></td>
         <td><%= pet.spayed_or_neutered? %></td>
         <td><%= pet.at_humane_society? %></td>
-        <td><%= link_to "view", license_municipal_path(id:pet.id), class:"btn" %></td>
+        <td><%= ml.nice_amount_paid %></td>
+        <td><%= link_to "view", license_municipal_path(id:pet.id, license_id: ml.id), class:"btn" %></td>
       </tr>
       <% end %>
     </table>

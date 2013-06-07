@@ -72,6 +72,7 @@ class LicensesController < ApplicationController
   def municipal
     @pet = Pet.find(params[:id])
     @licenses = @pet.licenses.where('kind = ?', "municipal")
+    @license = License.find(params[:license_id])
 
     filename = @pet.name
 
@@ -79,7 +80,7 @@ class LicensesController < ApplicationController
       format.html # license.html.erb
       format.json { render json: @pet }
       format.pdf do
-        pdf = MunicipalPdf.new(@pet)
+        pdf = MunicipalPdf.new(@license)
         send_data pdf.render, type: 'application/pdf', 
                               disposition: 'attachment', 
                               filename: filename + ".pdf"

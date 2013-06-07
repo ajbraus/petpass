@@ -1,4 +1,5 @@
 PDF load images
+add amount paid to 
 itemized reciept on confirmation email
 add rabies expiration if from DCHS
 Add type of park pass to admin screen and park license screen

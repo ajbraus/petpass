@@ -23,6 +23,10 @@ class License < ActiveRecord::Base
     (Date.parse("December 31") - Date.today).to_i
   end
 
+  def nice_amount_paid
+    "$" + (amount_paid / 100).to_s
+  end
+
   def self.check_license_expiration
     # Look up city licenses that are not expired
     # if close to expiration
