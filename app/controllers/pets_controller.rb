@@ -76,6 +76,7 @@ class PetsController < ApplicationController
     @user = current_user
     @pet = @user.pets.new(params[:pet])
 
+    binding.pry
     if humane_society_ips.include?(request.remote_ip)
       @pet.at_humane_society = true 
     end

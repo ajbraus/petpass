@@ -1,4 +1,5 @@
 class LicensesController < ApplicationController
+  before_filter :authenticate_user!
   def index    
     @municipal_licenses = License.where("kind = ? AND expired != ? AND printed != ?", "municipal", true, true)
     @park_licenses = License.where("kind = ? AND expired != ? AND printed != ?", "park", true, true)

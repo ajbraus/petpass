@@ -52,7 +52,7 @@
       <%= f.label :zip, "Zip*" %><br />
       <%= f.text_field :zip, class:"zip required", autocomplete: :off %>
     </div>     
-    <div class="span2">
+    <div class="span1">
       <%= f.label :state, "State*" %><br />
       <%= f.select :state, wisconsin, class:"state required" %><br>
     </div>
@@ -110,7 +110,8 @@
       <div class="field">
         <%= p.label :sex, "Sex*" %><br />
         <%= p.select "sex", ["Male Neutered", "Female Spayed"], class:"required", prompt: "Select Sex" %>
-      </div>     
+      </div>  
+      <%= p.hidden_field "at_humane_society", value: true %>   
     <% else %>
       <div class="field">
         <%= p.label :sex, "Sex*" %><br />
@@ -119,7 +120,8 @@
       <div class="field upload_spayed" style="display:none;">
         <%= p.label :spayed_neutered_attachment, "Upload Proof of Spayed/Neutered (Optional)" %><br />
         <%= p.file_field :spayed_neutered_attachment %>
-      </div>        
+      </div>    
+      <%= p.hidden_field "at_humane_society", value: false %>       
     <% end %>
     <div class="field">
       <%= p.label :born_on, "Pet's Birth date (mm/dd/yyyy) (estimated)*" %><br />

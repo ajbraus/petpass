@@ -1,18 +1,15 @@
 PDF load images
-add amount paid to 
 itemized reciept on confirmation email
-add rabies expiration if from DCHS
 Add type of park pass to admin screen and park license screen
-
-
+Make "mark as printed button in municipal.html"
+Make mark as printed work from licenses#index
 
 produce park licenses HTML and PDF
 
 Admin dashboard 
   only let export button work if one is checked
-  make park license form look like city's
   add pagination
-  show if from humane society
+  add sorting lists by municipality  
 
 lookup pets by license and rabies ID
 
@@ -22,12 +19,9 @@ prevent spayed/neuter expiration to be in the pass
 link to view license 
 
 test all emails
-
-add existing city license numbers
+  esp. send reminder to complete pet info
 
 opt_out of email reminders
-
-progressive registration - move more to after login
 
 -----------------------------------------------------
 
@@ -191,3 +185,9 @@ DONE Get accurate external IP address of humane society
 
 DONE  Remap the sex, update the pet records, and then upload the admin dashboard with the correct payout amount.
 DONE Mark as printed button
+
+DONE add amount paid to license
+DONE show if from humane society
+DONE pass "at_humane_society" in pet new form and registration new form
+DONE add rabies expiration if from DCHS
+DONE add existing city license numbers
