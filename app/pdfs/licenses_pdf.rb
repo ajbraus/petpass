@@ -42,17 +42,17 @@ class LicensesPdf < Prawn::Document
           start_new_page(:template => open(@pet.spayed_neutered_attachment.url(:original)))
         elsif rabies_proof_format != "pdf" && spay_neutered_proof_format == "pdf"  
           start_new_page
-          image @pet.rabies_attachment.url(:original)
+          image open(@pet.rabies_attachment.url(:original))
           start_new_page(:template => open(@pet.spayed_neutered_attachment.url(:original)))
         elsif rabies_proof_format == "pdf" && spay_neutered_proof_format != "pdf"
           start_new_page(:template => open(@pet.rabies_attachment.url(:original)))
           start_new_page
-          image @pet.spayed_neutered_attachment.url(:original)
+          image open(@pet.spayed_neutered_attachment.url(:original))
         else
           start_new_page
-          image @pet.rabies_attachment.url(:original)
+          image open(@pet.rabies_attachment.url(:original))
           start_new_page
-          image @pet.spayed_neutered_attachment.url(:original)
+          image open(@pet.spayed_neutered_attachment.url(:original))
         end 
       end  
     end
