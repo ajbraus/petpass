@@ -60,6 +60,11 @@ td { height: 70px; vertical-align: top; }
   </TD>
  </TR>
  <TR>
+  <TD COLSPAN=1>Species
+    <br />
+    <br />
+    <strong><%= @pet.species %></strong>
+  </TD>
   <TD COLSPAN=3>Color
     <br />
     <br />
@@ -94,10 +99,8 @@ td { height: 70px; vertical-align: top; }
  <TR>
   <TD class="align-center" COLSPAN=2>Date<hr></TD>
   <TD class="align-center" COLSPAN=5>License No.<hr></TD>
-  <TD class="align-center" COLSPAN=2>Amount
-    <br/>
-    <br/>
-    <%= @license.nice_amount_paid %><hr></TD>
+  <TD class="align-center" COLSPAN=2>Amount<hr>
+    <strong><%= @license.nice_amount_paid %></strong></TD>
   <TD class="align-center" COLSPAN=5>Remarks<hr></TD>
  </TR>
 </TABLE>

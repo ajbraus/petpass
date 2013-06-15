@@ -1,5 +1,5 @@
-PDF load images
-itemized reciept on confirmation email
+fix amount paid
+PDF load images (test@fifty.com password - new pet has two images)
 Add type of park pass to admin screen and park license screen
 Make "mark as printed button in municipal.html"
 Make mark as printed work from licenses#index
@@ -191,3 +191,6 @@ DONE show if from humane society
 DONE pass "at_humane_society" in pet new form and registration new form
 DONE add rabies expiration if from DCHS
 DONE add existing city license numbers
+
+
+DONE itemized reciept on confirmation email

@@ -16,6 +16,9 @@ class Notifier < ActionMailer::Base
     @pet = pet
     @city_fee = city_fee
     @park_fee = park_fee
+    @total = "$" + "%.2f" % ((@city_fee + @park_fee + 500)/100)
+    @city_fee = "$" + "%.2f" % (@city_fee/100)
+    @park_fee = "$" + "%.2f" % (@park_fee/100)
     mail to: @user.email, subject: "CONFIRMATION - Petpass has recieved #{@pet.name}'s license application for #{@user.city}"
   end
 

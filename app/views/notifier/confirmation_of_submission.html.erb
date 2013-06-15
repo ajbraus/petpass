@@ -1,5 +1,8 @@
-<h4 class="h4"><%= @user.full_name.titleize %>, </h4>
-<strong>Licenses submitted!</strong> 
+<h4 class="h4">Dear <%= @user.full_name.titleize %>, </h4>
+  You have successfully submitted your personal and pet information 
+  to Petpass! Within the next three days we will submit this information 
+  to your municipality: <strong><%= @user.city %></strong>. Expect your tag
+  in the mail in the next 3-6 weeks.
 <br />
 <br />
 <TABLE>
@@ -20,6 +23,18 @@
       <TD><%= @park_fee %></TD>
     </TR>    
   <% end %>
+  <TR>
+    <TD>PETPASS FEE</TD>
+    <TD></TD>
+    <TD>$5.00</TD>
+  </TR>    
+  <TR style="border-top:1px solid black">
+    <TD><strong>TOTAL</strong></TD>
+    <TD></TD>
+    <TD><strong><%= @total %></strong></TD>
+  </TR>    
 </TABLE>
 <br />
+<br />
+Thanks!
 <br />
