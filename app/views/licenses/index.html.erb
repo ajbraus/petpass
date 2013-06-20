@@ -37,15 +37,19 @@
         <tr>
           <th><a href="#" id="selectAll">all</a></th>
           <th>#</th>
-          <th>Name</th>
+          <th>Pet Name</th>
           <th>Species</th>
           <th>Age</th>
-          <th>County</th>
+          <th>Owner Name</th>
+          <th>Address 1</th>
+          <th>Address 2</th>
           <th>Municipality</th>
+          <th>County</th>
+          <th>State</th>
           <th>Zip</th>
           <th>Vaccinated?</th>
-          <th>Spay/Neutered?</th>
-          <th>Humane Society?</th>
+          <th>SN?</th>
+          <th>HS?</th>
           <th>Amount Paid</th>
           <th>License</th>
         </tr>
@@ -58,8 +62,12 @@
         <td><%= pet.name %></td>
         <td><%= pet.species %></td>
         <td><%= pet.age %></td>
-        <td><%= pet.user.county %></td>
+        <td><%= pet.user.full_name %></td>
+        <td><%= pet.user.address_one %></td>
+        <td><%= pet.user.address_two %></td>
         <td><%= pet.user.city %></td>
+        <td><%= pet.user.county %></td>
+        <td><%= pet.user.state %></td>
         <td><%= pet.user.zip %></td>
         <td><%= pet.vaccinated? %></td>
         <td><%= pet.spayed_or_neutered? %></td>
