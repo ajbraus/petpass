@@ -1,4 +1,5 @@
 PDF load images (test@fifty.com password - new pet has two images)
+don't allow clicking on export button until warm
 Add type of park pass to admin screen and park license screen
 Make "mark as printed button in municipal.html"
 Make mark as printed work from licenses#index
