@@ -11,6 +11,10 @@ $ ->
     else
       $('.admin-btn').addClass("btn-disabled")
 
+  $('.admin-btn').click (event) ->
+    if $(@).hasClass('btn-disabled')
+      return false
+
   #PLACHOLER IE
   $.Placeholder.init();
   

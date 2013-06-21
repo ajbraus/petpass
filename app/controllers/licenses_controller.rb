@@ -20,11 +20,9 @@ class LicensesController < ApplicationController
   def export
     ids = params[:ids].map { |i| i.to_i }
     @licenses = License.find(ids)
-    if params[:format] == "submit"
-      @licenses.each do |l|
-        l.printed = true
-        l.save
-      end
+    @licenses.each do |l|
+      l.printed = true
+      l.save
     end
     
     filename = "petpass_licenses_#{Date.today}"

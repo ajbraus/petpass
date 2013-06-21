@@ -58,7 +58,7 @@
       <% @municipal_licenses.each do |ml| %>
       <% pet = ml.pet %>
       <tr>
-        <td><%= check_box_tag "ids[]", pet.id %></td>
+        <td><%= check_box_tag "ids[]", ml.id %></td>
         <td><%= ml.id %></td>
         <td><%= pet.name %></td>
         <td><%= pet.species %></td>
@@ -91,28 +91,44 @@
         <tr>
           <th><input type="checkbox" id="selectAll" /></th>
           <th>#</th>
-          <th>Name</th>
+          <th>Pet Name</th>
           <th>Species</th>
           <th>Age</th>
-          <th>County</th>
+          <th>Owner Name</th>
+          <th>Address 1</th>
+          <th></th>
           <th>Municipality</th>
+          <th>County</th>
+          <th>State</th>
           <th>Zip</th>
+          <th>Phone</th>
           <th>Vaccinated?</th>
+          <th>SN?</th>
+          <th>HS?</th>
+          <th>Amount Paid</th>
           <th>License</th>
         </tr>
       </thead>
       <% @park_licenses.each do |pl| %>
       <% pet = pl.pet %>
       <tr>
-        <td><%= check_box_tag "ids[]", pet.id %></td>
+        <td><%= check_box_tag "ids[]", pl.id %></td>
         <td><%= pl.id %></td>
         <td><%= pet.name %></td>
         <td><%= pet.species %></td>
         <td><%= pet.age %></td>
-        <td><%= pet.user.county %></td>
+        <td><%= pet.user.full_name %></td>
+        <td><%= pet.user.address_one %></td>
+        <td><%= pet.user.address_two %></td>
         <td><%= pet.user.city %></td>
+        <td><%= pet.user.county %></td>
+        <td><%= pet.user.state %></td>
         <td><%= pet.user.zip %></td>
+        <td><%= pet.user.phone %></td>
         <td><%= pet.vaccinated? %></td>
+        <td><%= pet.spayed_or_neutered? %></td>
+        <td><%= pet.at_humane_society? %></td>
+        <td><%= pl.nice_amount_paid %></td>
         <td><%= link_to "View", license_park_path(id:pet.id), class:'btn' %></td>
       </tr>
       <% end %>
@@ -128,32 +144,44 @@
         <tr>
           <th><input type="checkbox" id="selectAll" /></th>
           <th>#</th>
-          <th>Name</th>
+          <th>Pet Name</th>
           <th>Species</th>
           <th>Age</th>
-          <th>County</th>
+          <th>Owner Name</th>
+          <th>Address 1</th>
+          <th></th>
           <th>Municipality</th>
+          <th>County</th>
+          <th>State</th>
           <th>Zip</th>
+          <th>Phone</th>
           <th>Vaccinated?</th>
-          <th>Spay/Neutered?</th>
-          <th>Humane Society</th>
+          <th>SN?</th>
+          <th>HS?</th>
+          <th>Amount Paid</th>
           <th>License</th>
         </tr>
       </thead>
       <% @printed_licenses.each do |ml| %>
       <% pet = ml.pet %>
       <tr>
-        <td><%= check_box_tag "ids[]", pet.id %></td>
+        <td><%= check_box_tag "ids[]", ml.id %></td>
         <td><%= ml.id %></td>
         <td><%= pet.name %></td>
         <td><%= pet.species %></td>
         <td><%= pet.age %></td>
-        <td><%= pet.user.county %></td>
+        <td><%= pet.user.full_name %></td>
+        <td><%= pet.user.address_one %></td>
+        <td><%= pet.user.address_two %></td>
         <td><%= pet.user.city %></td>
+        <td><%= pet.user.county %></td>
+        <td><%= pet.user.state %></td>
         <td><%= pet.user.zip %></td>
+        <td><%= pet.user.phone %></td>
         <td><%= pet.vaccinated? %></td>
         <td><%= pet.spayed_or_neutered? %></td>
         <td><%= pet.at_humane_society? %></td>
+        <td><%= ml.nice_amount_paid %></td>
         <td><%= link_to "view", license_municipal_path(id:pet.id), class:"btn" %></td>
       </tr>
       <% end %>
@@ -164,7 +192,7 @@
 <%= select_tag :format, options_for_select([["PDF", "pdf"], ["XLS", "xls"], ["CSV", "csv"]], "pdf") %>
 <% end %>
 <%= select_tag :format, options_for_select([["PDF", "pdf"]], "pdf") %>
-<%= submit_tag "export", class:'btn btn-primary btn-disabled admin-btn' %>
+<%= submit_tag "export", class:'btn btn-primary btn-disabled admin-btn', confirm:"This will export these licenses and mark them as printed. Would you like to continue?" %>
 <% end %>
 
 <!-- <div class="btn btn-disabled admin-btn" data-format="pdf">
@@ -174,18 +202,18 @@
   Export to .xls
 </div>
  -->
+<% if false %>
 <div class="btn btn-disabled btn-warning admin-btn" id="markAsPrinted" data-format="submit">
   Mark as Submitted
 </div>
 
-
 <script>
   $('#markAsPrinted').click(function(){
-    var get_type = $(this).data("format");
-    var type = $("<input>").attr("type", "hidden").val(get_type);
-    var ids = $(":checked").data("pet-id");
+    var type = $("<input>").attr("submit", "hidden").val(true);
+    var ids = $(":checked").data("license-id");
 
     $('form').append(type).submit();
     return false
   });
 </script>
+<% end %>
