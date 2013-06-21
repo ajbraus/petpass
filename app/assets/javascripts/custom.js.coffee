@@ -15,6 +15,7 @@ $ ->
     if $(@).hasClass('btn-disabled')
       return false
 
+
   #PLACHOLER IE
   $.Placeholder.init();
   

@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     write_attribute(:full_name, s.to_s.titleize) # The to_s is in case you get nil/non-string
   end
 
+  def nice_phone
+    phone.tr('^A-Za-z0-9', '')
+  end
+
   def send_welcome
     Notifier.delay.welcome(self, self.pets.first)
   end
