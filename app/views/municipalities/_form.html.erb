@@ -1,0 +1,81 @@
+<%= form_for(@municipality) do |f| %>
+  <% if @municipality.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@municipality.errors.count, "error") %> prohibited this municipality from being saved:</h2>
+
+      <ul>
+      <% @municipality.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :county_name %><br />
+    <%= f.text_field :county_name, data: {autocomplete_source: County.order(:name).map(&:name_and_state)} %>
+  </div>  
+  <div class="field">
+    <%= f.label :name, "Municipality Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_name, "Petpass Contact Name" %><br />
+    <%= f.text_field :owner_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email, "Petpass Contact Email" %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :address_one %><br />
+    <%= f.text_field :address_one %>
+  </div>
+  <div class="field">
+    <%= f.label :address_two %><br />
+    <%= f.text_field :address_two %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_routing_number %><br />
+    <%= f.number_field :bank_routing_number %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_account_number %><br />
+    <%= f.number_field :bank_account_number %>
+  </div>
+  <div class="field">
+    <%= f.label :late_fee %><br />
+    <%= f.number_field :late_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :dog_intact_fee %><br />
+    <%= f.number_field :dog_intact_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :dog_sp_fee %><br />
+    <%= f.number_field :dog_sp_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :requires_cat_license %><br />
+    <%= f.check_box :requires_cat_license %>
+  </div>
+  <div class="field">
+    <%= f.label :cat_intact_fee %><br />
+    <%= f.number_field :cat_intact_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :cat_sp_fee %><br />
+    <%= f.number_field :cat_sp_fee %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

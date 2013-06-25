@@ -15,6 +15,8 @@ $ ->
     if $(@).hasClass('btn-disabled')
       return false
 
+  $('#municipality_county_name').autocomplete
+    source: $('#municipality_county_name').data('autocomplete-source')
 
   #PLACHOLER IE
   $.Placeholder.init();

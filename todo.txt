@@ -1,5 +1,4 @@
 PDF load images (test@fifty.com password - new pet has two images)
-don't allow clicking on export button until warm
 Add type of park pass to admin screen and park license screen
 Make "mark as printed button in municipal.html"
 Make mark as printed work from licenses#index
@@ -46,16 +45,14 @@ humane society pet lookup by rabies tag number
 
 humane society sees user data
 
-format phone number
-
 -----------------------------------------------------
 
 National roll out strategy
 
-State has_many :counties
-County has_many :municipalities
+DONE State has_many :counties
+DONE County has_many :municipalities
 
-Municipalities 
+DONE Municipalities 
   name
   email
   address_one
@@ -73,7 +70,7 @@ Municipalities
   cat_intact_fee
   cat_sp_fee
 
-  validate presence of all or municipality is not live
+DONE  validate presence of all or municipality is not live
 
 link to show fee schedule (municipalities#show) from charges#new
 
@@ -82,7 +79,15 @@ Bring this to my county link
   - make them county admin
   - verify how they recieve license information and payment
 
-How would you like to recieve payment and license information?
+
+add How would you like to recieve payment and license information?
+add prorated fee and date
+add accpets park license
+add park license for cats or dogs
+add owner and run migration
+Finalize new#municiaplity page
+calculate fee from municipality of user
+remove and add license for cats depending on if municipality requires cat license
 
 
 -----------------------------------------------------
@@ -193,3 +198,4 @@ DONE add existing city license numbers
 
 DONE itemized reciept on confirmation email
 DONE fix amount paid
+DONE don't allow clicking on export button until warm

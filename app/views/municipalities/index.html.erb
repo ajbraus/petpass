@@ -1,0 +1,51 @@
+<h1>Listing municipalities</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address one</th>
+    <th>Address two</th>
+    <th>Zip</th>
+    <th>Phone</th>
+    <th>Bank routing number</th>
+    <th>Bank account number</th>
+    <th>Late fee</th>
+    <th>Dog intact fee</th>
+    <th>Dog sp fee</th>
+    <th>Requires cat license</th>
+    <th>Cat intact fee</th>
+    <th>Cat sp fee</th>
+    <th>County</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @municipalities.each do |municipality| %>
+  <tr>
+    <td><%= municipality.name %></td>
+    <td><%= municipality.email %></td>
+    <td><%= municipality.address_one %></td>
+    <td><%= municipality.address_two %></td>
+    <td><%= municipality.zip %></td>
+    <td><%= municipality.phone %></td>
+    <td><%= municipality.bank_routing_number %></td>
+    <td><%= municipality.bank_account_number %></td>
+    <td><%= municipality.late_fee %></td>
+    <td><%= municipality.dog_intact_fee %></td>
+    <td><%= municipality.dog_sp_fee %></td>
+    <td><%= municipality.requires_cat_license %></td>
+    <td><%= municipality.cat_intact_fee %></td>
+    <td><%= municipality.cat_sp_fee %></td>
+    <td><%= municipality.county %></td>
+    <td><%= link_to 'Show', municipality %></td>
+    <td><%= link_to 'Edit', edit_municipality_path(municipality) %></td>
+    <td><%= link_to 'Destroy', municipality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Municipality', new_municipality_path %>

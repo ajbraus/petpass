@@ -1,4 +1,6 @@
 Petpass::Application.routes.draw do
+  resources :municipalities
+
   devise_for :users, :controllers => { :registrations => 'registrations' }
 
   authenticated :user do

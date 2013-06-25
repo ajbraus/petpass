@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602161332) do
+ActiveRecord::Schema.define(:version => 20130621191011) do
+
+  create_table "counties", :force => true do |t|
+    t.string   "name"
+    t.integer  "state_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "counties", ["state_id"], :name => "index_counties_on_state_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -40,6 +49,28 @@ ActiveRecord::Schema.define(:version => 20130602161332) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
+
+  create_table "municipalities", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "address_one"
+    t.string   "address_two"
+    t.string   "zip"
+    t.string   "phone"
+    t.integer  "bank_routing_number"
+    t.integer  "bank_account_number"
+    t.integer  "late_fee"
+    t.integer  "dog_intact_fee"
+    t.integer  "dog_sp_fee"
+    t.boolean  "requires_cat_license"
+    t.integer  "cat_intact_fee"
+    t.integer  "cat_sp_fee"
+    t.integer  "county_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "municipalities", ["county_id"], :name => "index_municipalities_on_county_id"
 
   create_table "pets", :force => true do |t|
     t.string   "name"
@@ -75,6 +106,13 @@ ActiveRecord::Schema.define(:version => 20130602161332) do
   add_index "pets", ["license_id"], :name => "index_pets_on_license_id"
   add_index "pets", ["microchip_code"], :name => "index_pets_on_microchip_code"
   add_index "pets", ["user_id"], :name => "index_pets_on_user_id"
+
+  create_table "states", :force => true do |t|
+    t.string   "name"
+    t.string   "abbr"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

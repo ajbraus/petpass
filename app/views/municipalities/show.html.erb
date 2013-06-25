@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @municipality.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @municipality.email %>
+</p>
+
+<p>
+  <b>Address one:</b>
+  <%= @municipality.address_one %>
+</p>
+
+<p>
+  <b>Address two:</b>
+  <%= @municipality.address_two %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @municipality.zip %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @municipality.phone %>
+</p>
+
+<p>
+  <b>Bank routing number:</b>
+  <%= @municipality.bank_routing_number %>
+</p>
+
+<p>
+  <b>Bank account number:</b>
+  <%= @municipality.bank_account_number %>
+</p>
+
+<p>
+  <b>Late fee:</b>
+  <%= @municipality.late_fee %>
+</p>
+
+<p>
+  <b>Dog intact fee:</b>
+  <%= @municipality.dog_intact_fee %>
+</p>
+
+<p>
+  <b>Dog sp fee:</b>
+  <%= @municipality.dog_sp_fee %>
+</p>
+
+<p>
+  <b>Requires cat license:</b>
+  <%= @municipality.requires_cat_license %>
+</p>
+
+<p>
+  <b>Cat intact fee:</b>
+  <%= @municipality.cat_intact_fee %>
+</p>
+
+<p>
+  <b>Cat sp fee:</b>
+  <%= @municipality.cat_sp_fee %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%= @municipality.county %>
+</p>
+
+
+<%= link_to 'Edit', edit_municipality_path(@municipality) %> |
+<%= link_to 'Back', municipalities_path %>
